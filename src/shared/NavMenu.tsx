@@ -33,14 +33,12 @@ export const NavMenu = ({ custom, footer, burger }: NavMenuProps) => {
 		>
 			<ul className={`flex  ${custom ? custom : ''}  md:text-[16px] ${burger ? 'text-start gap-2' : 'gap-8'}`}>
 				{menu.map(i => (
-					<li key={i.id} className={` ${burger && '    '}`}>
+					<li key={i.id} className={` ${burger && ' shadow-[5px_10px_30px_0px_rgba(187,187,211,0.50)]   '}`}>
 						<Link
 							//@ts-ignore
 							href={i.href}
 							className={`  ${
-								!footer
-									? 'text-cwhite hover:text-cyellow '
-									: 'block text-cyellow rounded-xl p-2 w-[100px] h-[20px] bg-cwhite'
+								!footer ? 'text-cwhite hover:text-cyellow ' : 'block text-cyellow rounded-xl p-2 w-[100px] h-[20px]]'
 							} 
               ${(pathname.slice(3) === i.href || pathname.slice(0, -2) === i.href) && !footer ? '  text-cwhite ' : ''}
               ${burger && 'block rounded-xl p-2 bg-cwhite text-cblack'}`}

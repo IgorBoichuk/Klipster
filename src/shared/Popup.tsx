@@ -23,7 +23,7 @@ export const Popup = ({ children, custom, customOverlay, navMenu }: PopupProps) 
 		<div
 			ref={popupRef}
 			onClick={handleClickOutside}
-			className={`w-[100%] h-[100vh] top-0 left-0 
+			className={`w-[100%] h-[100vh] top-5 left-0 
       ${customOverlay ? customOverlay : ' absolute'}`}
 		>
 			<div

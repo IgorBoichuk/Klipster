@@ -1,7 +1,12 @@
+import { Container } from '@/shared/Container';
+import { SectionTitle } from '@/shared/SectionTitle';
+
 export default function Home() {
 	return (
-		<div>
-			<p>Klipster</p>
-		</div>
+		<Container>
+			<div>
+				<SectionTitle title='Категорії' />
+			</div>
+		</Container>
 	);
 }
