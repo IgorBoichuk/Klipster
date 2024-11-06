@@ -7,7 +7,6 @@ import Logo from '../../../public/logo/logo.svg';
 import Phone from '../../../public/svg/phone.svg';
 import Find from '../../../public/svg/find.svg';
 import Login from '../../../public/svg/login.svg';
-import BurgerMenu from '../../../public/svg/burger.svg';
 import { Burger } from '../Burger';
 
 export const Header = () => {
@@ -18,7 +17,7 @@ export const Header = () => {
 			<Container>
 				<div className='py-4 flex justify-between items-center'>
 					<Link href={'/'} className='block w-[102px]'>
-						<Image src={Logo} alt='logo klipster' className=' ' />
+						<Image src={Logo} width={500} height={500} priority={true} alt='logo klipster' className=' ' />
 					</Link>
 					<div className='flex gap-3'>
 						<Link href={'tel:${+380930392656}'}>
@@ -31,9 +30,6 @@ export const Header = () => {
 							<Image src={Login} alt='Login link'></Image>
 						</button>
 						<Burger />
-						{/* <button>
-							<Image src={BurgerMenu} alt='BurgerMenu button' />
-						</button> */}
 					</div>
 				</div>
 			</Container>
