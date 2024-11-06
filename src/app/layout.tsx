@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { Header } from '@/shared/components/Header';
 import { Footer } from '@/shared/components/Footer';
+import { PopupProvider } from './providers/PopupProvider';
 
 export const metadata: Metadata = {
 	title: 'Klipster',
@@ -13,12 +14,15 @@ export default function RootLayout({
 }: Readonly<{
 	children: React.ReactNode;
 }>) {
+	// return <PopupProvider>{children}</PopupProvider>
 	return (
 		<html lang='ua'>
 			<body className=''>
-				<Header />
-				{children}
-				<Footer />
+				<PopupProvider>
+					<Header />
+					{children}
+					<Footer />
+				</PopupProvider>
 			</body>
 		</html>
 	);
