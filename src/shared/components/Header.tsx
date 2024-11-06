@@ -8,6 +8,7 @@ import Phone from '../../../public/svg/phone.svg';
 import Find from '../../../public/svg/find.svg';
 import Login from '../../../public/svg/login.svg';
 import BurgerMenu from '../../../public/svg/burger.svg';
+import { Burger } from '../Burger';
 
 export const Header = () => {
 	// const pathname = usePathname().split('/')[1]
@@ -29,9 +30,10 @@ export const Header = () => {
 						<button>
 							<Image src={Login} alt='Login link'></Image>
 						</button>
-						<button>
-							<Image src={BurgerMenu} alt='BurgerMenu button'></Image>
-						</button>
+						<Burger />
+						{/* <button>
+							<Image src={BurgerMenu} alt='BurgerMenu button' />
+						</button> */}
 					</div>
 				</div>
 			</Container>
