@@ -27,7 +27,7 @@ export const Popup = ({ children, custom, customOverlay, navMenu }: PopupProps) 
       ${customOverlay ? customOverlay : ' absolute'}`}
 		>
 			<div
-				className={`absolute z-50 top-10 overflow-hidden bg-cwhite shadow-[5px_10px_30px_0px_rgba(187,187,211,0.50)] rounded-3xl   ${
+				className={`absolute z-50 top-10 overflow-hidden bg-cyellow shadow-[5px_10px_30px_0px_rgba(187,187,211,0.50)] rounded-xl   ${
 					navMenu && 'xl:hidden'
 				}  ${custom ? custom : ' '}`}
 			>

@@ -4,6 +4,7 @@ import Image from 'next/image';
 import BurgerMenu from '../../public/svg/burger.svg';
 import { Popup } from './Popup';
 import { PopupContext } from '@/app/providers/PopupProvider';
+import { NavMenu } from './NavMenu';
 
 export const Burger = () => {
 	//@ts-ignore
@@ -15,13 +16,13 @@ export const Burger = () => {
 			</button>
 			{isOpenPopup ? (
 				<Popup
-					custom='flex justify-around flex-col items-center gap-[80px] 
+					custom='flex flex-col p-2
           right-2 w-[70%] 
           sm:w-1/2 md:w-[50%] lg:w-[40%] h-4/6 md:h-5/6
           py-[50px]'
 					navMenu
 				>
-					{/* <NavMenu custom='flex-col ' burger /> */}
+					<NavMenu custom='flex-col ' burger />
 				</Popup>
 			) : null}
 		</div>
