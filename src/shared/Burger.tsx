@@ -18,8 +18,8 @@ export const Burger = () => {
 				<Popup
 					custom='flex flex-col p-2
           right-2 w-[70%] 
-          sm:w-1/2 md:w-[50%] lg:w-[40%] h-4/6 md:h-5/6
-          py-[10px]'
+          sm:w-1/2 md:w-[50%] lg:w-[40%] 
+          py-[15px]'
 					navMenu
 				>
 					<NavMenu custom='flex-col ' burger />
