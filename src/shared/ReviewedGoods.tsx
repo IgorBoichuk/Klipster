@@ -1,13 +1,13 @@
-import Image from "next/image";
 import React from "react";
+import Image from "next/image";
 
-interface RecommendedProductsProps {
+interface ReviewedGoodsProps {
   // title: string;
   custom?: string;
   image?: any;
 }
 
-export const RecommendedProducts = ({ image }: RecommendedProductsProps) => {
+export const ReviewedGoods = ({ image }: ReviewedGoodsProps) => {
   return (
     <div className="w-24 h-24 bg-white border-0 border-gray-300 rounded-xl shadow-md">
       <Image
