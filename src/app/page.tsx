@@ -11,7 +11,7 @@ import Clipsest from '../../public/images/clipsest.png';
 export default function Home() {
 	return (
 		<Container>
-			<div>
+			<div className=''>
 				<SectionTitle title='Категорії' />
 			</div>
 			<ul className='grid grid-cols-2 gap-[20px] lg:grid-cols-3'>

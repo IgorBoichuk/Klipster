@@ -22,7 +22,7 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang='ua' className={` ${lora.variable}  font-sans dark`}>
-			<body className=''>
+			<body className='font-sans'>
 				<PopupProvider>
 					<Header />
 					{children}
