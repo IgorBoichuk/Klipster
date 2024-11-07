@@ -7,7 +7,7 @@ import { PopupProvider } from './providers/PopupProvider';
 
 const lora = Lora({
 	subsets: ['latin'],
-	variable: '--font-montserrat',
+	variable: '--font-lora',
 });
 
 export const metadata: Metadata = {
@@ -20,7 +20,6 @@ export default function RootLayout({
 }: Readonly<{
 	children: React.ReactNode;
 }>) {
-	// return <PopupProvider>{children}</PopupProvider>
 	return (
 		<html lang='ua' className={` ${lora.variable}  font-sans dark`}>
 			<body className=''>
