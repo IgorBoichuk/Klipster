@@ -16,16 +16,16 @@ export default function Home() {
 			</div>
 			<ul className='grid grid-cols-2 gap-[20px] lg:grid-cols-3'>
 				<li>
-					<CategoryCard image={Bolt} />
+					<CategoryCard title='Болти' image={Bolt} />
 				</li>
 				<li>
-					<CategoryCard image={Bolts} />
+					<CategoryCard title='Кліпси' image={Bolts} />
 				</li>
 				<li>
-					<CategoryCard image={Clips} />
+					<CategoryCard title='Закладні гайки' image={Clips} />
 				</li>
 				<li>
-					<CategoryCard image={Clipses} />
+					<CategoryCard title='Втуки' image={Clipses} />
 				</li>
 			</ul>
 			<div>
