@@ -22,7 +22,7 @@ export const Burger = () => {
           py-[15px]'
 					navMenu
 				>
-					<NavMenu custom='flex-col ' burger />
+					<NavMenu custom='flex-col' burger />
 				</Popup>
 			) : null}
 		</div>

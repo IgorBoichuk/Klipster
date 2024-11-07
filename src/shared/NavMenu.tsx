@@ -37,11 +37,11 @@ export const NavMenu = ({ custom, footer, burger }: NavMenuProps) => {
 						<Link
 							//@ts-ignore
 							href={i.href}
-							className={`  ${
-								!footer ? 'text-cwhite hover:text-cyellow ' : 'block text-cyellow rounded-xl p-2 w-[100px] h-[20px]]'
-							} 
-              ${(pathname.slice(3) === i.href || pathname.slice(0, -2) === i.href) && !footer ? '  text-cwhite ' : ''}
-              ${burger && 'block rounded-xl p-2 bg-cwhite text-cblack'}`}
+							className={`  
+								${(pathname.slice(3) === i.href || pathname.slice(0, -2) === i.href) && !footer ? '  text-cwhite ' : ''}
+								${footer ? 'text-cwhite hover:text-cyellow ' : 'block text-cblack'} 
+								${burger && 'block rounded-xl p-2 bg-cwhite text-cblack w-[100%]'}
+								`}
 						>
 							{i.name}
 						</Link>
