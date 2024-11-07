@@ -1,8 +1,14 @@
 import type { Metadata } from 'next';
+import { Lora } from 'next/font/google';
 import './globals.css';
 import { Header } from '@/shared/components/Header';
 import { Footer } from '@/shared/components/Footer';
 import { PopupProvider } from './providers/PopupProvider';
+
+const lora = Lora({
+	subsets: ['latin'],
+	variable: '--font-montserrat',
+});
 
 export const metadata: Metadata = {
 	title: 'Klipster',
@@ -16,7 +22,7 @@ export default function RootLayout({
 }>) {
 	// return <PopupProvider>{children}</PopupProvider>
 	return (
-		<html lang='ua'>
+		<html lang='ua' className={` ${lora.variable}  font-sans dark`}>
 			<body className=''>
 				<PopupProvider>
 					<Header />

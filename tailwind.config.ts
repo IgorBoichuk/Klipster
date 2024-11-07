@@ -33,6 +33,9 @@ const config: Config = {
 				'about-us-xs': "url('/bg/aboutUs/aboutUsXs.png')",
 			},
 		},
+		fontFamily: {
+			sans: ['Lora', 'sans-serif'],
+		},
 		screens: {
 			sm: '640px',
 			md: '768px',
