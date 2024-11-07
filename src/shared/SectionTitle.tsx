@@ -9,7 +9,7 @@ interface SectionTitleProps {
 export const SectionTitle = ({ title, custom }: SectionTitleProps) => {
 	return (
 		<h2
-			className={`text-left text-xl
+			className={`text-left text-xl py-6 font-medium
 			${custom ? custom : ' '}`}
 		>
 			{title}
