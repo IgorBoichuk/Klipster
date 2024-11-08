@@ -8,19 +8,25 @@ import Clipses from '../../public/images/clipses.png';
 
 export const Categories = () => {
 	return (
-		<div className='bg-stone-100'>
+		<div className=''>
 			<SectionTitle title='Категорії' />
-			<ul className='grid grid-cols-2  gap-[20px] lg:grid-cols-3'>
-				<li>
+			<ul className='grid grid-cols-2 gap-4 md:grid-cols-3 items-center justify-center'>
+				<li className='h-full'>
 					<CategoryCard title='Болти' image={Bolt} />
 				</li>
-				<li>
+				<li className='h-full'>
 					<CategoryCard title='Кліпси' image={Bolts} />
 				</li>
-				<li>
+				<li className='h-full'>
 					<CategoryCard title='Закладні гайки' image={Clips} />
 				</li>
-				<li>
+				<li className='h-full'>
+					<CategoryCard title='Якийсь дуже довгий текст' image={Clipses} />
+				</li>
+				<li className='h-full'>
+					<CategoryCard title='Втуки' image={Clipses} />
+				</li>
+				<li className='h-full'>
 					<CategoryCard title='Втуки' image={Clipses} />
 				</li>
 			</ul>
