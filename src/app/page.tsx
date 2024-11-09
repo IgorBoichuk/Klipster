@@ -1,7 +1,6 @@
 import { CategoryCard } from '@/shared/CategoryCard';
 import { Container } from '@/shared/Container';
 import { RecommendedProducts } from '@/shared/RecommendedProducts';
-import { SectionTitle } from '@/shared/SectionTitle';
 import Bolt from '../../public/images/bolts.png';
 import Bolts from '../../public/images/boltstt.png';
 import Clips from '../../public/images/clips.jpg';

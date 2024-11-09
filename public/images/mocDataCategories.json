@@ -2,49 +2,49 @@
 	"Кріплення розпірної дії: З натискним штирем": {
 		"id": 1,
 		"name": "Кріплення розпірної дії: З натискним штирем",
-		"description": "",
-		"image": "https://mak.parts/components/com_jshopping/files/img_products/full_11200.jpg"
+		"image": "https://mak.parts/components/com_jshopping/files/img_products/full_11200.jpg",
+		"description": ""
 	},
 	"Заглушки з отвором": {
 		"id": 2,
 		"name": "Заглушки з отвором",
-		"description": "",
-		"image": "https://mak.parts/images/shema/9_2-min.jpg"
+		"image": "https://mak.parts/images/shema/9_2-min.jpg",
+		"description": ""
 	},
 	"Кріплення розпірної дії З гвинтовим штирем": {
 		"id": 3,
 		"name": "Кріплення розпірної дії: З гвинтовим штирем",
-		"description": "",
-		"image": "https://mak.parts/images/shema/5_2-min.jpg"
+		"image": "https://mak.parts/images/shema/5_2-min.jpg",
+		"description": ""
 	},
 	"Кліпси Якір: Тип 1": {
 		"id": 4,
 		"name": "Кліпси 'Якір':Тип 1",
-		"description": "",
-		"image": "https://mak.parts/images/shema/2_2-min.jpg"
+		"image": "https://mak.parts/images/shema/2_2-min.jpg",
+		"description": ""
 	},
 	"Заглушки без отвору": {
 		"id": 5,
 		"name": "Заглушки без отвору",
-		"description": "",
-		"image": "https://mak.parts/images/shema/8_2-min.jpg"
+		"image": "https://mak.parts/images/shema/8_2-min.jpg",
+		"description": ""
 	},
 	"Заклепки": {
 		"id": 6,
 		"name": "Заклепки",
-		"description": "",
-		"image": "https://mak.parts/images/shema/25_2-min.jpg"
+		"image": "https://mak.parts/images/shema/25_2-min.jpg",
+		"description": ""
 	},
 	"Втулки": {
 		"id": 7,
 		"name": "Втулки",
-		"description": "",
-		"image": "https://mak.parts/images/shema/14_2-min.jpg"
+		"image": "https://mak.parts/images/shema/14_2-min.jpg",
+		"description": ""
 	},
 	"Фіксатори V-подібні": {
 		"id": 8,
 		"name": "Фіксатори V-подібні",
-		"description": "",
-		"image": "https://mak.parts/images/shema/18_2-min.jpg"
+		"image": "https://mak.parts/images/shema/18_2-min.jpg",
+		"description": ""
 	}
 }
