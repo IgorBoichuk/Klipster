@@ -11,9 +11,10 @@ interface NavMenuProps {
 	custom?: string;
 	footer?: boolean;
 	burger?: boolean;
+	header?: boolean;
 }
 
-export const NavMenu = ({ custom, footer, burger }: NavMenuProps) => {
+export const NavMenu = ({ custom, footer, burger, header }: NavMenuProps) => {
 	//@ts-ignore
 	const { closePopup } = usePopup();
 	const menu = [
@@ -30,17 +31,30 @@ export const NavMenu = ({ custom, footer, burger }: NavMenuProps) => {
 			onClick={() => {
 				burger && closePopup();
 			}}
+			className={`${!burger && !footer && 'hidden lg:block'}`}
 		>
-			<ul className={`flex  ${custom ? custom : ''}  md:text-[16px] ${burger ? 'text-start gap-2' : 'gap-8'}`}>
+			<ul
+				className={`flex md:text-[16px] ${burger ? 'text-start gap-2' : 'gap-8'} 
+				${header ? 'grid grid-cols-4 text-center gap-8' : ''} 
+				${custom ? custom : ''}
+			`}
+			>
 				{menu.map(i => (
-					<li key={i.id} className={` ${burger && ' shadow-[5px_10px_30px_0px_rgba(187,187,211,0.50)]   '}`}>
+					<li
+						key={i.id}
+						className={` 
+							${pathname === i.href && header ? '  bg-cyellow ' : ''}
+							${burger && 'rounded-xl bg-cwhite shadow-md'} 
+							${header && 'text-sm text-cwhite rounded-t-lg border-cdarkgray border-t-[1px] hover:bg-cyellow'}`}
+					>
 						<Link
 							//@ts-ignore
 							href={i.href}
-							className={`  
-								${(pathname.slice(3) === i.href || pathname.slice(0, -2) === i.href) && !footer ? '  text-cwhite ' : ''}
-								${footer ? 'text-cwhite hover:text-cyellow ' : 'block text-cblack'} 
-								${burger && 'block rounded-xl p-2 bg-cwhite text-cblack w-[100%]'}
+							className={`								
+								${burger && pathname === i.href ? 'block p-2 w-[100%] text-cyellow' : 'block p-2 w-[100%]'}
+								${header && 'block px-6 py-2 w-[100%]'}
+								${footer && pathname === i.href ? ' text-cyellow' : ''}
+								${footer ? 'text-cwhite hover:text-cyellow bg-none ' : ''} 
 								`}
 						>
 							{i.name}

@@ -10,6 +10,7 @@ import Find from '../../../public/svg/find.svg';
 import Login from '../../../public/svg/login.svg';
 import User from '../../../public/svg/user.svg';
 import { Burger } from '../Burger';
+import { NavMenu } from '../NavMenu';
 
 export const Header = () => {
 	// const pathname = usePathname().split('/')[1]
@@ -49,6 +50,7 @@ export const Header = () => {
 						<Burger />
 					</div>
 				</div>
+				<NavMenu header />
 			</Container>
 		</header>
 	);
