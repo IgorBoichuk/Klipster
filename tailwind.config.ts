@@ -18,6 +18,9 @@ const config: Config = {
 				cyellow: '#FFC722',
 				cgray: 'D5D8DE',
 			},
+			backgroundImage: {
+				'about-us': "url('/images/car.jpg')",
+			},
 		},
 		fontFamily: {
 			sans: ['Lora', 'sans-serif'],
