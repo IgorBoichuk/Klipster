@@ -16,7 +16,8 @@ const config: Config = {
 				cwhite: '#FAFAFF',
 				cdark: '#1D2020',
 				cyellow: '#FFC722',
-				cgray: 'D5D8DE',
+				cgray: '#D5D8DE',
+				cdarkgray: '#BFBBBB',
 			},
 			backgroundImage: {
 				'about-us': "url('/images/car.jpg')",
