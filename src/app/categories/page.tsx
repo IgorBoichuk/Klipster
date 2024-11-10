@@ -1,14 +1,20 @@
-import { Container } from '@/shared/Container';
-import { SectionTitle } from '@/shared/SectionTitle';
-import React from 'react';
+import { Container } from "@/shared/Container";
+
+import React from "react";
+import { RecommendedProducts } from "@/shared/RecommendedProducts";
+import { ReviewedGoods } from "@/shared/ReviewedGoods";
+import Bolt from "../../../public/images/bolts.png";
+import { AllCategories } from "@/shared/AllCategories";
+import { Articles } from "@/shared/Articles";
 
 const Categories = () => {
-	return (
-		<Container>
-			<div>
-				<SectionTitle title='Categories' />
-			</div>
-		</Container>
-	);
+  return (
+    <Container>
+      <AllCategories />
+      <RecommendedProducts image={Bolt} title={"Рекомендовані товари"} />
+      <ReviewedGoods image={Bolt} title={"Ви переглядали"} />
+      <Articles />
+    </Container>
+  );
 };
 export default Categories;
