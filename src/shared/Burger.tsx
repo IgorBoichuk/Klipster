@@ -1,5 +1,5 @@
 'use client';
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import Image from 'next/image';
 import BurgerMenu from '../../public/svg/burger.svg';
 import Cross from '../../public/svg/cross.svg';
