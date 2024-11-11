@@ -11,7 +11,7 @@ interface PopupProps {
 }
 export const Popup = ({ children, custom, customOverlay, navMenu }: PopupProps) => {
 	const popupRef = useRef(null);
-	//@ts-ignore
+	//@ts expect error
 	const { closePopup } = usePopup();
 	const handleClickOutside = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
 		if (e.target === popupRef.current) {
