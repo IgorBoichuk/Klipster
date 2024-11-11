@@ -4,6 +4,8 @@ import './globals.css';
 import { Header } from '@/shared/components/Header';
 import { Footer } from '@/shared/components/Footer';
 import { PopupProvider } from './providers/PopupProvider';
+import { ReviewedGoods } from '@/shared/ReviewedGoods';
+import Bolt from '../../public/images/bolts.png';
 
 const lora = Lora({
 	subsets: ['latin'],
@@ -26,6 +28,7 @@ export default function RootLayout({
 				<PopupProvider>
 					<Header />
 					{children}
+					<ReviewedGoods image={Bolt} title={'Ви переглядали'} />
 					<Footer />
 				</PopupProvider>
 			</body>

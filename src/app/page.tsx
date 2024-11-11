@@ -6,7 +6,7 @@ import Bolts from '../../public/images/boltstt.png';
 import Clips from '../../public/images/clips.jpg';
 import Clipses from '../../public/images/clipses.png';
 import Clipsest from '../../public/images/clipsest.png';
-import { ReviewedGoods } from '@/shared/ReviewedGoods';
+
 import { AboutUs } from '@/shared/AboutUs';
 import { Categories } from '@/shared/Categories';
 
@@ -15,7 +15,6 @@ export default function Home() {
 		<Container>
 			<Categories />
 			<RecommendedProducts image={Bolt} title={'Рекомендовані товари'} />
-			<ReviewedGoods image={Bolt} title={'Ви переглядали'} />
 			<AboutUs />
 		</Container>
 	);
