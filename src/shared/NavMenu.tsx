@@ -1,8 +1,5 @@
 'use client';
 import { usePopup } from '@/app/providers/usePopup';
-// import { Link } from '@/navigation';
-// import { usePopup } from '@/providers/usePopup';
-
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React from 'react';

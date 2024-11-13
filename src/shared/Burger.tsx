@@ -8,7 +8,7 @@ import { PopupContext } from '@/app/providers/PopupProvider';
 import { NavMenu } from './NavMenu';
 
 export const Burger = () => {
-	//@ts-expect-error"
+	//@ts-expect-error: поки хз що робити
 	const { isOpenPopup, togglePopup } = useContext(PopupContext);
 	return (
 		<div>
