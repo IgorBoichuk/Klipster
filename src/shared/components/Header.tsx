@@ -9,6 +9,7 @@ import Phone from '../../../public/svg/phone.svg';
 import Find from '../../../public/svg/find.svg';
 // import Login from '../../../public/svg/login.svg';
 import User from '../../../public/svg/user.svg';
+import Cart from '../../../public/svg/cartt.svg';
 import { Burger } from '../Burger';
 import { NavMenu } from '../NavMenu';
 
@@ -50,6 +51,9 @@ export const Header = () => {
 						<button className='w-6 h-6 lg:w-8 lg:h-8'>
 							<Image src={User} width={40} alt='Login link'></Image>
 						</button>
+						<Link href={'/cart'} className='w-6 h-6 lg:w-8 lg:h-8'>
+							<Image src={Cart} width={40} alt='Login link'></Image>
+						</Link>
 						<Burger />
 					</div>
 				</div>
