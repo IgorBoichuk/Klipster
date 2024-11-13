@@ -19,8 +19,11 @@ export const Header = () => {
 		<header className='sticky top-0 z-[100] bg-cdark '>
 			<Container>
 				<div className='py-4 flex justify-between items-center'>
-					<Link href={'/'} className='block w-[102px] lg:w-[231px]'>
-						<Image src={Logo} width={500} height={500} priority={true} alt='logo klipster' className=' ' />
+					<Link
+						href={'/'}
+						className='relative block w-[102px] h-[46px] xl:w-[180px] xl:h-[80px] 2xl:w-[231px] 2xl:h-[103px]'
+					>
+						<Image src={Logo} fill={true} priority={true} alt='logo klipster' className=' ' />
 					</Link>
 					<Form action='/search' className='relative w-1/2 h-8 xl:h-10'>
 						{/* On submission, the input value will be appended to 

@@ -34,7 +34,7 @@ export const NavMenu = ({ custom, footer, burger, header }: NavMenuProps) => {
 			<ul
 				className={`flex md:text-[16px] ${burger ? 'text-start gap-2' : 'gap-8'} 
 				${header ? 'grid grid-cols-4 text-center gap-8' : ''} 
-				${footer ? 'grid grid-cols-1 md:grid-cols-2 gap-0 text-start' : ''} 
+				${footer ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 text-start' : ''} 
 				${custom ? custom : ''}
 			`}
 			>
