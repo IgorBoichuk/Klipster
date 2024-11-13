@@ -13,20 +13,20 @@ interface SocialsProps {
 export const Socials = ({ custom }: SocialsProps) => {
 	return (
 		<div className={` ${custom ? custom : ''}`}>
-			<Link href={'tel:${+380930392656}'} className='relative flex w-max h-5 lg:w-6 lg:h-6 '>
-				<Image src={Phone} fill={true} alt='phone link'></Image>
+			<Link href={'tel:${+380930392656}'} className='flex gap-2'>
+				<Image src={Phone} width={40} alt='phone link' className='block w-5 h-5 lg:w-6 lg:h-6' />
 				<p className='hidden lg:block text-cwhite'>+380930392656</p>
 			</Link>
-			<Link href={'mailto:${info.klipster@gmail.com}'} className='relative block w-5 h-5 lg:w-6 lg:h-6'>
-				<Image src={Email} fill={true} alt='phone link'></Image>
+			<Link href={'mailto:${info.klipster@gmail.com}'} className='flex gap-2'>
+				<Image src={Email} width={40} alt='phone link' className='block w-5 h-5 lg:w-6 lg:h-6' />
 				<p className='hidden lg:block text-cwhite'>+info.klipster@gmail.com</p>
 			</Link>
-			<Link href={'viber://chat?number=380930392656'} className='relative block w-5 h-5 lg:w-6 lg:h-6'>
-				<Image src={Viber} fill={true} alt='phone link'></Image>
+			<Link href={'viber://chat?number=380930392656'} className='flex gap-2'>
+				<Image src={Viber} width={40} alt='phone link' className='block w-5 h-5 lg:w-6 lg:h-6' />
 				<p className='hidden lg:block text-cwhite'>+380930392656</p>
 			</Link>
-			<Link href={'https://t.me/+380930392656'} className='relative block w-5 h-5 lg:w-8 lg:w-6 lg:h-6'>
-				<Image src={Telegram} fill={true} alt='phone link'></Image>
+			<Link href={'https://t.me/+380930392656'} className='flex gap-2'>
+				<Image src={Telegram} width={40} alt='phone link' className='block w-5 h-5 lg:w-6 lg:h-6' />
 				<p className='hidden lg:block text-cwhite'>+380930392656</p>
 			</Link>
 		</div>
