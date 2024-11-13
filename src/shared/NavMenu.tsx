@@ -25,7 +25,9 @@ export const NavMenu = ({ custom, footer, burger, header }: NavMenuProps) => {
 	return (
 		<nav
 			onClick={() => {
-				burger && closePopup();
+				if (burger) {
+					closePopup();
+				}
 			}}
 			className={`${!burger && !footer ? 'hidden lg:block' : ''}`}
 		>
