@@ -1,5 +1,3 @@
-import { Container } from '@/shared/Container';
-
 import React from 'react';
 import { RecommendedProducts } from '@/shared/RecommendedProducts';
 
@@ -8,10 +6,10 @@ import { AllCategories } from '@/shared/AllCategories';
 
 const Categories = () => {
 	return (
-		<Container>
+		<div>
 			<AllCategories />
 			<RecommendedProducts image={Bolt} title={'Рекомендовані товари'} />
-		</Container>
+		</div>
 	);
 };
 export default Categories;

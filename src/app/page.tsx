@@ -1,4 +1,3 @@
-import { Container } from '@/shared/Container';
 import { RecommendedProducts } from '@/shared/RecommendedProducts';
 import Bolt from '../../public/images/bolts.png';
 // import Bolts from '../../public/images/boltstt.png';
@@ -22,10 +21,10 @@ import { Categories } from '@/shared/Categories';
 
 export default function Home() {
 	return (
-		<Container>
+		<div>
 			<Categories />
 			<RecommendedProducts image={Bolt} title={'Рекомендовані товари'} />
 			<AboutUs />
-		</Container>
+		</div>
 	);
 }

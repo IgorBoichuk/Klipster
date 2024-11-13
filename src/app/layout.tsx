@@ -6,6 +6,7 @@ import { Footer } from '@/shared/components/Footer';
 import { PopupProvider } from './providers/PopupProvider';
 import { ReviewedGoods } from '@/shared/ReviewedGoods';
 import Bolt from '../../public/images/bolts.png';
+import { Container } from '@/shared/Container';
 
 const lora = Lora({
 	subsets: ['latin'],
@@ -27,8 +28,10 @@ export default function RootLayout({
 			<body className='font-sans'>
 				<PopupProvider>
 					<Header />
-					{children}
-					<ReviewedGoods image={Bolt} title={'Ви переглядали'} />
+					<Container>
+						{children}
+						<ReviewedGoods image={Bolt} title={'Ви переглядали'} />
+					</Container>
 					<Footer />
 				</PopupProvider>
 			</body>
