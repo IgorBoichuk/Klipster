@@ -13,9 +13,14 @@ export const Popup = ({ children, custom, customOverlay, navMenu }: PopupProps) 
 	const popupRef = useRef(null);
 	//@ts expect error
 	const { closePopup } = usePopup();
+	// const handleClickOutside = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+	// 	if (e.target === popupRef.current) {
+	// 		closePopup && closePopup();
+	// 	}
+	// };
 	const handleClickOutside = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-		if (e.target === popupRef.current) {
-			closePopup && closePopup();
+		if (e.target === popupRef.current && closePopup) {
+			closePopup();
 		}
 	};
 
