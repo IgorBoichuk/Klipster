@@ -1,21 +1,15 @@
-// import { NextResponse } from 'next/server';
+export async function fetchPartsfromBase() {
+	try {
+		const response = await fetch('https://api.vercel.app/blog');
 
-// export async function GET() {
-// 	const res = await fetch('mongodb://localhost:27017/');
-// 	const data = await res.json();
-// 	return NextResponse.json(data);
-// }
+		if (!response.ok) {
+			throw new Error(`Помилка: ${response.statusText}`);
+		}
 
-// export default async function Page() {
-// 	let data = await fetch('https://api.vercel.app/blog');
-//   let posts = await data.json();
-//   console.log(posts);
-
-// 	return (
-// 		<ul>
-// 			{posts.map(post => (
-// 				<li key={post.id}>{post.title}</li>
-// 			))}
-// 		</ul>
-// 	);
-// }
+		const data = await response.json();
+		return data;
+	} catch (error) {
+		console.error('Не вдалося завантажити дані:', error);
+		return null;
+	}
+}

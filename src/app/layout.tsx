@@ -7,6 +7,7 @@ import { PopupProvider } from './providers/PopupProvider';
 import { ReviewedGoods } from '@/shared/ReviewedGoods';
 import Bolt from '../../public/images/bolts.png';
 import { Container } from '@/shared/Container';
+import { fetchPartsfromBase } from '@/hooks/getData';
 
 const lora = Lora({
 	subsets: ['latin'],
@@ -18,11 +19,14 @@ export const metadata: Metadata = {
 	description: 'Магазин автомобільних кріплень та аксесуарів',
 };
 
-export default function RootLayout({
+export default async function RootLayout({
 	children,
 }: Readonly<{
 	children: React.ReactNode;
 }>) {
+	const blogPosts = await fetchPartsfromBase();
+	console.log(blogPosts);
+
 	return (
 		<html lang='ua' className={` ${lora.variable}  font-sans dark`}>
 			<head>
