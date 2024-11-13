@@ -9,6 +9,17 @@ import Bolt from '../../public/images/bolts.png';
 import { AboutUs } from '@/shared/AboutUs';
 import { Categories } from '@/shared/Categories';
 
+// async function fetchData() {
+// 	const res = await fetch('109.94.209.168');
+// 	const data = await res.json();
+
+// 	return data;
+// }
+
+// export default async function ExamplePage() {
+// 	const data = await fetchData();
+// 	console.log(data);
+
 export default function Home() {
 	return (
 		<Container>
