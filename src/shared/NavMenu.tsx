@@ -34,6 +34,7 @@ export const NavMenu = ({ custom, footer, burger, header }: NavMenuProps) => {
 			<ul
 				className={`flex md:text-[16px] ${burger ? 'text-start gap-2' : 'gap-8'} 
 				${header ? 'grid grid-cols-4 text-center gap-8' : ''} 
+				${footer ? 'grid grid-cols-1 md:grid-cols-2 gap-0 text-start' : ''} 
 				${custom ? custom : ''}
 			`}
 			>
@@ -43,7 +44,9 @@ export const NavMenu = ({ custom, footer, burger, header }: NavMenuProps) => {
 						className={` 
 							${pathname === i.href && header ? '  bg-cyellow ' : ''}
 							${burger && 'rounded-xl bg-cwhite shadow-md'} 
-							${header && 'text-sm text-cwhite rounded-t-lg border-cdarkgray border-t-[1px] hover:bg-cyellow'}`}
+							${header && 'text-sm text-cwhite rounded-t-lg border-cdarkgray border-t-[1px] hover:bg-cyellow'}
+							
+							`}
 					>
 						<Link
 							href={i.href}
@@ -51,7 +54,7 @@ export const NavMenu = ({ custom, footer, burger, header }: NavMenuProps) => {
 								${burger && pathname === i.href ? 'block p-2 w-[100%] text-cyellow' : 'block p-2 w-[100%]'}
 								${header && 'block px-6 py-2 w-[100%]'}
 								${footer && pathname === i.href ? ' text-cyellow' : ''}
-								${footer ? 'text-cwhite hover:text-cyellow bg-none ' : ''} 
+								${footer ? 'text-cwhite hover:text-cyellow bg-none p-0 text-sm' : ''} 
 								`}
 						>
 							{i.name}
