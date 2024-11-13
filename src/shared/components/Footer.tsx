@@ -1,9 +1,8 @@
 import Link from 'next/link';
 import { Container } from '../Container';
 import { NavMenu } from '../NavMenu';
-import Image from 'next/image';
-import Logo from '../../../public/logo/logo.svg';
 import { Socials } from '../Socials';
+import { Logo } from '../Logo';
 
 export const Footer = () => {
 	return (
@@ -15,7 +14,7 @@ export const Footer = () => {
 							href={'/'}
 							className='relative block w-[102px] h-[46px] xl:w-[180px] xl:h-[80px] 2xl:w-[231px] 2xl:h-[103px]'
 						>
-							<Image src={Logo} fill={true} priority={true} alt='logo klipster' />
+							<Logo />
 						</Link>
 						<Socials custom='lg:hidden grid grid-cols-4 gap-3 w-max' />
 					</div>
