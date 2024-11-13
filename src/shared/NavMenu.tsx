@@ -27,7 +27,7 @@ export const NavMenu = ({ custom, footer, burger, header }: NavMenuProps) => {
 			onClick={() => {
 				burger && closePopup();
 			}}
-			className={`${!burger && !footer && 'hidden lg:block'}`}
+			className={`${!burger && !footer ? 'hidden lg:block' : ''}`}
 		>
 			<ul
 				className={`flex md:text-[16px] ${burger ? 'text-start gap-2' : 'gap-8'} 
