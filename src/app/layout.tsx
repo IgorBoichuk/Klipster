@@ -26,7 +26,7 @@ export default function RootLayout({
 	return (
 		<html lang='ua' className={` ${lora.variable}  font-sans dark`}>
 			<head>
-				<link rel='icon' href='/public/favicon.svg' sizes='any' />
+				<link rel='icon' href='/favicon.svg' sizes='any' />
 			</head>
 			<body className='font-sans'>
 				<PopupProvider>
