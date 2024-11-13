@@ -7,7 +7,7 @@ import Link from 'next/link';
 import Logo from '../../../public/logo/logo.svg';
 import Phone from '../../../public/svg/phone.svg';
 import Find from '../../../public/svg/find.svg';
-import Login from '../../../public/svg/login.svg';
+// import Login from '../../../public/svg/login.svg';
 import User from '../../../public/svg/user.svg';
 import { Burger } from '../Burger';
 import { NavMenu } from '../NavMenu';

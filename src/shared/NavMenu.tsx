@@ -15,7 +15,6 @@ interface NavMenuProps {
 }
 
 export const NavMenu = ({ custom, footer, burger, header }: NavMenuProps) => {
-	//@ts-ignore
 	const { closePopup } = usePopup();
 	const menu = [
 		{ id: 1, name: 'Головна', href: '/' },
@@ -48,7 +47,6 @@ export const NavMenu = ({ custom, footer, burger, header }: NavMenuProps) => {
 							${header && 'text-sm text-cwhite rounded-t-lg border-cdarkgray border-t-[1px] hover:bg-cyellow'}`}
 					>
 						<Link
-							//@ts-ignore
 							href={i.href}
 							className={`								
 								${burger && pathname === i.href ? 'block p-2 w-[100%] text-cyellow' : 'block p-2 w-[100%]'}

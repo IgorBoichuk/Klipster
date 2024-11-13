@@ -8,8 +8,8 @@ import { PopupContext } from '@/app/providers/PopupProvider';
 import { NavMenu } from './NavMenu';
 
 export const Burger = () => {
-	//@ts-ignore
-	const { isOpenPopup, openPopup, togglePopup } = useContext(PopupContext);
+	//@ts-expect-error"
+	const { isOpenPopup, togglePopup } = useContext(PopupContext);
 	return (
 		<div>
 			<button type='button' onClick={togglePopup} className='relative z-10 flex lg:hidden w-6 h-6 items-center'>
