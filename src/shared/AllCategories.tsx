@@ -1,34 +1,51 @@
-import React from "react";
-import { CategoryCard } from "./CategoryCard";
-import Bolt from "../../public/images/bolts.png";
-import Bolts from "../../public/images/boltstt.png";
-import Clips from "../../public/images/clips.jpg";
-import Clipses from "../../public/images/clipses.png";
-import { SectionTitle } from "./SectionTitle";
+'use client';
+import React from 'react';
+import { CategoryCard } from './CategoryCard';
+import Bolt from '../../public/images/bolts.png';
+
+import { SectionTitle } from './SectionTitle';
+import { useEffect, useState } from 'react';
+
+interface Product {
+	category_raitng: number;
+	category_ru: string;
+	category_ua: string;
+	id: number;
+	photo: string;
+	section_raitng: number;
+	section_ru: string;
+	section_ua: string;
+
+	// Додайте інші поля за необхідністю
+}
+
 export const AllCategories = () => {
-  return (
-    <div className="">
-      <SectionTitle title="Всі категорії" />
-      <ul className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 items-center justify-center">
-        <li className="h-full">
-          <CategoryCard title="Болти" image={Bolt} />
-        </li>
-        <li className="h-full">
-          <CategoryCard title="Кліпси" image={Bolts} />
-        </li>
-        <li className="h-full">
-          <CategoryCard title="Закладні гайки" image={Clips} />
-        </li>
-        <li className="h-full">
-          <CategoryCard title="Якийсь дуже довгий текст" image={Clipses} />
-        </li>
-        <li className="h-full">
-          <CategoryCard title="Втуки" image={Clipses} />
-        </li>
-        <li className="h-full">
-          <CategoryCard title="Втуки" image={Clipses} />
-        </li>
-      </ul>
-    </div>
-  );
+	const [categories, setCategories] = useState<Product[]>([]);
+
+	useEffect(() => {
+		const fetchProducts = async () => {
+			try {
+				const response = await fetch('/api/getData?table=categories');
+
+				const data = await response.json();
+				console.log(data);
+				setCategories(data);
+			} catch (error) {
+				console.error('Error fetching products:', error);
+			}
+		};
+		fetchProducts();
+	}, []);
+	return (
+		<div className=''>
+			<SectionTitle title='Всі категорії' />
+			<ul className='grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 items-center justify-center'>
+				{categories.map((item, index) => (
+					<li key={index} className='h-full'>
+						<CategoryCard title={item.category_ua} image={Bolt} />
+					</li>
+				))}
+			</ul>
+		</div>
+	);
 };

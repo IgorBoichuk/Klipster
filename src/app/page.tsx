@@ -19,7 +19,7 @@ export default function Home() {
 	useEffect(() => {
 		const fetchProducts = async () => {
 			try {
-				const response = await fetch('/api/getData?table=users');
+				const response = await fetch('/api/getData?table=partsitems');
 
 				const data = await response.json();
 				console.log(data);

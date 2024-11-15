@@ -22,7 +22,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 		return res.status(400).json({ error: 'Table name is required' });
 	}
 
-	const allowedTables = ['partsitems', 'users'];
+	const allowedTables = ['partsitems', 'users', 'categories']; // сюди додавати імена всіх таблиць до який будуть запити
 	if (!allowedTables.includes(table)) {
 		return res.status(400).json({ error: 'Invalid table name' });
 	}
