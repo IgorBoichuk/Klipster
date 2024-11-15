@@ -15,7 +15,6 @@ const connectToDatabase = async () => {
 // Обробник запиту
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
 	const { table } = req.query;
-	console.log('Table:', table);
 
 	// Перевірка валідності параметра table
 	if (!table || typeof table !== 'string') {
@@ -37,8 +36,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 		await connection.end();
 
 		res.status(200).json(rows);
-	} catch (error: any) {
+	} catch (error: unknown) {
 		console.error('Error occurred:', error);
-		res.status(500).json({ error: 'Failed to retrieve data', details: error.message });
+		res.status(500).json({ error: 'Failed to retrieve data', details: 'Unknown error' });
 	}
 }

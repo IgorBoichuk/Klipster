@@ -14,7 +14,7 @@ interface Product {
 }
 
 export default function Home() {
-	const [products, setProducts] = useState<Product[]>([]);
+	const [, setProducts] = useState<Product[]>([]);
 
 	useEffect(() => {
 		const fetchProducts = async () => {
@@ -22,12 +22,12 @@ export default function Home() {
 				const response = await fetch('/api/getData?table=partsitems');
 
 				const data = await response.json();
-				console.log(data);
 				setProducts(data);
 			} catch (error) {
 				console.error('Error fetching products:', error);
 			}
 		};
+
 		fetchProducts();
 	}, []);
 	return (

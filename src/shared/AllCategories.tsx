@@ -40,7 +40,13 @@ export const AllCategories = () => {
 		<div className=''>
 			<SectionTitle title='Всі категорії' />
 			<ul className='grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 items-center justify-center'>
-				{categories.map((item, index) => (
+				{[
+					...new Map(
+						categories
+							.sort((a, b) => a.category_raitng - b.category_raitng) // Сортуємо по category_raitng
+							.map(item => [item.category_ua, item]) // Створюємо пари [category_ua, item]
+					).values(),
+				].map((item, index) => (
 					<li key={index} className='h-full'>
 						<CategoryCard title={item.category_ua} image={Bolt} />
 					</li>
