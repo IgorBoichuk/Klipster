@@ -32,14 +32,17 @@ export const Categories = () => {
 		fetchProducts();
 	}, []);
 
-	// Фільтрація унікальних за section_ua
-	const uniqueSections = [
-		...new Map(
-			sections.map(item => [item.section_ua, item]) // Створюємо мапу з унікальними ключами
-		).values(),
-	];
+	// Створення Set для унікальних section_ua
+	const uniqueSections = Array.from(
+		new Set(sections.map(item => item.section_ua)) // Створюємо Set для section_ua
+	)
+		.map(section_ua => {
+			// Для кожного унікального section_ua знаходимо відповідний об'єкт
+			return sections.find(item => item.section_ua === section_ua);
+		})
+		.filter((item): item is Product => item !== undefined); // Фільтруємо undefined, використовуючи type guard
 
-	// Сортуємо унікальні елементи за section_raitng
+	// Сортуємо за section_raitng
 	const sortedSections = uniqueSections.sort((a, b) => a.section_raitng - b.section_raitng);
 
 	return (
