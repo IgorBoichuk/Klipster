@@ -2,9 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { SectionTitle } from './SectionTitle';
 import { CategoryCard } from './CategoryCard';
-import Bolt from '../../public/images/bolts.png';
-import Bolts from '../../public/images/boltstt.png';
-import Clips from '../../public/images/clips.jpg';
+
 import Clipses from '../../public/images/clipses.png';
 
 interface Product {
