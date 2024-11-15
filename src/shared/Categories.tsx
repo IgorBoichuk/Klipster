@@ -23,7 +23,6 @@ export const Categories = () => {
 		const fetchProducts = async () => {
 			try {
 				const response = await fetch('/api/getData?table=categories');
-
 				const data = await response.json();
 				setSections(data);
 			} catch (error) {
@@ -33,17 +32,21 @@ export const Categories = () => {
 		fetchProducts();
 	}, []);
 
+	// Фільтрація унікальних за section_ua
+	const uniqueSections = [
+		...new Map(
+			sections.map(item => [item.section_ua, item]) // Створюємо мапу з унікальними ключами
+		).values(),
+	];
+
+	// Сортуємо унікальні елементи за section_raitng
+	const sortedSections = uniqueSections.sort((a, b) => a.section_raitng - b.section_raitng);
+
 	return (
 		<div className=''>
 			<SectionTitle title='Розділи' />
 			<ul className='grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 items-center justify-center'>
-				{[
-					...new Map(
-						sections
-							.sort((a, b) => a.section_raitng - b.section_raitng) // Сортуємо за section_raitng
-							.map(item => [item.section_ua, item]) // Створюємо пари [section_ua, item]
-					).values(),
-				].map((item, index) => (
+				{sortedSections.map((item, index) => (
 					<li key={index} className='h-full'>
 						<CategoryCard title={item.section_ua} image={Clipses} />
 					</li>
