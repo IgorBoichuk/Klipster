@@ -24,7 +24,13 @@ export const Categories = () => {
 			try {
 				const response = await fetch('/api/getData?table=categories');
 				const data = await response.json();
-				setSections(data);
+
+				// Перевірка, чи data є масивом
+				if (Array.isArray(data)) {
+					setSections(data);
+				} else {
+					console.error('Data is not an array', data);
+				}
 			} catch (error) {
 				console.error('Error fetching products:', error);
 			}
