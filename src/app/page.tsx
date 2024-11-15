@@ -21,16 +21,6 @@ export default function Home() {
 			try {
 				const response = await fetch('/api/getData');
 
-				// Вивести відповідь в консоль перед парсингом
-				// const text = await response.text; // Отримаємо відповідь як текст
-				// console.log(text); // Перевірте, чи немає HTML чи помилки замість JSON
-
-				// Перевірка статусу відповіді
-				if (!response.ok) {
-					throw new Error('Network response was not ok');
-				}
-
-				// Спочатку спробуємо парсити JSON
 				const data = await response.json();
 				console.log(data);
 				setProducts(data);
