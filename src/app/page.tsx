@@ -3,7 +3,7 @@
 import { RecommendedProducts } from '@/shared/RecommendedProducts';
 import Bolt from '../../public/images/bolts.png';
 import { AboutUs } from '@/shared/AboutUs';
-import { Categories } from '@/shared/Categories';
+import { Sections } from '@/shared/Sections';
 import { useEffect, useState } from 'react';
 
 interface Product {
@@ -32,7 +32,7 @@ export default function Home() {
 	}, []);
 	return (
 		<div>
-			<Categories />
+			<Sections />
 			<RecommendedProducts image={Bolt} title={'Рекомендовані товари'} />
 			<AboutUs />
 		</div>

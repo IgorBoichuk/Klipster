@@ -14,10 +14,10 @@ interface Product {
 	section_ua: string;
 }
 
-export const Categories = () => {
+export const Sections = () => {
 	const [sections, setSections] = useState<Product[]>([]);
 
-	const fetchProducts = async () => {
+	const fetchSections = async () => {
 		try {
 			const response = await fetch('/api/getData?table=categories');
 			const data = await response.json();
@@ -34,7 +34,7 @@ export const Categories = () => {
 	};
 
 	useEffect(() => {
-		fetchProducts();
+		fetchSections();
 	}, []);
 
 	// Створення Set для унікальних section_ua
