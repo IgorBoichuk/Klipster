@@ -3,8 +3,6 @@ import React, { useEffect, useState } from 'react';
 import { SectionTitle } from './SectionTitle';
 import { CategoryCard } from './CategoryCard';
 
-import Clipses from '/public/galery/categories/clips.jpg';
-
 interface Product {
 	category_raitng: number;
 	category_ru: string;
