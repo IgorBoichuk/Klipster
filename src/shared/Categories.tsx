@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { SectionTitle } from './SectionTitle';
 import { CategoryCard } from './CategoryCard';
 
-import Clipses from '../../public/images/clipses.png';
+import Clipses from '/public/galery/categories/clips.jpg';
 
 interface Product {
 	category_raitng: number;
@@ -19,22 +19,23 @@ interface Product {
 export const Categories = () => {
 	const [sections, setSections] = useState<Product[]>([]);
 
-	useEffect(() => {
-		const fetchProducts = async () => {
-			try {
-				const response = await fetch('/api/getData?table=categories');
-				const data = await response.json();
+	const fetchProducts = async () => {
+		try {
+			const response = await fetch('/api/getData?table=categories');
+			const data = await response.json();
 
-				// Перевірка, чи data є масивом
-				if (Array.isArray(data)) {
-					setSections(data);
-				} else {
-					console.error('Data is not an array', data);
-				}
-			} catch (error) {
-				console.error('Error fetching products:', error);
+			// Перевірка, чи data є масивом
+			if (Array.isArray(data)) {
+				setSections(data);
+			} else {
+				console.error('Data is not an array', data);
 			}
-		};
+		} catch (error) {
+			console.error('Error fetching products:', error);
+		}
+	};
+
+	useEffect(() => {
 		fetchProducts();
 	}, []);
 
@@ -57,7 +58,7 @@ export const Categories = () => {
 			<ul className='grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 items-center justify-center'>
 				{sortedSections.map((item, index) => (
 					<li key={index} className='h-full'>
-						<CategoryCard title={item.section_ua} image={Clipses} />
+						<CategoryCard title={item.section_ua} image={item.photo} />
 					</li>
 				))}
 			</ul>

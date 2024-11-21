@@ -8,6 +8,9 @@ interface CategoryCardProps {
 }
 
 export const CategoryCard = ({ image, title }: CategoryCardProps) => {
+	console.log(image);
+	console.log(title);
+
 	return (
 		<div className='relative rounded-xl shadow-md overflow-hidden h-full'>
 			{image && <Image src={image} alt='Category card' width={500} height={500} className='' />}
