@@ -1,7 +1,6 @@
 'use client';
 import React from 'react';
 import { CategoryCard } from './CategoryCard';
-import Bolt from '../../public/images/bolts.png';
 
 import { SectionTitle } from './SectionTitle';
 import { useEffect, useState } from 'react';
@@ -11,7 +10,8 @@ interface Product {
 	category_ru: string;
 	category_ua: string;
 	id: number;
-	photo: string;
+	photo_section: string;
+	photo_category: string;
 	section_raitng: number;
 	section_ru: string;
 	section_ua: string;
@@ -66,7 +66,7 @@ export const AllCategories = () => {
 					).values(),
 				].map((item, index) => (
 					<li key={index} className='h-full'>
-						<CategoryCard title={item.category_ua} image={item.photo} />
+						<CategoryCard title={item.category_ua} image={item.photo_category} />
 					</li>
 				))}
 			</ul>

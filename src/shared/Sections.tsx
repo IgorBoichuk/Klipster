@@ -8,7 +8,7 @@ interface Product {
 	category_ru: string;
 	category_ua: string;
 	id: number;
-	photo: string;
+	photo_section: string;
 	section_raitng: number;
 	section_ru: string;
 	section_ua: string;
@@ -56,7 +56,7 @@ export const Sections = () => {
 			<ul className='grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 items-center justify-center'>
 				{sortedSections.map((item, index) => (
 					<li key={index} className='h-full'>
-						<CategoryCard title={item.section_ua} image={item.photo} />
+						<CategoryCard title={item.section_ua} image={item.photo_section} />
 					</li>
 				))}
 			</ul>
