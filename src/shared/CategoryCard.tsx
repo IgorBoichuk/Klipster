@@ -8,7 +8,7 @@ interface CategoryCardProps {
 }
 
 export const CategoryCard = ({ image, title }: CategoryCardProps) => {
-	const pathToCatalog = 'https://codex-dev.pro/';
+	const pathToCatalog = 'https://codex-dev.pro';
 
 	return (
 		<div className='relative rounded-xl shadow-md overflow-hidden h-full'>
