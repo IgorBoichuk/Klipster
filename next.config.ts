@@ -2,15 +2,16 @@ import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
 	images: {
-		domains: ['solar.hostdns.net.in'],
+		// Додаємо домен, з якого завантажуються зображення
+		domains: ['codex-dev.pro'],
+		// Якщо хочете, щоб Next.js оптимізував зображення, цей рядок можна видалити.
+		unoptimized: true,
 	},
 	remotePatterns: [
 		{
 			protocol: 'https',
-			hostname: 'solar.hostdns.net.in',
-			port: '1500',
-			pathname: 'mancgi/fmimage_pro/**',
-			search: '?elid=',
+			hostname: 'codex-dev.pro',
+			pathname: '/**', // Усі підшляхи
 		},
 	],
 };
