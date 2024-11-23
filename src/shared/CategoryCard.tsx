@@ -4,16 +4,17 @@ import React from 'react';
 
 interface CategoryCardProps {
 	title: string;
+	pathname?: string;
 	custom?: string;
 	image?: string | StaticImageData;
 }
 
-export const CategoryCard = ({ image, title }: CategoryCardProps) => {
+export const CategoryCard = ({ image, title, pathname }: CategoryCardProps) => {
 	const pathToCatalog = 'https://codex-dev.pro';
 
 	return (
 		<div className='relative rounded-xl shadow-md overflow-hidden h-full'>
-			<Link href={'/categories'}>
+			<Link href={`/categories?section=${encodeURIComponent(pathname || '')}`}>
 				{image && (
 					<Image
 						src={`${pathToCatalog}${image}`}
