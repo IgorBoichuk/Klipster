@@ -1,9 +1,9 @@
 import Image from 'next/image';
 import React from 'react';
-import Phone from '../../public/svg/phone.svg';
-import Viber from '../../public/svg/viber.svg';
-import Telegram from '../../public/svg/telegram.svg';
-import Email from '../../public/svg/email.svg';
+import Phone from '/public/svg/phone.svg';
+import Viber from '/public/svg/viber.svg';
+import Telegram from '/public/svg/telegram.svg';
+import Email from '/public/svg/email.svg';
 import Link from 'next/link';
 
 interface SocialsProps {
