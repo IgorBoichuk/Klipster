@@ -7,6 +7,7 @@ import { AllCategories } from '@/shared/AllCategories';
 import FilterBySection from '@/shared/FilterBySection';
 import { fetchCategories } from '@/helpers/fetchCategories';
 import { Product } from '@/types';
+import fetchCategoriesFromAPI from '../helpers/fetchCategories';
 
 const Categories = () => {
 	const [categories, setCategories] = useState<Product[]>([]); // Стан для категорій
@@ -21,7 +22,8 @@ const Categories = () => {
 	// Завантаження категорій при завантаженні компонента
 	useEffect(() => {
 		const getCategories = async () => {
-			const data = await fetchCategories(); // Викликаємо функцію fetchCategories з окремого файлу
+			const data = await fetchCategoriesFromAPI(); // Викликаємо функцію fetchCategoriesFromAPI
+			// const data = await fetchCategories(); // Викликаємо функцію fetchCategories з окремого файлу
 
 			if (data) {
 				setCategories(data);
