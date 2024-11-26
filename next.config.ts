@@ -23,6 +23,7 @@ const nextConfig: NextConfig = {
 			pathname: '/**', // Усі підшляхи
 		},
 	],
+	// output: 'export',
 };
 
 export default nextConfig;
