@@ -52,7 +52,12 @@ const Categories = () => {
 
 	return (
 		<div>
-			<FilterBySection sections={sections} selectedSection={selectedSection} onSelectSection={handleSectionChange} />
+			<FilterBySection
+				sections={sections}
+				selectedSection={selectedSection}
+				onSelectSection={handleSectionChange}
+				filteredCategories={filteredCategories}
+			/>
 			<AllCategories filteredCategories={filteredCategories} />
 			<RecommendedProducts image={Bolt} title={'Рекомендовані товари'} />
 		</div>

@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { SectionTitle } from './SectionTitle';
 import { CategoryCard } from './CategoryCard';
-import { fetchSections } from '@/helpers/fetchSections';
+import { fetchCategories } from '@/helpers/fetchCategories';
 import { processSections } from '@/helpers/uniqueSections';
 import { Product } from '@/types';
 
@@ -11,10 +11,11 @@ export const Sections = () => {
 
 	useEffect(() => {
 		const loadSections = async () => {
-			const data = await fetchSections(); // Викликаємо функцію для отримання даних
-			setSections(data); // Зберігаємо дані в стейт
+			const data = await fetchCategories(); // Викликаємо функцію для отримання даних
+			if (data) {
+				setSections(data); // Зберігаємо дані в стейт
+			}
 		};
-
 		loadSections(); // Виконуємо асинхронний виклик
 	}, []);
 

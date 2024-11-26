@@ -8,6 +8,7 @@ interface AllCategoriesProps {
 
 export const AllCategories = ({ filteredCategories }: AllCategoriesProps) => {
 	const sortedCategories = [...filteredCategories].sort((a, b) => a.category_raitng - b.category_raitng);
+
 	return (
 		<div>
 			<h2>Всі категорії</h2>
