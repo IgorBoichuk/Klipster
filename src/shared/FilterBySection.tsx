@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { processSections } from '@/helpers/uniqueSections';
 import { Product } from '@/types';
 
 interface FilterBySectionProps {
@@ -10,10 +9,6 @@ interface FilterBySectionProps {
 }
 
 const FilterBySection = ({ sections, selectedSection, onSelectSection, filteredCategories }: FilterBySectionProps) => {
-	const uniqueSections = Array.from(new Set(filteredCategories.map(item => item.section_en)));
-
-	console.log(selectedSection === uniqueSections[0]);
-
 	return (
 		<div className='grid grid-cols-4 gap-4 py-4'>
 			{sections.map((section, index) => (
