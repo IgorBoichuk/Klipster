@@ -9,7 +9,6 @@ import FilterBySection from '@/shared/FilterBySection';
 
 const Categories = () => {
 	const searchParams = useSearchParams();
-	// const sectionFromUrl = searchParams?.get('section');
 	const sectionFromUrl: string | null = searchParams?.get('section') ?? null;
 
 	const { filteredCategories, sections, selectedSection, handleSectionChange } = useCategories(sectionFromUrl);

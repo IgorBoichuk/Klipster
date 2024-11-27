@@ -1,16 +1,15 @@
 'use client';
 
 import { RecommendedProducts } from '@/shared/RecommendedProducts';
-import Bolt from '../../public/images/bolts.png';
 import { AboutUs } from '@/shared/AboutUs';
 import { Sections } from '@/shared/Sections';
 import { useEffect, useState } from 'react';
+import Bolt from '../../public/images/bolts.png';
 
 interface Product {
 	id: number;
 	name: string;
 	price: number;
-	// Додайте інші поля за необхідністю
 }
 
 export default function Home() {
