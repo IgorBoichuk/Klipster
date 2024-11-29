@@ -1,3 +1,4 @@
+// CategoryCard.tsx
 import Image, { StaticImageData } from 'next/image';
 import Link from 'next/link';
 import React from 'react';
@@ -12,9 +13,11 @@ interface CategoryCardProps {
 export const CategoryCard = ({ image, title, pathname }: CategoryCardProps) => {
 	const pathToCatalog = 'https://codex-dev.pro';
 
+	// Логіка для формування URL з параметром 'section'
+	const href = pathname ? `/categories?section=${encodeURIComponent(pathname)}` : '/categories';
+
 	return (
-		<Link href={`/categories/${pathname || ''}`} className='relative block rounded-xl shadow-md overflow-hidden h-full'>
-			{/* <Link href={`/categories?section=${encodeURIComponent(pathname || '')}`}> */}
+		<Link href={href} className='relative block rounded-xl shadow-md overflow-hidden h-full'>
 			{image && (
 				<Image src={`${pathToCatalog}${image}`} alt='Category card' width={500} height={500} unoptimized className='' />
 			)}

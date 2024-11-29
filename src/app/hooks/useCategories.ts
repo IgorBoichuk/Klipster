@@ -1,11 +1,17 @@
 import { useEffect, useState } from 'react';
 import { Product } from '@/types';
 import fetchCategoriesFromAPI from '../helpers/fetchCategories';
+import { useRouter } from 'next/navigation';
+
+interface Section {
+	section_ua: string;
+	section_en: string;
+}
 
 const useCategories = (sectionFromUrl: string | null) => {
 	const [categories, setCategories] = useState<Product[]>([]);
 	const [filteredCategories, setFilteredCategories] = useState<Product[]>([]);
-	const [sections, setSections] = useState<string[]>([]);
+	const [sections, setSections] = useState<Section[]>([]);
 	const [selectedSection, setSelectedSection] = useState<string | null>(sectionFromUrl);
 
 	useEffect(() => {
@@ -13,12 +19,20 @@ const useCategories = (sectionFromUrl: string | null) => {
 			const data = await fetchCategoriesFromAPI();
 			if (data) {
 				setCategories(data);
+				setSections(
+					Array.from(
+						new Map(
+							data.map((item: any) => [item.section_ua, item]) // Ключем буде section_ua
+						).values()
+					)
+				);
+
+				// setSections(Array.from(new Set(data.map(item => item.section_ua))));
+
 				setFilteredCategories(sectionFromUrl ? data.filter(item => item.section_en === sectionFromUrl) : data);
-				setSections(Array.from(new Set(data.map(item => item.section_ua))));
 				if (sectionFromUrl) setSelectedSection(sectionFromUrl);
 			}
 		};
-		// console.log(sectionFromUrl);
 
 		getCategories();
 	}, [sectionFromUrl]);
@@ -26,9 +40,10 @@ const useCategories = (sectionFromUrl: string | null) => {
 	const handleSectionChange = (section: string) => {
 		setSelectedSection(section);
 		setFilteredCategories(categories.filter(item => item.section_ua === section));
+		console.log(categories);
 	};
 
-	return { categories, filteredCategories, sections, selectedSection, handleSectionChange };
+	return { categories, filteredCategories, sections, selectedSection, handleSectionChange, sectionFromUrl };
 };
 
 export default useCategories;

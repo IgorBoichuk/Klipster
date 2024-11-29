@@ -1,4 +1,6 @@
+// pages/categories/index.tsx
 'use client';
+
 import React from 'react';
 import { useSearchParams } from 'next/navigation';
 import useCategories from '../hooks/useCategories';
@@ -6,7 +8,6 @@ import { RecommendedProducts } from '@/shared/RecommendedProducts';
 import Bolt from '../../../public/images/bolts.png';
 import { AllCategories } from '@/shared/AllCategories';
 import FilterBySection from '@/shared/FilterBySection';
-import { useRouter } from 'next/router';
 
 const Categories = () => {
 	const searchParams = useSearchParams();
@@ -21,6 +22,9 @@ const Categories = () => {
 				selectedSection={selectedSection}
 				onSelectSection={handleSectionChange}
 				filteredCategories={filteredCategories}
+				sectionFromUrl={sectionFromUrl}
+				section_ua={''}
+				section_en={''}
 			/>
 			<AllCategories filteredCategories={filteredCategories} />
 			<RecommendedProducts image={Bolt} title='Рекомендовані товари' />
