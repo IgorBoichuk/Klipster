@@ -18,6 +18,8 @@ const useCategories = (sectionFromUrl: string | null) => {
 				if (sectionFromUrl) setSelectedSection(sectionFromUrl);
 			}
 		};
+		// console.log(sectionFromUrl);
+
 		getCategories();
 	}, [sectionFromUrl]);
 

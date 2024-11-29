@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from 'react';
 import { Product } from '@/types';
 
 interface FilterBySectionProps {

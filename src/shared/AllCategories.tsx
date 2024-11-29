@@ -15,7 +15,7 @@ export const AllCategories = ({ filteredCategories }: AllCategoriesProps) => {
 			<ul className='grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 items-center justify-center'>
 				{sortedCategories.map((item, index) => (
 					<li key={index} className='h-full'>
-						<CategoryCard title={item.category_ua} image={item.photo_category} />
+						<CategoryCard title={item.category_ua} image={item.photo_category} pathname={item.category_en} />
 					</li>
 				))}
 			</ul>

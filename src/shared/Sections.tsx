@@ -20,13 +20,14 @@ export const Sections = () => {
 	}, []);
 
 	const sortedSections = processSections(sections);
+
 	return (
 		<div className=''>
 			<SectionTitle title='Розділи' />
 			<ul className='grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 items-center justify-center'>
 				{sortedSections.map((item, index) => (
 					<li key={index} className='h-full'>
-						<CategoryCard title={item.section_ua} pathname={item.section_en} image={item.photo_section} />
+						<CategoryCard title={item.section_ua} image={item.photo_section} pathname={item.section_en} />
 					</li>
 				))}
 			</ul>
