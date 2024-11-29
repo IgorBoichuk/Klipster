@@ -15,16 +15,15 @@ const useCategories = (sectionFromUrl: string | null) => {
 
 	useEffect(() => {
 		const getCategories = async () => {
-			const data = await fetchCategoriesFromAPI();
+			const data: Product[] = (await fetchCategoriesFromAPI()) || [];
 			if (data) {
 				setCategories(data);
-				setSections(
-					Array.from(
-						new Map(
-							data.map((item: any) => [item.section_ua, item]) // Ключем буде section_ua
-						).values()
-					)
+				const uniqueSections = Array.from(
+					new Map(
+						data.map(item => [item.section_ua, { section_ua: item.section_ua, section_en: item.section_en }])
+					).values()
 				);
+				setSections(uniqueSections);
 
 				// setSections(Array.from(new Set(data.map(item => item.section_ua))));
 
