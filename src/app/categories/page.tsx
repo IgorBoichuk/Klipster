@@ -1,7 +1,7 @@
 // pages/categories/index.tsx
 'use client';
 
-import React from 'react';
+import React, { Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import useCategories from '../hooks/useCategories';
 import { RecommendedProducts } from '@/shared/RecommendedProducts';
@@ -17,15 +17,17 @@ const Categories = () => {
 
 	return (
 		<div>
-			<FilterBySection
-				sections={sections}
-				selectedSection={selectedSection}
-				onSelectSection={handleSectionChange}
-				filteredCategories={filteredCategories}
-				sectionFromUrl={sectionFromUrl}
-				section_ua={''}
-				section_en={''}
-			/>
+			<Suspense>
+				<FilterBySection
+					sections={sections}
+					selectedSection={selectedSection}
+					onSelectSection={handleSectionChange}
+					filteredCategories={filteredCategories}
+					sectionFromUrl={sectionFromUrl}
+					section_ua={''}
+					section_en={''}
+				/>
+			</Suspense>
 			<AllCategories filteredCategories={filteredCategories} />
 			<RecommendedProducts image={Bolt} title='Рекомендовані товари' />
 		</div>
