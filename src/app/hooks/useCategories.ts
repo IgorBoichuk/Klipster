@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Product } from '@/types';
 import fetchCategoriesFromAPI from '../helpers/fetchCategories';
-import { useRouter } from 'next/navigation';
 
 interface Section {
 	section_ua: string;

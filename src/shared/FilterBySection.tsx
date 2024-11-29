@@ -1,6 +1,6 @@
 // FilterBySection.tsx
 import { Product } from '@/types';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 
 interface FilterBySectionProps {
 	sections: { section_ua: string; section_en: string }[];
