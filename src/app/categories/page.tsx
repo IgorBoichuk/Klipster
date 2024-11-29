@@ -17,7 +17,7 @@ const Categories = () => {
 
 	return (
 		<div>
-			<Suspense>
+			<Suspense fallback={<div>Loading...</div>}>
 				<FilterBySection
 					sections={sections}
 					selectedSection={selectedSection}
