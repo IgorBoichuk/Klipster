@@ -7,6 +7,8 @@ import { PopupProvider } from './providers/PopupProvider';
 import { ReviewedGoods } from '@/shared/ReviewedGoods';
 import Bolt from '../../public/images/bolts.png';
 import { Container } from '@/shared/Container';
+import { Suspense } from 'react';
+import { Logo } from '@/shared/Logo';
 
 const lora = Lora({
 	subsets: ['latin'],
@@ -32,7 +34,7 @@ export default async function RootLayout({
 				<PopupProvider>
 					<Header />
 					<Container>
-						{children}
+						<Suspense fallback={<Logo />}>{children}</Suspense>
 						<ReviewedGoods image={Bolt} title={'Ви переглядали'} />
 					</Container>
 					<Footer />

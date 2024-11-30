@@ -11,7 +11,7 @@ export const Sections = () => {
 
 	useEffect(() => {
 		const loadSections = async () => {
-			const data = await fetchCategories(); // Викликаємо функцію для отримання даних
+			const data = await fetchCategories<Product>({ table: 'categories' }); // Викликаємо функцію для отримання даних
 			if (data) {
 				setSections(data); // Зберігаємо дані в стейт
 			}

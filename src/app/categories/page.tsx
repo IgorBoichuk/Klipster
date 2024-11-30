@@ -1,13 +1,14 @@
 // pages/categories/index.tsx
 'use client';
 
-import React, { Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import useCategories from '../hooks/useCategories';
 import { RecommendedProducts } from '@/shared/RecommendedProducts';
 import Bolt from '../../../public/images/bolts.png';
 import { AllCategories } from '@/shared/AllCategories';
 import FilterBySection from '@/shared/FilterBySection';
+import { Suspense } from 'react';
+import { Logo } from '@/shared/Logo';
 
 const Categories = () => {
 	const searchParams = useSearchParams();
@@ -17,7 +18,7 @@ const Categories = () => {
 
 	return (
 		<div>
-			<Suspense fallback={<div>Loading...</div>}>
+			<Suspense fallback={<Logo />}>
 				<FilterBySection
 					sections={sections}
 					selectedSection={selectedSection}

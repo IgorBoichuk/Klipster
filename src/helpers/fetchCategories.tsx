@@ -1,23 +1,18 @@
 import axios from 'axios';
-import { Product } from '@/types';
 
-const fetchCategories = async (): Promise<Product[] | undefined> => {
+interface FetchDataParams {
+	table: string;
+}
+
+const fetchCategories = async <T,>({ table }: FetchDataParams): Promise<T[] | undefined> => {
 	try {
-		// Використовуємо axios для запиту
 		const response = await axios.get('/api/getData', {
-			params: { table: 'categories' }, // Передача параметрів у запит
+			params: { table },
 		});
-
-		const data: Product[] = response.data;
-
-		if (Array.isArray(data)) {
-			return data;
-		} else {
-			console.error('Data is not an array', data);
-		}
+		return response.data;
 	} catch (error) {
-		// Axios автоматично додає більше деталей у помилки
-		console.error('Error fetching categories:', error);
+		console.error(`Error fetching data from ${table}:`, error);
+		return undefined;
 	}
 };
 

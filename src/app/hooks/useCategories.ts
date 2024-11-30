@@ -15,7 +15,7 @@ const useCategories = (sectionFromUrl: string | null) => {
 
 	useEffect(() => {
 		const loadCategories = async () => {
-			const data = await fetchCategories(); // Викликаємо функцію для отримання даних
+			const data = await fetchCategories<Product>({ table: 'categories' }); // Викликаємо функцію для отримання даних
 			if (data) {
 				setCategories(data);
 				setFilteredCategories(sectionFromUrl ? data.filter(item => item.section_en === sectionFromUrl) : data);
