@@ -1,17 +1,15 @@
-import { Articles } from "@/shared/Articles";
-import BreadCrumb from "@/shared/BreadCrumb";
-import { SingleProductCrad } from "@/shared/SingleProductCrad";
+import { Articles } from '@/shared/Articles';
+import BreadCrumb from '@/shared/BreadCrumb';
 
-import React from "react";
+import React from 'react';
 
 const Categorypage = () => {
-  return (
-    <div>
-      <BreadCrumb />
-      <Articles />
-      <SingleProductCrad />
-    </div>
-  );
+	return (
+		<div>
+			<BreadCrumb />
+			<Articles />
+		</div>
+	);
 };
 
 export default Categorypage;

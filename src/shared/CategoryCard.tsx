@@ -8,13 +8,19 @@ interface CategoryCardProps {
 	pathname?: string;
 	custom?: string;
 	image?: string | StaticImageData;
+	isCategory?: boolean;
+	categoryId?: string;
 }
 
-export const CategoryCard = ({ image, title, pathname }: CategoryCardProps) => {
+export const CategoryCard = ({ image, title, pathname, isCategory, categoryId }: CategoryCardProps) => {
 	const pathToCatalog = 'https://codex-dev.pro';
 
 	// Логіка для формування URL з параметром 'section'
-	const href = pathname ? `/categories?section=${encodeURIComponent(pathname)}` : '/categories';
+	const href = isCategory
+		? `/categories/${categoryId}` // Якщо на сторінці категорій — ведемо на сторінку з товарами
+		: pathname
+		? `/categories?section=${encodeURIComponent(pathname)}` // Якщо на головній — ведемо на фільтри
+		: '/categories';
 
 	return (
 		<Link href={href} className='relative block rounded-xl shadow-md overflow-hidden h-full'>

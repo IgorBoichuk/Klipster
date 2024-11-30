@@ -1,11 +1,11 @@
 import axios from 'axios';
 import { Product } from '@/types';
 
-const fetchCategoriesFromAPI = async (): Promise<Product[] | undefined> => {
+const fetchAllProducts = async (): Promise<Product[] | undefined> => {
 	try {
 		// Використовуємо axios для запиту
 		const response = await axios.get('/api/getData', {
-			params: { table: 'categories' }, // Передача параметрів у запит
+			params: { table: 'partsitems' }, // Передача параметрів у запит
 		});
 
 		const data: Product[] = response.data;
@@ -21,4 +21,4 @@ const fetchCategoriesFromAPI = async (): Promise<Product[] | undefined> => {
 	}
 };
 
-export default fetchCategoriesFromAPI;
+export default fetchAllProducts;

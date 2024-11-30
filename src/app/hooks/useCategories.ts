@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
+import axios from 'axios';
 import { Product } from '@/types';
-import fetchCategoriesFromAPI from '../helpers/fetchCategories';
 
 interface Section {
 	section_ua: string;
@@ -15,20 +15,34 @@ const useCategories = (sectionFromUrl: string | null) => {
 
 	useEffect(() => {
 		const getCategories = async () => {
-			const data: Product[] = (await fetchCategoriesFromAPI()) || [];
-			if (data) {
-				setCategories(data);
-				const uniqueSections = Array.from(
-					new Map(
-						data.map(item => [item.section_ua, { section_ua: item.section_ua, section_en: item.section_en }])
-					).values()
-				);
-				setSections(uniqueSections);
+			try {
+				// Запит через axios
+				const response = await axios.get('/api/getData', {
+					params: { table: 'categories' }, // Передаємо назву таблиці
+				});
 
-				// setSections(Array.from(new Set(data.map(item => item.section_ua))));
+				const data: Product[] = response.data;
 
-				setFilteredCategories(sectionFromUrl ? data.filter(item => item.section_en === sectionFromUrl) : data);
-				if (sectionFromUrl) setSelectedSection(sectionFromUrl);
+				if (Array.isArray(data)) {
+					setCategories(data);
+
+					// Унікальні секції
+					const uniqueSections = Array.from(
+						new Map(
+							data.map(item => [item.section_ua, { section_ua: item.section_ua, section_en: item.section_en }])
+						).values()
+					);
+					setSections(uniqueSections);
+
+					// Фільтр категорій за параметром з URL
+					setFilteredCategories(sectionFromUrl ? data.filter(item => item.section_en === sectionFromUrl) : data);
+
+					if (sectionFromUrl) setSelectedSection(sectionFromUrl);
+				} else {
+					console.error('Fetched data is not an array:', data);
+				}
+			} catch (error) {
+				console.error('Error fetching categories:', error);
 			}
 		};
 
