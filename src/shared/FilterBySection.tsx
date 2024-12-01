@@ -1,5 +1,5 @@
 // FilterBySection.tsx
-import { Product } from '@/types';
+import { Category } from '@/types';
 import { useRouter } from 'next/navigation';
 
 interface FilterBySectionProps {
@@ -8,18 +8,13 @@ interface FilterBySectionProps {
 	section_en: string;
 	selectedSection: string | null;
 	onSelectSection: (section: string) => void;
-	filteredCategories: Product[];
+	filteredCategories: Category[];
 	sectionFromUrl?: string | null;
 }
 
 const FilterBySection = ({ sections, selectedSection }: FilterBySectionProps) => {
 	const router = useRouter();
-
-	// const sectionFromFilter: string | null = searchParams?.get('section') ?? null;
-
 	const handleSectionClick = (sectionFromUrl: string) => {
-		// Оновлюємо URL з новим параметром 'section'
-
 		router.push(`/categories?section=${encodeURIComponent(sectionFromUrl)}`);
 	};
 

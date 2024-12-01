@@ -10,14 +10,16 @@ interface CategoryCardProps {
 	image?: string | StaticImageData;
 	isCategory?: boolean;
 	categoryId?: string;
+	onClick?: () => void;
 }
 
-export const CategoryCard = ({ image, title, pathname, isCategory, categoryId }: CategoryCardProps) => {
+export const CategoryCard = ({ image, title, pathname, isCategory }: CategoryCardProps) => {
 	const pathToCatalog = 'https://codex-dev.pro';
+	// console.log(pathname);
 
 	// Логіка для формування URL з параметром 'section'
 	const href = isCategory
-		? `/categories/${categoryId}` // Якщо на сторінці категорій — ведемо на сторінку з товарами
+		? `/categories/${pathname}` // Якщо на сторінці категорій — ведемо на сторінку з товарами
 		: pathname
 		? `/categories?section=${encodeURIComponent(pathname)}` // Якщо на головній — ведемо на фільтри
 		: '/categories';

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Product } from '@/types';
+import { Category } from '@/types'; // Використовуємо тип Category
 import fetchCategories from '@/helpers/fetchCategories';
 
 interface Section {
@@ -8,17 +8,23 @@ interface Section {
 }
 
 const useCategories = (sectionFromUrl: string | null) => {
-	const [categories, setCategories] = useState<Product[]>([]);
-	const [filteredCategories, setFilteredCategories] = useState<Product[]>([]);
+	// Замість Product використовуємо Category
+	const [categories, setCategories] = useState<Category[]>([]);
+	const [filteredCategories, setFilteredCategories] = useState<Category[]>([]);
 	const [sections, setSections] = useState<Section[]>([]);
 	const [selectedSection, setSelectedSection] = useState<string | null>(sectionFromUrl);
 
 	useEffect(() => {
 		const loadCategories = async () => {
-			const data = await fetchCategories<Product>({ table: 'categories' }); // Викликаємо функцію для отримання даних
+			// Вказуємо, що ми працюємо з типом Category
+			const data = await fetchCategories<Category>({ table: 'categories' });
 			if (data) {
 				setCategories(data);
+
+				// Фільтруємо категорії за параметром URL
 				setFilteredCategories(sectionFromUrl ? data.filter(item => item.section_en === sectionFromUrl) : data);
+
+				// Генеруємо унікальні секції
 				const uniqueSections = Array.from(
 					new Map(
 						data.map(item => [item.section_ua, { section_ua: item.section_ua, section_en: item.section_en }])
@@ -32,6 +38,8 @@ const useCategories = (sectionFromUrl: string | null) => {
 
 	const handleSectionChange = (section: string) => {
 		setSelectedSection(section);
+
+		// Фільтруємо категорії відповідно до вибраної секції
 		setFilteredCategories(categories.filter(item => item.section_ua === section));
 		console.log(categories);
 	};

@@ -1,13 +1,15 @@
+'use client';
+import useProducts from '@/app/hooks/useProducts';
 import { Articles } from '@/shared/Articles';
 import BreadCrumb from '@/shared/BreadCrumb';
-
 import React from 'react';
 
 const Categorypage = () => {
+	const { products } = useProducts('');
 	return (
 		<div>
 			<BreadCrumb />
-			<Articles />
+			<Articles catData={products} />
 		</div>
 	);
 };
