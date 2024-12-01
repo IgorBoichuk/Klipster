@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Category, Product } from '@/types';
+import { Product } from '@/types';
 import fetchCategories from '@/helpers/fetchCategories';
 
 const useProducts = (initialCategory: string | null) => {
