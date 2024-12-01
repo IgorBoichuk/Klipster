@@ -1,13 +1,11 @@
 // 'use client';
-import Bolts from '../../public/images/boltstt.png';
 
 import React from 'react';
 import { Product } from '@/types';
 import { ProductCard } from './ProductCard';
 
-// Типізація пропсів для компонента Articles
 interface ArticlesProps {
-	catData: Product[]; // Оновлено, щоб приймати масив продуктів
+	catData: Product[];
 }
 
 export const Articles = ({ catData }: ArticlesProps) => {
