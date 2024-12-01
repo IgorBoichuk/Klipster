@@ -11,7 +11,7 @@ interface ProductCardProps {
 export const ProductCard = ({ image, title, price, article }: ProductCardProps) => {
 	return (
 		<div className='flex items-center flex-col rounded-xl shadow-md overflow-hidden h-full mt-2'>
-			<Image src={image} alt={title} width={500} className='' />
+			<Image src={image} alt={title} width={500} height={500} className='' />
 			<div className='w-4/5 h-px bg-slate-300'></div>
 			<div className='p-4 grid grid-cols-1 gap-2'>
 				<p className='text-xs'>{title}</p>

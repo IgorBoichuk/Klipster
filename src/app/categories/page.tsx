@@ -25,7 +25,7 @@ const Categories = () => {
 
 	return (
 		<div>
-			<Suspense fallback={<Loader />}>
+			<Suspense>
 				{isDataLoading ? (
 					<Loader />
 				) : (
