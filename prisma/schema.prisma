@@ -1,0 +1,48 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model categories {
+  id              Int    @id @default(autoincrement())
+  category_en     String @db.Text
+  category_ru     String @db.TinyText
+  category_ua     String @db.TinyText
+  section_en      String @db.Text
+  section_ru      String @db.TinyText
+  section_ua      String @db.TinyText
+  section_raitng  Int
+  category_raitng Int
+  photo_section   String @db.Text
+  photo_category  String @db.Text
+}
+
+model partsitems {
+  id                 Int    @id @default(autoincrement())
+  brand              String @db.VarChar(20)
+  item_number        String @db.VarChar(10)
+  name_ru            String @db.VarChar(100)
+  name_ua            String @db.VarChar(100)
+  category           String @db.VarChar(100)
+  item_type          String @db.VarChar(100)
+  color              String @db.VarChar(100)
+  installation_place String @db.VarChar(100)
+  description_ru     String @db.Text
+  description_ua     String @db.Text
+  availability       Int
+  price              Int
+  photo              String @db.VarChar(255)
+  car_brand          String @db.VarChar(100)
+  car_model          String @db.VarChar(100)
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model users {
+  COL_1 String? @unique(map: "id") @map("COL 1") @db.VarChar(68)
+
+  @@ignore
+}

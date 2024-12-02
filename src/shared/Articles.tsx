@@ -1,15 +1,18 @@
-// 'use client';
-
 import React from 'react';
 import { Product } from '@/types';
 import { ProductCard } from './ProductCard';
+import { Loader } from './Loader';
 
 interface ArticlesProps {
 	catData: Product[];
+	isLoading: boolean;
 }
 
 export const Articles = ({ catData }: ArticlesProps) => {
 	const pathToPhoto = 'https://codex-dev.pro/';
+
+	console.log(catData);
+
 	return (
 		<div className='App'>
 			{/* Якщо масив продуктів не порожній */}
@@ -26,7 +29,7 @@ export const Articles = ({ catData }: ArticlesProps) => {
 				))}
 
 				{/* Якщо продукти відсутні */}
-				{catData.length === 0 && <p>Товари не знайдено</p>}
+				{catData.length === 0 && <Loader />}
 			</ul>
 		</div>
 	);

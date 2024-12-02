@@ -1,42 +1,38 @@
 import axios from 'axios';
 import { Product } from '@/types';
 
-const fetchAllProducts = async (): Promise<Product[] | undefined> => {
+interface FetchProductsResponse {
+	products: Product[]; // Масив товарів
+	totalCount: number; // Загальна кількість товарів для пагінації
+}
+
+const fetchProducts = async (category: string, page: number, pageSize: number): Promise<FetchProductsResponse> => {
+	console.log(category);
+
 	try {
-		// Використовуємо axios для запиту
-		const response = await axios.get('/api/getData', {
-			params: { table: 'partsitems' }, // Передача параметрів у запит
-		});
+		// Формуємо параметри для запиту
+		const params = {
+			table: 'partsitems',
+			category,
+			page,
+			pageSize,
+		};
 
-		const data: Product[] = response.data;
+		const response = await axios.get('/api/getProducts', { params });
 
-		if (Array.isArray(data)) {
-			return data;
+		const data = response.data;
+
+		// Перевірка структури відповіді
+		if (data && Array.isArray(data.products) && typeof data.totalCount === 'number') {
+			return { products: data.products, totalCount: data.totalCount };
 		} else {
-			console.error('Data is not an array', data);
+			throw new Error('Invalid response format');
 		}
-	} catch (error) {
-		// Axios автоматично додає більше деталей у помилки
-		console.error('Error fetching categories:', error);
+	} catch (error: any) {
+		console.error('Error fetching products:', error.message);
+		// Кидаємо помилку далі, щоб обробити її на рівні, де викликається `fetchProducts`
+		throw new Error(error.response?.data?.error || 'Failed to fetch products');
 	}
 };
 
-export default fetchAllProducts;
-
-// interface FetchDataParams {
-// 	table: string;
-// }
-
-// const fetchCategories = async <T,>({ table }: FetchDataParams): Promise<T[] | undefined> => {
-// 	try {
-// 		const response = await axios.get('/api/getData', {
-// 			params: { table },
-// 		});
-// 		return response.data;
-// 	} catch (error) {
-// 		console.error(`Error fetching data from ${table}:`, error);
-// 		return undefined;
-// 	}
-// };
-
-// export default fetchCategories;
+export default fetchProducts;

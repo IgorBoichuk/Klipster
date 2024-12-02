@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@firebasegen/default-connector": "file:dataconnect-generated/js/default-connector",
+    "@prisma/client": "^6.0.1",
     "axios": "^1.7.8",
     "mysql2": "^3.11.4",
     "next": "15.0.0",
@@ -24,6 +25,7 @@
     "eslint": "^8",
     "eslint-config-next": "15.0.0",
     "postcss": "^8",
+    "prisma": "^6.0.1",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
   }
