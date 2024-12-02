@@ -1,9 +1,15 @@
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 import { Product } from '@/types';
 
 interface FetchProductsResponse {
 	products: Product[]; // Масив товарів
 	totalCount: number; // Загальна кількість товарів для пагінації
+}
+
+// Тип для структури response.data
+interface ErrorResponse {
+	error: string;
+	// інші можливі властивості відповіді
 }
 
 const fetchProducts = async (category: string, page: number, pageSize: number): Promise<FetchProductsResponse> => {
@@ -28,10 +34,27 @@ const fetchProducts = async (category: string, page: number, pageSize: number): 
 		} else {
 			throw new Error('Invalid response format');
 		}
-	} catch (error: any) {
-		console.error('Error fetching products:', error.message);
-		// Кидаємо помилку далі, щоб обробити її на рівні, де викликається `fetchProducts`
-		throw new Error(error.response?.data?.error || 'Failed to fetch products');
+	} catch (error: unknown) {
+		// Перевірка чи є це AxiosError
+		if (axios.isAxiosError(error)) {
+			// Тепер можемо бути впевненими, що error має тип AxiosError
+			const axiosError = error as AxiosError<ErrorResponse>;
+
+			// Перевірка, чи є в відповіді error
+			const errorMessage = axiosError.response?.data?.error || 'Failed to fetch products';
+			console.error('Error fetching products:', errorMessage);
+
+			// Кидаємо помилку далі
+			throw new Error(errorMessage);
+		} else if (error instanceof Error) {
+			// Для інших помилок JavaScript (наприклад, стандартні помилки)
+			console.error('Unexpected error:', error.message);
+			throw new Error('An unexpected error occurred');
+		} else {
+			// Якщо помилка має невідомий тип
+			console.error('Unknown error:', error);
+			throw new Error('An unknown error occurred');
+		}
 	}
 };
 
