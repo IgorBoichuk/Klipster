@@ -6,26 +6,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 	const { table } = req.query;
 
 	// Перевірка валідності параметра table
-	if (!table || typeof table !== 'string') {
-		return res.status(400).json({ error: 'Table name is required' });
-	}
-
-	const allowedTables = ['partsitems', 'users', 'categories']; // список дозволених таблиць
-	if (!allowedTables.includes(table)) {
-		return res.status(400).json({ error: 'Invalid table name' });
+	if (table && table !== 'categories') {
+		return res.status(400).json({ error: 'Invalid table name. Only "categories" is allowed' });
 	}
 
 	try {
-		// Використовуємо Prisma для отримання всіх записів із відповідної таблиці
-		let rows;
-
-		if (table === 'partsitems') {
-			rows = await prisma.partsitems.findMany();
-		} else if (table === 'users') {
-			rows = await prisma.users.findMany();
-		} else if (table === 'categories') {
-			rows = await prisma.categories.findMany();
-		}
+		// Отримуємо всі записи з таблиці "categories"
+		const rows = await prisma.categories.findMany();
 
 		res.status(200).json(rows);
 	} catch (error: unknown) {

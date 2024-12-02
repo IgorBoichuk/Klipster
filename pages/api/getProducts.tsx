@@ -2,15 +2,10 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import prisma from '../../prisma/lib/prisma';
 
 // Обробник запиту
-
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-	const { table, category, page = 1, pageSize = 60 } = req.query;
+	const { category, page = 1, pageSize = 60 } = req.query;
 
-	// Перевірка валідності параметра table
-	if (!table || typeof table !== 'string') {
-		return res.status(400).json({ error: 'Table name is required and must be a string.' });
-	}
-
+	// Перевірка валідності параметра category
 	if (!category || typeof category !== 'string') {
 		return res.status(400).json({ error: 'Category name is required and must be a string.' });
 	}
@@ -28,11 +23,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 	const MAX_PAGE_SIZE = 100;
 	if (pageSizeNumber > MAX_PAGE_SIZE) {
 		return res.status(400).json({ error: `Page size cannot exceed ${MAX_PAGE_SIZE}.` });
-	}
-
-	const allowedTables = ['partsitems', 'users', 'categories']; // Список дозволених таблиць
-	if (!allowedTables.includes(table)) {
-		return res.status(400).json({ error: 'Invalid table name. Table is not in the allowed list.' });
 	}
 
 	try {
