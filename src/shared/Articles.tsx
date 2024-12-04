@@ -2,6 +2,8 @@ import React from 'react';
 import { Product } from '@/types';
 import { ProductCard } from './ProductCard';
 import { Loader } from './Loader';
+import { Popup } from './Popup';
+import { SingleProductCrad } from './SingleProductCrad';
 
 interface ArticlesProps {
 	catData: Product[];
@@ -16,7 +18,7 @@ export const Articles = ({ catData }: ArticlesProps) => {
 	return (
 		<div className='App'>
 			{/* Якщо масив продуктів не порожній */}
-			<ul className='grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 items-center justify-center'>
+			<ul className=' relative grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 items-center justify-center'>
 				{catData.map(product => (
 					<li key={product.id} className='h-full'>
 						<ProductCard
@@ -31,6 +33,10 @@ export const Articles = ({ catData }: ArticlesProps) => {
 				{/* Якщо продукти відсутні */}
 				{catData.length === 0 && <Loader />}
 			</ul>
+
+			<Popup>
+				<SingleProductCrad />
+			</Popup>
 		</div>
 	);
 };

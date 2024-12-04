@@ -18,7 +18,7 @@ export const Header = () => {
 	// const pathname = usePathname().split('/')[1]
 
 	return (
-		<header className='sticky top-0 z-[100] bg-cdark '>
+		<header className='sticky top-0 z-[100] bg-cdark border-b-cyellow border-b-[3px]'>
 			<Container>
 				<div className='py-4 flex justify-between items-center'>
 					<Link
@@ -42,7 +42,7 @@ export const Header = () => {
 							<Image src={Find} fill={true} alt='Find link'></Image>
 						</button>
 					</Form>
-					<div className='flex gap-3'>
+					<div className='flex gap-6'>
 						<Link href={'tel:${+380930392656}'} className='w-6 h-6 lg:w-8 lg:h-8'>
 							<Image src={Phone} width={40} alt='phone link'></Image>
 						</Link>
