@@ -29,11 +29,11 @@ export const Popup = ({ children, custom, customOverlay, navMenu }: PopupProps) 
 			ref={popupRef}
 			onClick={handleClickOutside}
 			className={`w-[100%] h-[100vh] top-0 left-0 
-      ${customOverlay ? customOverlay : ' absolute'}`}
+      ${customOverlay ? customOverlay : ' absolute '}`}
 		>
 			<div
-				className={`absolute z-50 h-max top-[60px] overflow-hidden bg-cyellow shadow-[5px_10px_30px_0px_rgba(187,187,211,0.50)] rounded-xl 
-					 ${navMenu ? 'xl:hidden' : ''}  ${custom ? custom : ' '}`}
+				className={`absolute z-40 h-max top-[60px] overflow-hidden rounded-xl 
+					 ${navMenu ? 'xl:hidden shadow-[5px_10px_30px_0px_rgba(187,187,211,0.50)]' : ''}  ${custom ? custom : ''}`}
 			>
 				{children}
 			</div>

@@ -24,7 +24,7 @@ export const Burger = () => {
 					custom='flex flex-col p-2
           right-2 w-[70%] 
           sm:w-1/2 md:w-[50%] lg:w-[40%] 
-          py-[15px] lg:hidden'
+          py-[15px] lg:hidden bg-cyellow'
 					navMenu
 				>
 					<NavMenu custom='flex-col' burger />

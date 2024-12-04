@@ -18,7 +18,7 @@ export const Articles = ({ catData }: ArticlesProps) => {
 	return (
 		<div className='App'>
 			{/* Якщо масив продуктів не порожній */}
-			<ul className=' relative grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 items-center justify-center'>
+			<ul className='relative grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 items-center justify-center'>
 				{catData.map(product => (
 					<li key={product.id} className='h-full'>
 						<ProductCard
@@ -31,12 +31,14 @@ export const Articles = ({ catData }: ArticlesProps) => {
 				))}
 
 				{/* Якщо продукти відсутні */}
-				{catData.length === 0 && <Loader />}
 			</ul>
-
-			<Popup>
+			<Popup
+				customOverlay='absolute top-0 w-full bg-slate-500 bg-opacity-15 backdrop-blur-md max-full shadow-[5px_10px_30px_0px_rgba(187,187,211,0.50)]'
+				custom='h-full'
+			>
 				<SingleProductCrad />
 			</Popup>
+			{catData.length === 0 && <Loader />}
 		</div>
 	);
 };

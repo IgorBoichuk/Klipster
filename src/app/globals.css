@@ -3,19 +3,49 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+	--background: #ffffff;
+	--foreground: #171717;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+	:root {
+		--background: #0a0a0a;
+		--foreground: #ededed;
+	}
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+	color: var(--foreground);
+	background: var(--background);
+	font-family: Arial, Helvetica, sans-serif;
+}
+.vertical-before::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0; /* Розташування по центру */
+	width: 1px; /* Ширина лінії */
+	background-color: rgb(203 213 225); /* Сірий колір */
+}
+
+.vertical-after::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 0; /* Розташування по центру */
+	width: 1px; /* Ширина лінії */
+	background-color: rgb(203 213 225); /* Сірий колір */
+}
+.horisontal-after::after {
+	content: '';
+	position: absolute;
+
+	bottom: -10px; /* Розташування в самому низу */
+	left: 50%; /* По центру горизонталі */
+	transform: translateX(-50%) rotate(90deg); /* Центрування + обертання */
+	width: 2px; /* Ширина лінії */
+	height: 100%; /* Довжина лінії */
+	background-color: #0a0a0a; /* Колір лінії */
 }
