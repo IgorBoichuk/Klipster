@@ -12,7 +12,7 @@ interface FilterBySectionProps {
 	sectionFromUrl?: string | null;
 }
 
-const FilterBySection = ({ sections, selectedSection }: FilterBySectionProps) => {
+const FilterBySection = ({ sections }: FilterBySectionProps) => {
 	const router = useRouter();
 	const handleSectionClick = (sectionFromUrl: string) => {
 		router.push(`/categories?section=${encodeURIComponent(sectionFromUrl)}`);

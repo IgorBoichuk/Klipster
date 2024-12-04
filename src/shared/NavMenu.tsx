@@ -24,7 +24,7 @@ export const NavMenu = ({ custom, footer, burger, header }: NavMenuProps) => {
 		{ id: 5, name: 'Контакти', href: '/contacts' },
 	];
 
-	const [isDataLoading, setIsDataLoading] = useState(true);
+	const [, setIsDataLoading] = useState(true);
 	const [showPopup, setShowPopup] = useState(false); // Стан для показу попапу
 	const searchParams = useSearchParams();
 	const sectionFromUrl = searchParams?.get('section') ?? null;
