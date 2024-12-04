@@ -85,7 +85,7 @@ export const NavMenu = ({ custom, footer, burger, header }: NavMenuProps) => {
 						</Link>
 						{/* Попап меню */}
 						{i.href === '/categories' && showPopup && (
-							<div className='absolute left-1/2 -translate-x-1/2 bg-cyellow shadow-lg p-4 rounded-md w-[80%]'>
+							<div className='absolute left-1/2 -translate-x-1/2 bg-cyellow shadow-lg p-2 rounded-md w-[80%]'>
 								<FilterBySection
 									sections={sections}
 									selectedSection={selectedSection}

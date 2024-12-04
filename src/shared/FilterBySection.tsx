@@ -19,13 +19,13 @@ const FilterBySection = ({ sections, selectedSection }: FilterBySectionProps) =>
 	};
 
 	return (
-		<div className='grid grid-cols-4 gap-4 py-4 bg-cyellow'>
+		<div className='grid grid-cols-4 gap-4 py-1 bg-cyellow'>
 			{sections.map((section, index) => (
 				<button
 					key={index}
 					value={section.section_ua}
 					onClick={() => handleSectionClick(section.section_en)} // Перехід на нову сторінку з фільтром
-					className={`border rounded-xl p-1 bg-cwhite text-cblack`}
+					className={`border rounded-xl bg-cwhite text-cblack p-2 text-sm`}
 				>
 					{section.section_ua}
 				</button>
