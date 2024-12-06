@@ -30,20 +30,3 @@ export interface Product {
 	car_brand: string;
 	car_model: string;
 }
-
-// export interface Product extends Pick<Category, 'category_ua' | 'category_en' | 'category_ru' | 'id'> {
-// 	catData: Category[]; // Використовуємо Category як тип для catData
-// 	brand?: string;
-// 	car_brand?: string;
-// 	car_model?: string;
-// 	color?: string;
-// 	description_ru?: string;
-// 	description_ua?: string;
-// 	installation_place?: string;
-// 	item_number?: string;
-// 	item_type?: string;
-// 	name_ru?: string;
-// 	name_ua?: string;
-// 	photo?: string;
-// 	price?: number;
-// }
