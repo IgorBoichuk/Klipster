@@ -14,10 +14,8 @@ const Categorypage = () => {
 	};
 
 	return (
-		<div>
+		<div >
 			<BreadCrumb />
-
-			{/* Статті */}
 			<Articles catData={filteredProducts} isLoading={isLoading} />
 			{/* Пагінація */}
 			<div className='flex justify-around py-10'>

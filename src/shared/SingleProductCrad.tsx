@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useContext, useRef } from 'react';
 import Image from 'next/image';
 import { Product } from '@/types'; // Важливо, щоб шлях до `Product` був коректним
+import { usePopup } from '@/app/providers/usePopup';
+import Cross from '../../public/svg/close.svg';
 
 // Типи для пропсів компонента
 interface SingleProductCradProps {
@@ -9,13 +11,24 @@ interface SingleProductCradProps {
 }
 
 export const SingleProductCrad: React.FC<SingleProductCradProps> = ({ selectedProduct, img }) => {
-	console.log(selectedProduct);
+	const popupRef = useRef(null);
+	const { closeProduct } = usePopup();
 
 	return (
-		<div className='grid grid-cols-1 ml-auto mr-auto md:grid-cols-2 rounded-xl shadow-md h-full w-[90%] md:w-1/2 bg-cwhite p-6'>
-			<div className='relative ml-auto mr-auto '>
+		<div
+			className='relative left-1/2 -translate-x-1/2 mt-28 grid grid-cols-1 md:grid-cols-2 rounded-xl shadow-md h-full w-[90%] md:w-4/5 bg-cwhite p-6'
+			ref={popupRef}
+		>
+			<button
+				className='absolute top-5 right-5 cursor-pointer'
+				onClick={() => {
+					closeProduct();
+				}}
+			>
+				<Image src={Cross} width={24} alt='close button' />
+			</button>
+			<div className=' ml-auto mr-auto '>
 				<Image src={`${img}${selectedProduct.photo}`} alt='Product card' width={500} height={500} className=' ' />
-				<button className='absolute top-5 right-5 cursor-pointer'>X</button>
 				<div className='w-full h-[2px] bg-slate-300'></div>
 			</div>
 

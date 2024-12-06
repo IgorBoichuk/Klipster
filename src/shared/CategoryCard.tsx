@@ -13,7 +13,7 @@ interface CategoryCardProps {
 }
 
 export const CategoryCard = ({ image, title, pathname, isCategory }: CategoryCardProps) => {
-	const pathToCatalog = 'https://codex-dev.pro';
+	const pathToCatalog = 'https://klipster.com.ua';
 	// console.log(pathname);
 
 	// Логіка для формування URL з параметром 'section'

@@ -8,12 +8,21 @@ export interface IPopupContext {
 	togglePopup: () => void;
 	openProduct: () => void;
 	closeProduct: () => void;
+	isOpenProduct: boolean;
 }
 interface PopupProps {
 	children: React.ReactNode;
 }
 
-export const PopupContext = createContext<IPopupContext | null>(null);
+export const PopupContext = createContext<IPopupContext>({
+	isOpenPopup: false,
+	closePopup: () => {},
+	openPopup: () => {},
+	togglePopup: () => {},
+	openProduct: () => {},
+	closeProduct: () => {},
+	isOpenProduct: false,
+});
 export const PopupProvider = ({ children }: PopupProps) => {
 	const [isOpenPopup, setIsOpenPopup] = useState(false);
 	const [isOpenProduct, setIsOpenProduct] = useState(false);
@@ -26,8 +35,16 @@ export const PopupProvider = ({ children }: PopupProps) => {
 	const openPopup = () => setIsOpenPopup(true);
 	const togglePopup = () => setIsOpenPopup(prev => !prev);
 	const openProduct = () => setIsOpenProduct(true);
-	const closeProduct = () => setIsOpenProduct(prev => !prev);
+	const closeProduct = () => setIsOpenProduct(false);
 
-	const contextValue = { closePopup, isOpenPopup, openPopup, togglePopup, closeProduct, openProduct };
+	const contextValue = {
+		closePopup,
+		isOpenPopup,
+		openPopup,
+		togglePopup,
+		closeProduct,
+		openProduct,
+		isOpenProduct,
+	};
 	return <PopupContext.Provider value={contextValue}>{children}</PopupContext.Provider>;
 };

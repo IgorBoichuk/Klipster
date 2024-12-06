@@ -5,7 +5,7 @@ const nextConfig: NextConfig = {
 	swcMinify: true,
 	images: {
 		// Додаємо домен, з якого завантажуються зображення
-		domains: ['codex-dev.pro'],
+		domains: ['klipster.com.ua'],
 		// Якщо хочете, щоб Next.js оптимізував зображення, цей рядок можна видалити.
 		unoptimized: true,
 	},
@@ -19,7 +19,7 @@ const nextConfig: NextConfig = {
 	remotePatterns: [
 		{
 			protocol: 'https',
-			hostname: 'codex-dev.pro',
+			hostname: 'klipster.com.ua',
 			pathname: '/**', // Усі підшляхи
 		},
 	],

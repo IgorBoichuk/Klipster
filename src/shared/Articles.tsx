@@ -4,7 +4,7 @@ import { ProductCard } from './ProductCard';
 import { Loader } from './Loader';
 import { Popup } from './Popup';
 import { SingleProductCrad } from './SingleProductCrad';
-import { PopupContext } from '@/app/providers/PopupProvider';
+import { usePopup } from '@/app/providers/usePopup';
 
 interface ArticlesProps {
 	catData: Product[];
@@ -12,28 +12,23 @@ interface ArticlesProps {
 }
 
 export const Articles: React.FC<ArticlesProps> = ({ catData, isLoading }) => {
-	const popupContext = useContext(PopupContext);
+	const { openProduct, isOpenProduct } = usePopup(); // Отримуємо функції та стан з контексту
+	const [choosenProdukt, setChoosenProdukt] = useState<Product | null>(null);
 
-	if (!popupContext) {
-		throw new Error('PopupContext must be used within a PopupProvider');
-	}
+	const pathToPhoto = 'https://klipster.com.ua/';
 
-	const { openProduct } = popupContext;
-	const [isOpenProduct, setIsOpenProduct] = useState<Product | null>(null);
-
-	const pathToPhoto = 'https://codex-dev.pro/';
-
+	// Обробка кліку на продукт
 	const ClickOnProdukt = (id: number): void => {
-		openProduct();
+		openProduct(); // Відкриваємо попап через контекст
 		const chooseProdukt = catData.find(item => item.id === id);
-		setIsOpenProduct(chooseProdukt || null);
+		setChoosenProdukt(chooseProdukt || null); // Встановлюємо вибраний продукт
 	};
 
 	return (
-		<div className='App'>
-			<ul className='relative grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 items-center justify-center'>
+		<div>
+			<ul className='grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 items-center justify-center'>
 				{catData.map(product => (
-					<li key={product.id} onClick={() => ClickOnProdukt(product.id)} className='h-full'>
+					<li key={product.id} onClick={() => ClickOnProdukt(product.id)} className=''>
 						<ProductCard
 							title={product.name_ua}
 							price={product.price}
@@ -44,12 +39,17 @@ export const Articles: React.FC<ArticlesProps> = ({ catData, isLoading }) => {
 				))}
 			</ul>
 
-			{isOpenProduct && isOpenProduct && (
-				<Popup customOverlay='absolute top-0 left-0 w-full h-full bg-slate-500 bg-opacity-15 backdrop-blur-md max-full shadow-[5px_10px_30px_0px_rgba(187,187,211,0.50)]'>
-					<SingleProductCrad selectedProduct={isOpenProduct} img={pathToPhoto} />
+			{/* Відображення попапу з продуктом */}
+			{isOpenProduct && choosenProdukt && (
+				<Popup
+					// Передаємо функцію закриття
+					customOverlay='absolute top-0 left-0 bg-slate-500 bg-opacity-15 backdrop-blur-md'
+				>
+					<SingleProductCrad selectedProduct={choosenProdukt} img={pathToPhoto} />
 				</Popup>
 			)}
 
+			{/* Показуємо спінер під час завантаження */}
 			{isLoading && <Loader />}
 		</div>
 	);

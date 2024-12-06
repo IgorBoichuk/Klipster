@@ -44,7 +44,12 @@ export const NavMenu = ({ custom, footer, burger, header }: NavMenuProps) => {
 					closePopup();
 				}
 			}}
-			className={`${!burger && !footer ? 'hidden lg:block' : ''}`}
+			// absolute h-max top-[60px] rounded-xl xl:hidden shadow-[5px_10px_30px_0px_rgba(187,187,211,0.50)]
+			className={`${!burger && !footer ? 'hidden lg:block ' : ''}
+			${
+				burger &&
+				'absolute right-4 h-max w-max px-4 top-[60px] rounded-xl lg:hidden bg-cyellow shadow-[5px_10px_30px_0px_rgba(187,187,211,0.50)]'
+			}`}
 		>
 			<ul
 				className={`flex ${burger ? 'text-start gap-2 text-xl py-3' : ''} 

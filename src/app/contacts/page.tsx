@@ -6,7 +6,6 @@ const Contacts = () => {
 	return (
 		<div>
 			<SectionTitle title='Contacts' />
-			<SingleProductCrad />
 		</div>
 	);
 };
