@@ -8,18 +8,16 @@ interface PopupProps {
 	navMenu?: boolean;
 	custom?: string;
 	customOverlay?: string;
-	closePopup: () => void;
 }
-export const Popup = ({ children, custom, customOverlay, navMenu }: PopupProps) => {
-	//@ts expect error
+
+export const Popup = ({ children, customOverlay }: PopupProps) => {
 	const popupRef = useRef(null);
-	const { closePopup, closeProduct } = usePopup();
+	const { closePopup, closeProduct } = usePopup(); // Отримуємо функції з контексту
 
 	const handleClickOutside = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
 		if (e.target === popupRef.current) {
 			closePopup();
 			closeProduct();
-			console.log('close');
 		}
 	};
 
@@ -28,7 +26,7 @@ export const Popup = ({ children, custom, customOverlay, navMenu }: PopupProps) 
 			ref={popupRef}
 			onClick={handleClickOutside}
 			className={`absolute z-50 w-full h-[100vh] top-0 left-0 
-      ${customOverlay ? customOverlay : '  '}`}
+      ${customOverlay ? customOverlay : ''}`}
 		>
 			{children}
 		</div>

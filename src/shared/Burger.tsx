@@ -1,5 +1,5 @@
 'use client';
-import React, { useContext } from 'react';
+import React from 'react';
 import Image from 'next/image';
 import BurgerMenu from '../../public/svg/burger.svg';
 import Cross from '../../public/svg/cross.svg';
@@ -8,7 +8,7 @@ import { NavMenu } from './NavMenu';
 import { usePopup } from '@/app/providers/usePopup';
 
 export const Burger = () => {
-	const { isOpenPopup, togglePopup, closePopup } = usePopup();
+	const { isOpenPopup, togglePopup } = usePopup();
 	return (
 		<div>
 			<button type='button' onClick={togglePopup} className='relative z-10 flex lg:hidden w-6 h-6 items-center'>
@@ -20,10 +20,7 @@ export const Burger = () => {
 			</button>
 			{isOpenPopup ? (
 				<Popup
-					custom='flex flex-col p-2
-          right-2 w-[70%] 
-          sm:w-1/2 md:w-[50%] lg:w-[40%] 
-          py-[15px] lg:hidden bg-cyellow '
+					custom='flex flex-col p-2 right-2 w-[70%] sm:w-1/2 md:w-[50%] lg:w-[40%] py-[15px] lg:hidden bg-cyellow'
 					navMenu
 				>
 					<NavMenu custom='flex-col' burger />

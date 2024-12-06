@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { Product } from '@/types';
 import { ProductCard } from './ProductCard';
 import { Loader } from './Loader';
@@ -19,7 +19,7 @@ export const Articles: React.FC<ArticlesProps> = ({ catData, isLoading }) => {
 
 	// Обробка кліку на продукт
 	const ClickOnProdukt = (id: number): void => {
-		openProduct(); // Відкриваємо попап через контекст
+		openProduct();
 		const chooseProdukt = catData.find(item => item.id === id);
 		setChoosenProdukt(chooseProdukt || null); // Встановлюємо вибраний продукт
 	};
@@ -41,10 +41,7 @@ export const Articles: React.FC<ArticlesProps> = ({ catData, isLoading }) => {
 
 			{/* Відображення попапу з продуктом */}
 			{isOpenProduct && choosenProdukt && (
-				<Popup
-					// Передаємо функцію закриття
-					customOverlay='absolute top-0 left-0 bg-slate-500 bg-opacity-15 backdrop-blur-md'
-				>
+				<Popup customOverlay='absolute top-0 left-0 bg-slate-500 bg-opacity-15 backdrop-blur-md'>
 					<SingleProductCrad selectedProduct={choosenProdukt} img={pathToPhoto} />
 				</Popup>
 			)}

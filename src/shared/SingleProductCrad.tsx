@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from 'react';
+import React, { useRef } from 'react';
 import Image from 'next/image';
 import { Product } from '@/types'; // Важливо, щоб шлях до `Product` був коректним
 import { usePopup } from '@/app/providers/usePopup';

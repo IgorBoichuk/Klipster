@@ -44,7 +44,6 @@ export const NavMenu = ({ custom, footer, burger, header }: NavMenuProps) => {
 					closePopup();
 				}
 			}}
-			// absolute h-max top-[60px] rounded-xl xl:hidden shadow-[5px_10px_30px_0px_rgba(187,187,211,0.50)]
 			className={`${!burger && !footer ? 'hidden lg:block ' : ''}
 			${
 				burger &&
