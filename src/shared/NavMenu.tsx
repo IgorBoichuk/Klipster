@@ -2,12 +2,11 @@
 import { usePopup } from '@/app/providers/usePopup';
 import Link from 'next/link';
 import { usePathname, useSearchParams } from 'next/navigation';
-import React, { Suspense, useState } from 'react';
+import React, { useState } from 'react';
 import FilterBySection from './FilterBySection';
 import useCategories from '@/app/hooks/useCategories';
 import Arrow from '../../public/svg/arrow.svg';
 import Image from 'next/image';
-import { Loader } from './Loader';
 
 interface NavMenuProps {
 	custom?: string;
@@ -81,17 +80,15 @@ export const NavMenu = ({ custom, footer, burger, header }: NavMenuProps) => {
 						{/* Попап меню */}
 						{i.href === '/categories' && showPopup && (
 							<div className='absolute left-1/2 -translate-x-1/2 bg-cyellow shadow-lg p-2 rounded-md w-[80%]'>
-								<Suspense fallback={<Loader />}>
-									<FilterBySection
-										sections={sections}
-										selectedSection={selectedSection}
-										onSelectSection={handleSectionChange}
-										filteredCategories={filteredCategories}
-										sectionFromUrl={sectionFromUrl}
-										section_ua={''} // При необхідності, встановіть правильне значення
-										section_en={''} // Аналогічно для section_en
-									/>
-								</Suspense>
+								<FilterBySection
+									sections={sections}
+									selectedSection={selectedSection}
+									onSelectSection={handleSectionChange}
+									filteredCategories={filteredCategories}
+									sectionFromUrl={sectionFromUrl}
+									section_ua={''} // При необхідності, встановіть правильне значення
+									section_en={''} // Аналогічно для section_en
+								/>
 							</div>
 						)}
 					</li>

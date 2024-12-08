@@ -1,7 +1,6 @@
-import React, { Suspense, useState } from 'react';
+import React, { useState } from 'react';
 import { Product } from '@/types';
 import { ProductCard } from './ProductCard';
-import { Loader } from './Loader';
 import { Popup } from './Popup';
 import { SingleProductCrad } from './SingleProductCrad';
 import { usePopup } from '@/app/providers/usePopup';
@@ -52,14 +51,12 @@ export const Articles: React.FC<ArticlesProps> = ({ catData }) => {
 				))}
 			</ul>
 			{isOpenProduct && choosenProdukt && (
-				<Suspense fallback={<Loader />}>
-					<Popup
-						customOverlay='absolute top-0 left-0 bg-slate-500 bg-opacity-15 backdrop-blur-md'
-						currentPathLink={currentPathLink}
-					>
-						<SingleProductCrad selectedProduct={choosenProdukt} img={pathToPhoto} onClose={closeProductPopup} />
-					</Popup>
-				</Suspense>
+				<Popup
+					customOverlay='absolute top-0 left-0 bg-slate-500 bg-opacity-15 backdrop-blur-md'
+					currentPathLink={currentPathLink}
+				>
+					<SingleProductCrad selectedProduct={choosenProdukt} img={pathToPhoto} onClose={closeProductPopup} />
+				</Popup>
 			)}
 		</div>
 	);
