@@ -55,14 +55,14 @@ export const Articles: React.FC<ArticlesProps> = ({ catData }) => {
 				))}
 			</ul>
 			{isOpenProduct && choosenProdukt && (
-				<Popup
-					customOverlay='absolute top-0 left-0 bg-slate-500 bg-opacity-15 backdrop-blur-md'
-					currentPathLink={currentPathLink}
-				>
-					<Suspense fallback={<Loader />}>
+				<Suspense fallback={<Loader />}>
+					<Popup
+						customOverlay='absolute top-0 left-0 bg-slate-500 bg-opacity-15 backdrop-blur-md'
+						currentPathLink={currentPathLink}
+					>
 						<SingleProductCrad selectedProduct={choosenProdukt} img={pathToPhoto} onClose={closeProductPopup} />
-					</Suspense>
-				</Popup>
+					</Popup>
+				</Suspense>
 			)}
 		</div>
 	);
