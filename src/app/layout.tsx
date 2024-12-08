@@ -31,14 +31,16 @@ export default async function RootLayout({
 				<link rel='icon' href='/favicon.svg' sizes='any' />
 			</head>
 			<body className='font-sans'>
-				<PopupProvider>
-					<Header />
-					<Container>
-						<Suspense fallback={<Loader />}>{children}</Suspense>
-						<ReviewedGoods image={Bolt} title={'Ви переглядали'} />
-					</Container>
-					<Footer />
-				</PopupProvider>
+				<Suspense fallback={<Loader />}>
+					<PopupProvider>
+						<Header />
+						<Container>
+							{children}
+							<ReviewedGoods image={Bolt} title={'Ви переглядали'} />
+						</Container>
+						<Footer />
+					</PopupProvider>
+				</Suspense>
 			</body>
 		</html>
 	);
