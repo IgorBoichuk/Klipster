@@ -3,7 +3,6 @@
 import { useSearchParams } from 'next/navigation';
 import useCategories from '../hooks/useCategories';
 import { RecommendedProducts } from '@/shared/RecommendedProducts';
-import Bolt from '../../../public/images/bolts.png';
 import { AllCategories } from '@/shared/AllCategories';
 import { useEffect, useState } from 'react';
 
@@ -24,7 +23,7 @@ const Categories = () => {
 	return (
 		<div>
 			<AllCategories filteredCategories={filteredCategories} />
-			<RecommendedProducts image={Bolt} title='Рекомендовані товари' />
+			<RecommendedProducts title='Рекомендовані товари' />
 		</div>
 	);
 };
