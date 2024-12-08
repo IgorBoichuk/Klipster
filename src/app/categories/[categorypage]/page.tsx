@@ -5,8 +5,7 @@ import BreadCrumb from '@/shared/BreadCrumb';
 import React from 'react';
 
 const Categorypage = () => {
-	const { filteredProducts, totalCount, page, pageSize, isLoading, onPageChange } =
-		useProducts('Автомобільні кріплення');
+	const { filteredProducts, totalCount, page, pageSize, onPageChange } = useProducts('Автомобільні кріплення');
 
 	// Обробка зміни сторінки
 	const handlePageChange = (newPage: number) => {
@@ -14,9 +13,9 @@ const Categorypage = () => {
 	};
 
 	return (
-		<div >
+		<div>
 			<BreadCrumb />
-			<Articles catData={filteredProducts} isLoading={isLoading} />
+			<Articles catData={filteredProducts} />
 			{/* Пагінація */}
 			<div className='flex justify-around py-10'>
 				<button onClick={() => handlePageChange(page - 1)} disabled={page === 1}>

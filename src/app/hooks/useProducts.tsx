@@ -8,12 +8,10 @@ const useProducts = (initialCategory: string | null, initialPage = 1, pageSize =
 	const [filteredProducts, setFilteredProducts] = useState<Product[]>([]); // Відфільтровані товари
 	const [totalCount, setTotalCount] = useState<number>(0); // Загальна кількість товарів
 	const [page, setPage] = useState<number>(initialPage); // Поточна сторінка
-	const [isLoading, setIsLoading] = useState<boolean>(false); // Стан завантаження
 
 	useEffect(() => {
 		// Завантажуємо товари з бази
 		const loadProducts = async () => {
-			setIsLoading(true);
 			try {
 				const data = await fetchProducts(category || 'Автомобільні кріплення', page, pageSize);
 				if (data) {
@@ -23,7 +21,6 @@ const useProducts = (initialCategory: string | null, initialPage = 1, pageSize =
 			} catch (error) {
 				console.error('Failed to fetch products:', error);
 			} finally {
-				setIsLoading(false);
 			}
 		};
 		loadProducts();
@@ -58,7 +55,6 @@ const useProducts = (initialCategory: string | null, initialPage = 1, pageSize =
 		category,
 		page,
 		pageSize,
-		isLoading,
 		onCategoryChoose,
 		onPageChange,
 	};

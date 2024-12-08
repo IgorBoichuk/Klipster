@@ -9,11 +9,10 @@ import { usePathname, useRouter } from 'next/navigation';
 
 interface ArticlesProps {
 	catData: Product[];
-	isLoading: boolean;
 	currentPathLink?: string | null;
 }
 
-export const Articles: React.FC<ArticlesProps> = ({ catData, isLoading }) => {
+export const Articles: React.FC<ArticlesProps> = ({ catData }) => {
 	const { openProduct, isOpenProduct, closeProduct } = usePopup(); // Отримуємо функції та стан з контексту
 	const [choosenProdukt, setChoosenProdukt] = useState<Product | null>(null);
 
