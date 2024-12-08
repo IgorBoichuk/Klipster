@@ -1,4 +1,5 @@
-import Image, { StaticImageData } from 'next/image';
+// import Image, { StaticImageData } from 'next/image';   --------------------- можливо буде потрібно коли будуть запити фоток з бази даних
+import Image from 'next/image';
 import React from 'react';
 import { SectionTitle } from './SectionTitle';
 import Clipsest from '../../public/images/clipsest.png';
