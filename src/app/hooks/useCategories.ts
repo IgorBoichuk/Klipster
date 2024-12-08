@@ -28,7 +28,7 @@ const useCategories = (sectionFromUrl: string | null) => {
 				// Генерація унікальних секцій
 				const uniqueSections = Array.from(
 					new Map(data.map(item => [item.section_ua, { section_ua: item.section_ua, section_en: item.section_en }]))
-				).map(([key, value]) => value);
+				).map(([_, value]) => value);
 				setSections(uniqueSections);
 			}
 		};
