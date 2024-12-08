@@ -22,10 +22,6 @@ export const Articles: React.FC<ArticlesProps> = ({ catData }) => {
 	const currentPath = usePathname();
 	const [currentPathLink, setCurrentPathLink] = useState(currentPath);
 
-	// useEffect(() => {
-	// 	setCurrentPathLink(currentPath);
-	// }, [currentPathLink]);
-
 	const ClickOnProdukt = (id: number, name: string): void => {
 		openProduct();
 		const chooseProdukt = catData.find(item => item.id === id);
