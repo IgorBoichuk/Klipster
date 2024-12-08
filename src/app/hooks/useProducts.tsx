@@ -20,7 +20,6 @@ const useProducts = (initialCategory: string | null, initialPage = 1, pageSize =
 				}
 			} catch (error) {
 				console.error('Failed to fetch products:', error);
-			} finally {
 			}
 		};
 		loadProducts();

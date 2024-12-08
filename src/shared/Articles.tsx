@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect, useState } from 'react';
+import React, { Suspense, useState } from 'react';
 import { Product } from '@/types';
 import { ProductCard } from './ProductCard';
 import { Loader } from './Loader';
@@ -22,9 +22,9 @@ export const Articles: React.FC<ArticlesProps> = ({ catData }) => {
 	const currentPath = usePathname();
 	const [currentPathLink, setCurrentPathLink] = useState(currentPath);
 
-	useEffect(() => {
-		setCurrentPathLink(currentPath);
-	}, [currentPathLink]);
+	// useEffect(() => {
+	// 	setCurrentPathLink(currentPath);
+	// }, [currentPathLink]);
 
 	const ClickOnProdukt = (id: number, name: string): void => {
 		openProduct();
@@ -33,6 +33,7 @@ export const Articles: React.FC<ArticlesProps> = ({ catData }) => {
 		const formattedName = encodeURIComponent(name.trim().toLowerCase().replace(/\s+/g, '-'));
 		const newPath = `${currentPathLink}/${formattedName}`;
 		window.history.pushState(null, '', newPath);
+		setCurrentPathLink(currentPath);
 	};
 	const closeProductPopup = () => {
 		setChoosenProdukt(null);
