@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 import { Product } from '@/types';
 import { ProductCard } from './ProductCard';
 import { Loader } from './Loader';
@@ -60,10 +60,11 @@ export const Articles: React.FC<ArticlesProps> = ({ catData, isLoading }) => {
 					customOverlay='absolute top-0 left-0 bg-slate-500 bg-opacity-15 backdrop-blur-md'
 					currentPathLink={currentPathLink}
 				>
-					<SingleProductCrad selectedProduct={choosenProdukt} img={pathToPhoto} onClose={closeProductPopup} />
+					<Suspense fallback={<Loader />}>
+						<SingleProductCrad selectedProduct={choosenProdukt} img={pathToPhoto} onClose={closeProductPopup} />
+					</Suspense>
 				</Popup>
 			)}
-			{isLoading && <Loader />}
 		</div>
 	);
 };
