@@ -16,7 +16,6 @@ const Categories = () => {
 
 	return (
 		<Suspense fallback={<Loader />}>
-			{/* Оскільки useCategories може бути асинхронним, потрібно його обгорнути в Suspense */}
 			<AllCategories filteredCategories={filteredCategories} />
 			<RecommendedProducts title='Рекомендовані товари' />
 		</Suspense>

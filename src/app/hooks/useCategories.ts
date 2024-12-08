@@ -15,24 +15,24 @@ const useCategories = (sectionFromUrl: string | null) => {
 	const [selectedSection, setSelectedSection] = useState<string | null>(sectionFromUrl);
 
 	useEffect(() => {
+		// Завантаження категорій асинхронно
 		const loadCategories = async () => {
-			// Вказуємо, що ми працюємо з типом Category
 			const data = await fetchCategories<Category>({ table: 'categories' });
 			if (data) {
 				setCategories(data);
 
-				// Фільтруємо категорії за параметром URL
-				setFilteredCategories(sectionFromUrl ? data.filter(item => item.section_en === sectionFromUrl) : data);
+				// Якщо є секція в URL, фільтруємо категорії
+				const filtered = sectionFromUrl ? data.filter(item => item.section_en === sectionFromUrl) : data;
+				setFilteredCategories(filtered);
 
-				// Генеруємо унікальні секції
+				// Генерація унікальних секцій
 				const uniqueSections = Array.from(
-					new Map(
-						data.map(item => [item.section_ua, { section_ua: item.section_ua, section_en: item.section_en }])
-					).values()
-				);
+					new Map(data.map(item => [item.section_ua, { section_ua: item.section_ua, section_en: item.section_en }]))
+				).map(([key, value]) => value);
 				setSections(uniqueSections);
 			}
 		};
+
 		loadCategories();
 	}, [sectionFromUrl]);
 
@@ -40,8 +40,8 @@ const useCategories = (sectionFromUrl: string | null) => {
 		setSelectedSection(section);
 
 		// Фільтруємо категорії відповідно до вибраної секції
-		setFilteredCategories(categories.filter(item => item.section_ua === section));
-		console.log(categories);
+		const filtered = categories.filter(item => item.section_ua === section);
+		setFilteredCategories(filtered);
 	};
 
 	return { categories, filteredCategories, sections, selectedSection, handleSectionChange, sectionFromUrl };
