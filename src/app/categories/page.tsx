@@ -4,7 +4,8 @@ import { useSearchParams } from 'next/navigation';
 import useCategories from '../hooks/useCategories';
 import { RecommendedProducts } from '@/shared/RecommendedProducts';
 import { AllCategories } from '@/shared/AllCategories';
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
+import { Loader } from '@/shared/Loader';
 
 const Categories = () => {
 	const [, setIsDataLoading] = useState(true);
@@ -21,10 +22,10 @@ const Categories = () => {
 	}, [filteredCategories]);
 
 	return (
-		<div>
+		<Suspense fallback={<Loader />}>
 			<AllCategories filteredCategories={filteredCategories} />
 			<RecommendedProducts title='Рекомендовані товари' />
-		</div>
+		</Suspense>
 	);
 };
 
