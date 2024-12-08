@@ -1,6 +1,7 @@
 'use client';
 
 import { usePopup } from '@/app/providers/usePopup';
+import { useRouter } from 'next/navigation';
 import { useRef } from 'react';
 
 interface PopupProps {
@@ -8,16 +9,23 @@ interface PopupProps {
 	navMenu?: boolean;
 	custom?: string;
 	customOverlay?: string;
+	currentPathLink?: string | null;
 }
 
-export const Popup = ({ children, customOverlay }: PopupProps) => {
+export const Popup = ({ children, customOverlay, currentPathLink }: PopupProps) => {
 	const popupRef = useRef(null);
 	const { closePopup, closeProduct } = usePopup(); // Отримуємо функції з контексту
+	const router = useRouter();
 
 	const handleClickOutside = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
 		if (e.target === popupRef.current) {
 			closePopup();
 			closeProduct();
+			if (currentPathLink) {
+				router.replace(currentPathLink);
+			} else {
+				router.replace('/');
+			}
 		}
 	};
 

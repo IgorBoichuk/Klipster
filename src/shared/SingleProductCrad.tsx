@@ -1,28 +1,27 @@
 import React, { useRef } from 'react';
 import Image from 'next/image';
 import { Product } from '@/types'; // Важливо, щоб шлях до `Product` був коректним
-import { usePopup } from '@/app/providers/usePopup';
 import Cross from '../../public/svg/close.svg';
 
 // Типи для пропсів компонента
 interface SingleProductCradProps {
 	selectedProduct: Product; // Продукт, який буде відображатися
 	img: string; // Шлях до базового URL для зображень
+	onClose: () => void;
 }
 
-export const SingleProductCrad: React.FC<SingleProductCradProps> = ({ selectedProduct, img }) => {
+export const SingleProductCrad: React.FC<SingleProductCradProps> = ({ selectedProduct, img, onClose }) => {
 	const popupRef = useRef(null);
-	const { closeProduct } = usePopup();
 
 	return (
 		<div
-			className='relative left-1/2 -translate-x-1/2 mt-28 grid grid-cols-1 md:grid-cols-2 rounded-xl shadow-md h-full w-[90%] md:w-4/5 bg-cwhite p-6'
+			className='relative z-50 left-1/2 -translate-x-1/2 mt-28 grid grid-cols-1 md:grid-cols-2 rounded-xl shadow-md h-max w-[90%] md:w-4/5 bg-cwhite p-6'
 			ref={popupRef}
 		>
 			<button
 				className='absolute top-5 right-5 cursor-pointer'
 				onClick={() => {
-					closeProduct();
+					onClose();
 				}}
 			>
 				<Image src={Cross} width={24} alt='close button' />

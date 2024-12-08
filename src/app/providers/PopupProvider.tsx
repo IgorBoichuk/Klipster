@@ -27,11 +27,7 @@ export const PopupProvider = ({ children }: PopupProps) => {
 	const [isOpenPopup, setIsOpenPopup] = useState(false);
 	const [isOpenProduct, setIsOpenProduct] = useState(false);
 
-	const closePopup = () => {
-		setTimeout(() => {
-			setIsOpenPopup(false);
-		}, 100);
-	};
+	const closePopup = () => setIsOpenPopup(false);
 	const openPopup = () => setIsOpenPopup(true);
 	const togglePopup = () => setIsOpenPopup(prev => !prev);
 	const openProduct = () => setIsOpenProduct(true);

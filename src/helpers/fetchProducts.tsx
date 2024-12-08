@@ -13,7 +13,7 @@ interface ErrorResponse {
 }
 
 const fetchProducts = async (category: string, page: number, pageSize: number): Promise<FetchProductsResponse> => {
-	console.log(category);
+	// console.log(category);
 
 	try {
 		// Формуємо параметри для запиту
