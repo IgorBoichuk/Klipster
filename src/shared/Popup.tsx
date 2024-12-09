@@ -1,6 +1,6 @@
 'use client';
 
-import { usePopup } from '@/app/providers/usePopup';
+import { usePopup } from '@/app/hooks/usePopup';
 import { useRouter } from 'next/navigation';
 import { useRef } from 'react';
 

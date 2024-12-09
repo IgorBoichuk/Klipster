@@ -3,8 +3,10 @@ import Link from 'next/link';
 import React from 'react';
 import Home from '../../public/svg/home.svg';
 import Filter from '../../public/svg/filter.svg';
+import { useCategory } from '@/app/providers/CategoryContext';
 
 export const BreadCrumb = () => {
+	const { category } = useCategory();
 	return (
 		<nav className='flex items-center space-x-2 bg-gray-100 p-4 rounded-lg shadow-md'>
 			<Image src={Home} alt='home button' />
@@ -15,7 +17,7 @@ export const BreadCrumb = () => {
 			</Link>
 			<span className='text-gray-500'>›</span>
 
-			<span className='text-gray-600 truncate'>Кріплення обшивки, одна шляпка</span>
+			<span className='text-gray-600 truncate'>{category}</span>
 			<Image src={Filter} alt='filter button' />
 		</nav>
 	);

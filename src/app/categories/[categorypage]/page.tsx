@@ -1,30 +1,56 @@
 'use client';
+import React from 'react';
 import useProducts from '@/app/hooks/useProducts';
+import { useCategory } from '@/app/providers/CategoryContext';
 import { Articles } from '@/shared/Articles';
 import BreadCrumb from '@/shared/BreadCrumb';
-import React from 'react';
+import { SectionTitle } from '@/shared/SectionTitle';
+import Arrow from '../../../../public/svg/arrow.svg';
+import Image from 'next/image';
 
 const Categorypage = () => {
-	const { filteredProducts, totalCount, page, pageSize, onPageChange } = useProducts('Автомобільні кріплення');
-
+	const { filteredProducts, totalCount, page, pageSize, onPageChange } = useProducts();
+	const { category } = useCategory();
 	// Обробка зміни сторінки
 	const handlePageChange = (newPage: number) => {
 		onPageChange(newPage);
+	};
+	const maxPages = Math.ceil(totalCount / pageSize);
+	const pagesArray = Array.from({ length: maxPages }, (_, index) => index + 1);
+
+	const ClickOnPage = (page: number) => {
+		console.log(page);
 	};
 
 	return (
 		<div>
 			<BreadCrumb />
+			<SectionTitle title={category} />
 			<Articles catData={filteredProducts} />
 			{/* Пагінація */}
-			<div className='flex justify-around py-10'>
-				<button onClick={() => handlePageChange(page - 1)} disabled={page === 1}>
-					Попередня сторінка
+			<div className='flex justify-end gap-4 py-10'>
+				<button
+					className=' bg-cblack w-6 h-6 flex justify-center items-center'
+					onClick={() => handlePageChange(page - 1)}
+					disabled={page === 1}
+				>
+					<Image src={Arrow} alt='down arrow' width={8} className='rotate-180 ' />
 				</button>
 				<span>{page}</span>
-				<span>Всього сторінок {Math.ceil(totalCount / pageSize)}</span>
-				<button onClick={() => handlePageChange(page + 1)} disabled={page * pageSize >= totalCount}>
-					Наступна сторінка
+
+				<div className='flex gap-1'>
+					{pagesArray.map(page => (
+						<button key={page} onClick={() => ClickOnPage(page)} className=''>
+							{page}
+						</button>
+					))}
+				</div>
+				<button
+					className=' bg-cblack w-6 h-6 flex justify-center items-center'
+					onClick={() => handlePageChange(page + 1)}
+					disabled={page * pageSize >= totalCount}
+				>
+					<Image src={Arrow} alt='down arrow' width={8} className=' ' />
 				</button>
 			</div>
 		</div>

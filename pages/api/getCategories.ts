@@ -13,8 +13,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 	try {
 		// Отримуємо всі записи з таблиці "categories"
 		const rows = await prisma.categories.findMany();
-		// const rows = await prisma.categories;
-		// console.log(rows);
 
 		res.status(200).json(rows);
 	} catch (error: unknown) {

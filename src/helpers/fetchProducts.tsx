@@ -13,10 +13,9 @@ interface ErrorResponse {
 }
 
 const fetchProducts = async (category: string, page: number, pageSize: number): Promise<FetchProductsResponse> => {
-	// console.log(category);
-
 	try {
 		// Формуємо параметри для запиту
+
 		const params = {
 			table: 'partsitems',
 			category,

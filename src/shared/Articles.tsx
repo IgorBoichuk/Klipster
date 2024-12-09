@@ -3,7 +3,7 @@ import { Product } from '@/types';
 import { ProductCard } from './ProductCard';
 import { Popup } from './Popup';
 import { SingleProductCrad } from './SingleProductCrad';
-import { usePopup } from '@/app/providers/usePopup';
+import { usePopup } from '@/app/hooks/usePopup';
 import { usePathname, useRouter } from 'next/navigation';
 
 interface ArticlesProps {
@@ -38,7 +38,7 @@ export const Articles: React.FC<ArticlesProps> = ({ catData }) => {
 
 	return (
 		<div>
-			<ul className='grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 items-center justify-center'>
+			<ul className='grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 items-center justify-center'>
 				{catData.map(product => (
 					<li key={product.id} onClick={() => ClickOnProdukt(product.id, product.name_ua)} className=''>
 						<ProductCard

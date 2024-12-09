@@ -5,7 +5,7 @@ import BurgerMenu from '../../public/svg/burger.svg';
 import Cross from '../../public/svg/cross.svg';
 import { Popup } from './Popup';
 import { NavMenu } from './NavMenu';
-import { usePopup } from '@/app/providers/usePopup';
+import { usePopup } from '@/app/hooks/usePopup';
 
 export const Burger = () => {
 	const { isOpenPopup, togglePopup } = usePopup();

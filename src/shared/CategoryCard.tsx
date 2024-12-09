@@ -9,10 +9,10 @@ interface CategoryCardProps {
 	image?: string | StaticImageData;
 	isCategory?: boolean;
 	categoryId?: string;
-	onClick?: () => void;
+	onClick?: () => void; // Додаємо обробник кліку
 }
 
-export const CategoryCard = ({ image, title, pathname, isCategory }: CategoryCardProps) => {
+export const CategoryCard = ({ image, title, pathname, isCategory, onClick }: CategoryCardProps) => {
 	const pathToCatalog = 'https://klipster.com.ua';
 
 	// Логіка для формування URL з параметром 'section'
@@ -22,8 +22,20 @@ export const CategoryCard = ({ image, title, pathname, isCategory }: CategoryCar
 		? `/categories?section=${encodeURIComponent(pathname)}` // Якщо на головній — ведемо на фільтри
 		: '/categories';
 
+	// Обробка кліку
+	const handleClick = (e: React.MouseEvent) => {
+		// Якщо передана функція `onClick`, викликаємо її
+		if (onClick) {
+			onClick();
+		}
+	};
+
 	return (
-		<Link href={href} className='relative block rounded-xl shadow-md overflow-hidden h-full'>
+		<Link
+			href={href}
+			className='relative block rounded-xl shadow-md overflow-hidden h-full'
+			onClick={handleClick} // Додаємо обробку кліку
+		>
 			{image && (
 				<Image src={`${pathToCatalog}${image}`} alt='Category card' width={500} height={500} unoptimized className='' />
 			)}

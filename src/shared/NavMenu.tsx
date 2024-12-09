@@ -1,5 +1,5 @@
 'use client';
-import { usePopup } from '@/app/providers/usePopup';
+import { usePopup } from '@/app/hooks/usePopup';
 import Link from 'next/link';
 import { usePathname, useSearchParams } from 'next/navigation';
 import React, { useState } from 'react';

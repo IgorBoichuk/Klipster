@@ -1,60 +1,53 @@
 import { useEffect, useState } from 'react';
 import { Product } from '@/types';
 import fetchProducts from '@/helpers/fetchProducts';
+import { useCategory } from '../providers/CategoryContext';
 
-const useProducts = (initialCategory: string | null, initialPage = 1, pageSize = 20) => {
-	const [category, setCategory] = useState<string | null>(initialCategory); // Зберігаємо обрану категорію
-	const [products, setProducts] = useState<Product[]>([]); // Всі товари
-	const [filteredProducts, setFilteredProducts] = useState<Product[]>([]); // Відфільтровані товари
-	const [totalCount, setTotalCount] = useState<number>(0); // Загальна кількість товарів
-	const [page, setPage] = useState<number>(initialPage); // Поточна сторінка
+const useProducts = (initialPage = 1, pageSize = 20) => {
+	const [products, setProducts] = useState<Product[]>([]);
+	const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
+	const [totalCount, setTotalCount] = useState<number>(0);
+	const [page, setPage] = useState<number>(initialPage);
+
+	const { category } = useCategory();
 
 	useEffect(() => {
-		// Завантажуємо товари з бази
 		const loadProducts = async () => {
 			try {
-				const data = await fetchProducts(category || 'Автомобільні кріплення', page, pageSize);
-				if (data) {
-					setProducts(data.products); // Зберігаємо всі товари
-					setTotalCount(data.totalCount); // Зберігаємо загальну кількість товарів
+				const data = await fetchProducts(category || 'Кріплення обшивки, один капелюшок', page, pageSize);
+
+				if (data?.products) {
+					setProducts(data.products);
+					setTotalCount(data.totalCount || 0);
+				} else {
+					console.warn('No products found for category:', category);
 				}
 			} catch (error) {
 				console.error('Failed to fetch products:', error);
 			}
 		};
 		loadProducts();
-	}, [category, page, pageSize]);
+	}, [page]);
 
 	useEffect(() => {
-		// Кожного разу, коли змінюється обрана категорія, фільтруємо товари
 		if (category) {
 			const filtered = products.filter(product => product.category === category);
 			setFilteredProducts(filtered);
 		} else {
-			setFilteredProducts(products); // Якщо категорія не обрана, повертаємо всі товари
+			setFilteredProducts(products);
 		}
 	}, [category, products]);
 
-	// Функція для вибору категорії
-	const onCategoryChoose = (catName: string | null) => {
-		setCategory(catName); // Зберігаємо обрану категорію
-		setPage(1); // Скидаємо сторінку на першу
-		console.log('Chosen category:', catName);
-	};
-
-	// Функція для зміни сторінки
 	const onPageChange = (newPage: number) => {
-		setPage(newPage); // Оновлюємо поточну сторінку
+		setPage(newPage);
 	};
 
 	return {
 		products,
 		filteredProducts,
 		totalCount,
-		category,
 		page,
 		pageSize,
-		onCategoryChoose,
 		onPageChange,
 	};
 };

@@ -9,6 +9,7 @@ import Bolt from '../../public/images/bolts.png';
 import { Container } from '@/shared/Container';
 import { Suspense } from 'react';
 import { Loader } from '@/shared/Loader';
+import { CategoryProvider } from './providers/CategoryContext';
 
 const lora = Lora({
 	subsets: ['latin'],
@@ -32,14 +33,16 @@ export default async function RootLayout({
 			</head>
 			<body className='font-sans'>
 				<Suspense fallback={<Loader />}>
-					<PopupProvider>
-						<Header />
-						<Container>
-							{children}
-							<ReviewedGoods image={Bolt} title={'Ви переглядали'} />
-						</Container>
-						<Footer />
-					</PopupProvider>
+					<CategoryProvider>
+						<PopupProvider>
+							<Header />
+							<Container>
+								{children}
+								<ReviewedGoods image={Bolt} title={'Ви переглядали'} />
+							</Container>
+							<Footer />
+						</PopupProvider>
+					</CategoryProvider>
 				</Suspense>
 			</body>
 		</html>
