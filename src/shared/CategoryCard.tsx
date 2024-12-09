@@ -23,7 +23,7 @@ export const CategoryCard = ({ image, title, pathname, isCategory, onClick }: Ca
 		: '/categories';
 
 	// Обробка кліку
-	const handleClick = (e: React.MouseEvent) => {
+	const handleClick = () => {
 		// Якщо передана функція `onClick`, викликаємо її
 		if (onClick) {
 			onClick();

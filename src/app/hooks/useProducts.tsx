@@ -27,7 +27,7 @@ const useProducts = (initialPage = 1, pageSize = 20) => {
 			}
 		};
 		loadProducts();
-	}, [page]);
+	}, [category, page, pageSize]);
 
 	useEffect(() => {
 		if (category) {
