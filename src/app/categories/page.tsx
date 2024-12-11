@@ -4,6 +4,7 @@ import { useSearchParams } from 'next/navigation';
 import useCategories from '../hooks/useCategories';
 import { RecommendedProducts } from '@/shared/RecommendedProducts';
 import { AllCategories } from '@/shared/AllCategories';
+import FilterBySection from '@/shared/FilterBySection';
 
 const Categories = () => {
 	const searchParams = useSearchParams();
@@ -14,7 +15,14 @@ const Categories = () => {
 
 	return (
 		<>
-			<AllCategories filteredCategories={filteredCategories} />
+			<div className='grid grid-cols-1 lg:grid-cols-7 gap-4'>
+				<div className='hidden lg:block col-span-1'>
+					<FilterBySection />
+				</div>
+				<div className='col-span-6'>
+					<AllCategories filteredCategories={filteredCategories} />
+				</div>
+			</div>
 			<RecommendedProducts title='Рекомендовані товари' />
 		</>
 	);

@@ -5,8 +5,6 @@ import { Popup } from './Popup';
 import { SingleProductCrad } from './SingleProductCrad';
 import { usePopup } from '@/app/hooks/usePopup';
 import { usePathname, useRouter } from 'next/navigation';
-import NotFound from '@/app/not-found';
-import { ErrorPage } from './ErrorPage';
 
 interface ArticlesProps {
 	catData: Product[];
@@ -41,25 +39,20 @@ export const Articles: React.FC<ArticlesProps> = ({ catData }) => {
 		closeProduct();
 		router.replace(currentPathLink || '/');
 	};
-	console.log(catData.length === 0);
 
 	return (
 		<div>
 			<ul className='grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 items-center justify-center'>
-				{catData.length === 0 ? (
-					<ErrorPage />
-				) : (
-					catData.map(product => (
-						<li key={product.id} onClick={() => ClickOnProdukt(product.id, product.name_ua)} className=''>
-							<ProductCard
-								title={product.name_ua}
-								price={product.price}
-								article={product.item_number}
-								image={`${pathToPhoto}${product.photo}`}
-							/>
-						</li>
-					))
-				)}
+				{catData.map(product => (
+					<li key={product.id} onClick={() => ClickOnProdukt(product.id, product.name_ua)} className=''>
+						<ProductCard
+							title={product.name_ua}
+							price={product.price}
+							article={product.item_number}
+							image={`${pathToPhoto}${product.photo}`}
+						/>
+					</li>
+				))}
 			</ul>
 			{isOpenProduct && choosenProdukt && (
 				<Popup

@@ -1,12 +1,8 @@
 'use client';
 import { usePopup } from '@/app/hooks/usePopup';
 import Link from 'next/link';
-import { usePathname, useSearchParams } from 'next/navigation';
-import React, { useState } from 'react';
-import FilterBySection from './FilterBySection';
-import useCategories from '@/app/hooks/useCategories';
-import Arrow from '../../public/svg/arrow.svg';
-import Image from 'next/image';
+import { usePathname } from 'next/navigation';
+import React from 'react';
 
 interface NavMenuProps {
 	custom?: string;
@@ -24,11 +20,7 @@ export const NavMenu = ({ custom, footer, burger, header }: NavMenuProps) => {
 		{ id: 5, name: 'Контакти', href: '/contacts' },
 	];
 
-	const [showPopup, setShowPopup] = useState(false); // Стан для показу попапу
-	const searchParams = useSearchParams();
-	const sectionFromUrl = searchParams?.get('section') ?? null;
 	const pathname = usePathname();
-	const { filteredCategories, sections, selectedSection, handleSectionChange } = useCategories(sectionFromUrl);
 
 	return (
 		<nav
@@ -58,8 +50,6 @@ export const NavMenu = ({ custom, footer, burger, header }: NavMenuProps) => {
               ${header && ' text-cwhite rounded-t-lg border-cdarkgray border-t-[1px] hover:bg-cyellow'} 
               ${footer && ''} 
             `}
-						onMouseEnter={() => i.href === '/categories' && setShowPopup(true)} // Показуємо попап
-						onMouseLeave={() => i.href === '/categories' && setShowPopup(false)} // Ховаємо попап
 					>
 						<Link
 							href={i.href}
@@ -70,27 +60,8 @@ export const NavMenu = ({ custom, footer, burger, header }: NavMenuProps) => {
                 ${footer ? 'text-cwhite hover:text-cyellow bg-none text-center w-full text-xs xl:text-lg' : ''} 
                 ${footer && pathname === i.href ? ' text-cyellow' : ''}`}
 						>
-							{i.name}{' '}
-							{i.href === '/categories' && !footer ? (
-								<Image src={Arrow} alt='down arrow' width={8} className='rotate-90' />
-							) : (
-								''
-							)}
+							{i.name}
 						</Link>
-						{/* Попап меню */}
-						{i.href === '/categories' && showPopup && (
-							<div className='absolute left-1/2 -translate-x-1/2 bg-cyellow shadow-lg p-2 rounded-md w-[80%]'>
-								<FilterBySection
-									sections={sections}
-									selectedSection={selectedSection}
-									onSelectSection={handleSectionChange}
-									filteredCategories={filteredCategories}
-									sectionFromUrl={sectionFromUrl}
-									section_ua={''} // При необхідності, встановіть правильне значення
-									section_en={''} // Аналогічно для section_en
-								/>
-							</div>
-						)}
 					</li>
 				))}
 			</ul>
