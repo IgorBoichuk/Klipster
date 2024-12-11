@@ -22,7 +22,16 @@ const useCategories = (sectionFromUrl: string | null) => {
 				setCategories(data);
 
 				// Якщо є секція в URL, фільтруємо категорії
-				const filtered = sectionFromUrl ? data.filter(item => item.section_en === sectionFromUrl) : data;
+				const filtered = sectionFromUrl
+					? data.filter(
+							item =>
+								item.section_en
+									?.trim()
+									.toLowerCase()
+									.replace(/[^a-zа-я0-9\s]/gi, '')
+									.replace(/\s+/g, '-') === sectionFromUrl
+					  )
+					: data;
 				setFilteredCategories(filtered);
 
 				// Генерація унікальних секцій

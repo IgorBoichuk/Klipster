@@ -15,7 +15,13 @@ interface FilterBySectionProps {
 const FilterBySection = ({ sections }: FilterBySectionProps) => {
 	const router = useRouter();
 	const handleSectionClick = (sectionFromUrl: string) => {
-		router.push(`/categories?section=${encodeURIComponent(sectionFromUrl)}`);
+		const newPathName = sectionFromUrl
+			?.trim()
+			.toLowerCase()
+			.replace(/[^a-zа-я0-9\s]/gi, '')
+			.replace(/\s+/g, '-');
+		router.push(`/categories?section=${newPathName}`);
+		console.log(newPathName);
 	};
 
 	return (

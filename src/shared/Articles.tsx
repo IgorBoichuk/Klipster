@@ -25,7 +25,11 @@ export const Articles: React.FC<ArticlesProps> = ({ catData }) => {
 		openProduct();
 		const chooseProdukt = catData.find(item => item.id === id);
 		setChoosenProdukt(chooseProdukt || null);
-		const formattedName = encodeURIComponent(name.trim().toLowerCase().replace(/\s+/g, '-'));
+		const formattedName = name
+			.trim()
+			.toLowerCase()
+			.replace(/[^a-zа-я0-9\s]/gi, '')
+			.replace(/\s+/g, '-');
 		const newPath = `${currentPathLink}/${formattedName}`;
 		window.history.pushState(null, '', newPath);
 		setCurrentPathLink(currentPath);

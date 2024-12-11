@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { useState } from 'react';
 import useProducts from '@/app/hooks/useProducts';
 import { useCategory } from '@/app/providers/CategoryContext';
 import { Articles } from '@/shared/Articles';
@@ -17,10 +17,6 @@ const Categorypage = () => {
 	};
 	const maxPages = Math.ceil(totalCount / pageSize);
 	const pagesArray = Array.from({ length: maxPages }, (_, index) => index + 1);
-
-	const ClickOnPage = (page: number) => {
-		console.log(page);
-	};
 
 	return (
 		<div>
@@ -40,7 +36,7 @@ const Categorypage = () => {
 
 				<div className='flex gap-1'>
 					{pagesArray.map(page => (
-						<button key={page} onClick={() => ClickOnPage(page)} className=''>
+						<button key={page} onClick={() => handlePageChange(page)} className=''>
 							{page}
 						</button>
 					))}
