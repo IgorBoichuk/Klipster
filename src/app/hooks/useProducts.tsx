@@ -14,7 +14,7 @@ const useProducts = (initialPage = 1, pageSize = 20) => {
 	useEffect(() => {
 		const loadProducts = async () => {
 			try {
-				const data = await fetchProducts(category || 'Кріплення обшивки, один капелюшок', page, pageSize);
+				const data = await fetchProducts(category || '', page, pageSize);
 
 				if (data?.products) {
 					setProducts(data.products);

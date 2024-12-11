@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React from 'react';
 import useProducts from '@/app/hooks/useProducts';
 import { useCategory } from '@/app/providers/CategoryContext';
 import { Articles } from '@/shared/Articles';
@@ -11,6 +11,7 @@ import Image from 'next/image';
 const Categorypage = () => {
 	const { filteredProducts, totalCount, page, pageSize, onPageChange } = useProducts();
 	const { category } = useCategory();
+
 	// Обробка зміни сторінки
 	const handlePageChange = (newPage: number) => {
 		onPageChange(newPage);

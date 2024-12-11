@@ -21,7 +21,6 @@ const FilterBySection = ({ sections }: FilterBySectionProps) => {
 			.replace(/[^a-zа-я0-9\s]/gi, '')
 			.replace(/\s+/g, '-');
 		router.push(`/categories?section=${newPathName}`);
-		console.log(newPathName);
 	};
 
 	return (
