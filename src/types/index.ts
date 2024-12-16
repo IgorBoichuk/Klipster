@@ -11,6 +11,7 @@ export interface Category {
 	category_raitng: number;
 	photo_section: string;
 	photo_category: string;
+	section_slug: string;
 }
 
 export interface Product {
