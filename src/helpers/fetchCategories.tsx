@@ -5,8 +5,6 @@ interface FetchDataParams {
 }
 
 const fetchCategories = async <T,>({ table }: FetchDataParams): Promise<T[] | undefined> => {
-	console.log(table);
-
 	try {
 		const response = await axios.get('/api/getCategories', {
 			params: { table },

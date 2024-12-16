@@ -14,11 +14,7 @@ interface CategoryCardProps {
 
 export const CategoryCard = ({ image, title, pathname, isCategory, onClick }: CategoryCardProps) => {
 	const pathToCatalog = 'https://klipster.com.ua';
-	console.log(pathname);
 
-	// const newPathName = pathname?.trim().toLowerCase();
-
-	// Логіка для формування URL з параметром 'section'
 	const href = isCategory
 		? `/categories/${pathname}` // Якщо на сторінці категорій — ведемо на сторінку з товарами
 		: pathname
@@ -27,18 +23,13 @@ export const CategoryCard = ({ image, title, pathname, isCategory, onClick }: Ca
 
 	// Обробка кліку
 	const handleClick = () => {
-		// Якщо передана функція `onClick`, викликаємо її
 		if (onClick) {
 			onClick();
 		}
 	};
 
 	return (
-		<Link
-			href={href}
-			className='relative block rounded-xl shadow-md overflow-hidden h-full'
-			onClick={handleClick} // Додаємо обробку кліку
-		>
+		<Link href={href} className='relative block rounded-xl shadow-md overflow-hidden h-full' onClick={handleClick}>
 			{image && (
 				<Image src={`${pathToCatalog}${image}`} alt='Category card' width={500} height={500} unoptimized className='' />
 			)}

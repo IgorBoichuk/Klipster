@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Product } from '@/types';
 import fetchProducts from '@/helpers/fetchProducts';
 import { useCategory } from '../providers/CategoryContext';
+import { usePathname } from 'next/navigation';
 
 const useProducts = (initialPage = 1, pageSize = 20) => {
 	const [products, setProducts] = useState<Product[]>([]);
@@ -11,10 +12,14 @@ const useProducts = (initialPage = 1, pageSize = 20) => {
 
 	const { categorySlug } = useCategory();
 
+	const pathFromUrl = usePathname();
+	const currentPath = pathFromUrl?.split('/')[2];
+	const currentPage = pathFromUrl?.split('&page=')[1];
+
 	useEffect(() => {
 		const loadProducts = async () => {
 			try {
-				const data = await fetchProducts(categorySlug || '', page, pageSize);
+				const data = await fetchProducts((categorySlug || currentPath) as string, page, pageSize);
 
 				if (data?.products) {
 					setProducts(data.products);

@@ -14,8 +14,6 @@ interface ErrorResponse {
 
 const fetchProducts = async (category_slug: string, page: number, pageSize: number): Promise<FetchProductsResponse> => {
 	try {
-		// Формуємо параметри для запиту
-
 		const params = {
 			table: 'partsitems',
 			category_slug,
@@ -23,7 +21,6 @@ const fetchProducts = async (category_slug: string, page: number, pageSize: numb
 			pageSize,
 		};
 
-		console.log(params);
 		const response = await axios.get('/api/getProducts', { params });
 
 		const data = response.data;
