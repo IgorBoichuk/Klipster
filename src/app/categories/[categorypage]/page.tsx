@@ -11,7 +11,7 @@ import { ErrorPage } from '@/shared/ErrorPage';
 
 const Categorypage = () => {
 	const { filteredProducts, totalCount, page, pageSize, onPageChange } = useProducts();
-	const { category } = useCategory();
+	const { categorySlug } = useCategory();
 
 	// Обробка зміни сторінки
 	const handlePageChange = (newPage: number) => {
@@ -20,6 +20,10 @@ const Categorypage = () => {
 	const maxPages = Math.ceil(totalCount / pageSize);
 	const pagesArray = Array.from({ length: maxPages }, (_, index) => index + 1);
 
+	// console.log(category);
+	// console.log(page);
+	// console.log(pageSize);
+
 	return (
 		<div>
 			<BreadCrumb />
@@ -27,7 +31,7 @@ const Categorypage = () => {
 				<ErrorPage />
 			) : (
 				<div>
-					<SectionTitle title={category} />
+					<SectionTitle title={categorySlug} />
 					<Articles catData={filteredProducts} />
 					{/* Пагінація */}
 

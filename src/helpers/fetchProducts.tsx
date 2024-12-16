@@ -12,17 +12,18 @@ interface ErrorResponse {
 	// інші можливі властивості відповіді
 }
 
-const fetchProducts = async (category: string, page: number, pageSize: number): Promise<FetchProductsResponse> => {
+const fetchProducts = async (category_slug: string, page: number, pageSize: number): Promise<FetchProductsResponse> => {
 	try {
 		// Формуємо параметри для запиту
 
 		const params = {
 			table: 'partsitems',
-			category,
+			category_slug,
 			page,
 			pageSize,
 		};
 
+		console.log(params);
 		const response = await axios.get('/api/getProducts', { params });
 
 		const data = response.data;

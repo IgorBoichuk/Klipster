@@ -1,4 +1,5 @@
 export interface Category {
+	category_slug: string;
 	id: number;
 	category_en: string;
 	category_ru: string;
@@ -18,7 +19,10 @@ export interface Product {
 	item_number: string;
 	name_ru: string;
 	name_ua: string;
-	category: string;
+	category_slug: string;
+	category_ua: string;
+	category_en: string;
+	category_ru: string;
 	item_type: string;
 	color: string;
 	installation_place: string;

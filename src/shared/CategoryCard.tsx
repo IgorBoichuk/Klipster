@@ -14,18 +14,15 @@ interface CategoryCardProps {
 
 export const CategoryCard = ({ image, title, pathname, isCategory, onClick }: CategoryCardProps) => {
 	const pathToCatalog = 'https://klipster.com.ua';
+	console.log(pathname);
 
-	const newPathName = pathname
-		?.trim()
-		.toLowerCase()
-		.replace(/[^a-zа-я0-9\s]/gi, '')
-		.replace(/\s+/g, '-');
+	// const newPathName = pathname?.trim().toLowerCase();
 
 	// Логіка для формування URL з параметром 'section'
 	const href = isCategory
-		? `/categories/${newPathName}` // Якщо на сторінці категорій — ведемо на сторінку з товарами
-		: newPathName
-		? `/categories?section=${newPathName}` // Якщо на головній — ведемо на фільтри
+		? `/categories/${pathname}` // Якщо на сторінці категорій — ведемо на сторінку з товарами
+		: pathname
+		? `/categories?section=${pathname}` // Якщо на головній — ведемо на фільтри
 		: '/categories';
 
 	// Обробка кліку

@@ -18,6 +18,7 @@ const useCategories = (sectionFromUrl: string | null) => {
 		// Завантаження категорій асинхронно
 		const loadCategories = async () => {
 			const data = await fetchCategories<Category>({ table: 'categories' });
+
 			if (data) {
 				setCategories(data);
 

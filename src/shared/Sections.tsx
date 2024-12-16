@@ -31,7 +31,7 @@ export const Sections = () => {
 				{/* Мапимо відсортовані розділи */}
 				{sortedSections.map(item => (
 					<li key={item.id} className='h-full'>
-						<CategoryCard title={item.section_ua} image={item.photo_section} pathname={item.section_en} />
+						<CategoryCard title={item.section_ua} image={item.photo_section} pathname={item.section_slug} />
 					</li>
 				))}
 			</ul>

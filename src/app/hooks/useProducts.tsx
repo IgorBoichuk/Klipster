@@ -9,34 +9,34 @@ const useProducts = (initialPage = 1, pageSize = 20) => {
 	const [totalCount, setTotalCount] = useState<number>(0);
 	const [page, setPage] = useState<number>(initialPage);
 
-	const { category } = useCategory();
+	const { categorySlug } = useCategory();
 
 	useEffect(() => {
 		const loadProducts = async () => {
 			try {
-				const data = await fetchProducts(category || '', page, pageSize);
+				const data = await fetchProducts(categorySlug || '', page, pageSize);
 
 				if (data?.products) {
 					setProducts(data.products);
 					setTotalCount(data.totalCount || 0);
 				} else {
-					console.warn('No products found for category:', category);
+					console.warn('No products found for category:', categorySlug);
 				}
 			} catch (error) {
 				console.error('Failed to fetch products:', error);
 			}
 		};
 		loadProducts();
-	}, [category, page, pageSize]);
+	}, [categorySlug, page, pageSize]);
 
 	useEffect(() => {
-		if (category) {
-			const filtered = products.filter(product => product.category === category);
+		if (categorySlug) {
+			const filtered = products.filter(product => product.category_slug === categorySlug);
 			setFilteredProducts(filtered);
 		} else {
 			setFilteredProducts(products);
 		}
-	}, [category, products]);
+	}, [categorySlug, products]);
 
 	const onPageChange = (newPage: number) => {
 		setPage(newPage);

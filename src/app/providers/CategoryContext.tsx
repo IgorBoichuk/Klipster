@@ -2,16 +2,16 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 
 interface CategoryContextType {
-	category: string | null;
-	setCategory: (category: string | null) => void;
+	categorySlug: string | null;
+	setCategorySlug: (category: string | null) => void;
 }
 
 const CategoryContext = createContext<CategoryContextType | undefined>(undefined);
 
 export const CategoryProvider = ({ children }: { children: ReactNode }) => {
-	const [category, setCategory] = useState<string | null>(null);
+	const [categorySlug, setCategorySlug] = useState<string | null>(null);
 
-	return <CategoryContext.Provider value={{ category, setCategory }}>{children}</CategoryContext.Provider>;
+	return <CategoryContext.Provider value={{ categorySlug, setCategorySlug }}>{children}</CategoryContext.Provider>;
 };
 
 export const useCategory = (): CategoryContextType => {

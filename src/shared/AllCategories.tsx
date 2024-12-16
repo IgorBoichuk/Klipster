@@ -12,12 +12,12 @@ interface AllCategoriesProps {
 export const AllCategories = ({ filteredCategories }: AllCategoriesProps) => {
 	const sortedCategories = [...filteredCategories].sort((a, b) => a.category_raitng - b.category_raitng);
 	const router = useRouter(); // Ініціалізуємо роутер
-	const { setCategory } = useCategory();
+	const { setCategorySlug } = useCategory();
 
-	const handleCategoryClick = (categoryNameEn: string, categoryNameUa: string) => {
+	const handleCategoryClick = (categoryNameUa: string, categorySlug: string) => {
 		// Перенаправляємо до сторінки з вибраною категорією
-		setCategory(categoryNameUa);
-		router.push(`/category?category=${categoryNameEn}`);
+		setCategorySlug(categorySlug);
+		// router.push(`/category?categories=${categoryNameUa}`);
 	};
 
 	return (
@@ -29,8 +29,8 @@ export const AllCategories = ({ filteredCategories }: AllCategoriesProps) => {
 						<CategoryCard
 							title={item.category_ua}
 							image={item.photo_category}
-							pathname={item.category_en}
-							onClick={() => handleCategoryClick(item.category_en, item.category_ua)} // Перенаправляємо за категорією
+							pathname={item.category_slug}
+							onClick={() => handleCategoryClick(item.category_ua, item.category_slug)} // Перенаправляємо за категорією
 							isCategory
 						/>
 					</li>

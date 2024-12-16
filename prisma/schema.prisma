@@ -12,9 +12,11 @@ model categories {
   category_en     String @db.Text
   category_ru     String @db.TinyText
   category_ua     String @db.TinyText
+  category_slug   String @db.TinyText
   section_en      String @db.Text
   section_ru      String @db.TinyText
   section_ua      String @db.TinyText
+  section_slug    String @db.TinyText
   section_raitng  Int
   category_raitng Int
   photo_section   String @db.Text
@@ -22,22 +24,26 @@ model categories {
 }
 
 model partsitems {
-  id                 Int    @id @default(autoincrement())
-  brand              String @db.VarChar(20)
-  item_number        String @db.VarChar(10)
-  name_ru            String @db.VarChar(100)
-  name_ua            String @db.VarChar(100)
-  category           String @db.VarChar(100)
-  item_type          String @db.VarChar(100)
-  color              String @db.VarChar(100)
-  installation_place String @db.VarChar(100)
-  description_ru     String @db.Text
-  description_ua     String @db.Text
+  id                 Int     @id @default(autoincrement())
+  brand              String  @db.VarChar(20)
+  item_number        String  @db.VarChar(10)
+  name_ru            String? @db.VarChar(100)
+  name_ua            String  @db.VarChar(100)
+  category_ua        String  @db.VarChar(100)
+  category_ru        String? @db.VarChar(100)
+  category_en        String? @db.VarChar(100)
+  category_slug      String  @db.TinyText
+  type               String? @db.VarChar(100)
+  view               String? @db.VarChar(100)
+  subview            String? @db.VarChar(100)
+  color              String? @db.VarChar(100)
+  material           String? @db.VarChar(100)
+  installation_place String? @db.VarChar(100)
+  description_ru     String? @db.Text
+  description_ua     String? @db.Text
   availability       Int
   price              Int
-  photo              String @db.VarChar(255)
-  car_brand          String @db.VarChar(100)
-  car_model          String @db.VarChar(100)
+  photo              String  @db.VarChar(255)
 }
 
 /// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
