@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Product } from '@/types';
 import { ProductCard } from './ProductCard';
 import { Popup } from './Popup';
 import { SingleProductCrad } from './SingleProductCrad';
 import { usePopup } from '@/app/hooks/usePopup';
 import { usePathname, useRouter } from 'next/navigation';
+import { useCategory } from '@/app/providers/CategoryContext';
 
 interface ArticlesProps {
 	catData: Product[];
@@ -12,6 +13,7 @@ interface ArticlesProps {
 }
 
 export const Articles: React.FC<ArticlesProps> = ({ catData }) => {
+	const { setCategoryName, categoryName } = useCategory();
 	const { openProduct, isOpenProduct, closeProduct } = usePopup(); // Отримуємо функції та стан з контексту
 	const [choosenProdukt, setChoosenProdukt] = useState<Product | null>(null);
 
@@ -20,6 +22,15 @@ export const Articles: React.FC<ArticlesProps> = ({ catData }) => {
 
 	const currentPath = usePathname();
 	const [currentPathLink, setCurrentPathLink] = useState(currentPath);
+
+	const CerrentCategoryName = () => {
+		const currentname = catData[0].category_ua;
+		setCategoryName(currentname);
+	};
+
+	useEffect(() => {
+		categoryName || CerrentCategoryName();
+	});
 
 	const ClickOnProdukt = (id: number, name: string): void => {
 		openProduct();

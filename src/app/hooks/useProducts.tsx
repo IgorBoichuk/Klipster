@@ -3,7 +3,7 @@ import { Product } from '@/types';
 import fetchProducts from '@/helpers/fetchProducts';
 import { useCategory } from '../providers/CategoryContext';
 import { usePathname } from 'next/navigation';
-
+import { useSearchParams } from 'next/navigation';
 const useProducts = (initialPage = 1, pageSize = 20) => {
 	const [products, setProducts] = useState<Product[]>([]);
 	const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
@@ -14,12 +14,20 @@ const useProducts = (initialPage = 1, pageSize = 20) => {
 
 	const pathFromUrl = usePathname();
 	const currentPath = pathFromUrl?.split('/')[2];
-	const currentPage = pathFromUrl?.split('&page=')[1];
+
+	const searchParams = useSearchParams();
 
 	useEffect(() => {
+		const currentPage = Number(searchParams?.get('page')) || 1;
+		const currentPageSize = Number(searchParams?.get('pageSize')) || 20;
+
 		const loadProducts = async () => {
 			try {
-				const data = await fetchProducts((categorySlug || currentPath) as string, page, pageSize);
+				const data = await fetchProducts(
+					(categorySlug || currentPath) as string,
+					currentPage || page,
+					currentPageSize || pageSize
+				);
 
 				if (data?.products) {
 					setProducts(data.products);

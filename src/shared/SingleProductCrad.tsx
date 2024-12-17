@@ -13,6 +13,14 @@ interface SingleProductCradProps {
 export const SingleProductCrad: React.FC<SingleProductCradProps> = ({ selectedProduct, img, onClose }) => {
 	const popupRef = useRef(null);
 
+	// const localStore = localStorage.getItem('cart');
+	// const cart = localStore ? JSON.parse(localStore) : [];
+
+	// const handleAddToCart = () => {
+	// 	const newCart = [...cart, selectedProduct];
+	// 	localStorage.setItem('cart', JSON.stringify(newCart));
+	// };
+
 	return (
 		<div
 			className='relative z-50 left-1/2 -translate-x-1/2 mt-28 grid grid-cols-1 md:grid-cols-2 rounded-xl shadow-md h-max w-[90%] md:w-4/5 bg-cwhite p-6'
