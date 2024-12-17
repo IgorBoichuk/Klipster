@@ -48,7 +48,12 @@ model partsitems {
 
 /// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
 model users {
-  COL_1 String? @unique(map: "id") @map("COL 1") @db.VarChar(68)
+  id       Int     @id @default(autoincrement())
+  name     String? @db.TinyText
+  lastname String? @db.TinyText
+  phone    String? @db.TinyText
+  email    String? @db.TinyText
+  password String? @db.TinyText
 
   @@ignore
 }
