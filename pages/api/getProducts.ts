@@ -26,15 +26,25 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 	}
 
 	try {
-		const totalCount = await prisma.partsitems.count({
-			where: { category_slug: category_slug as string },
-		});
+		// const totalCount = await prisma.partsitems.count({
+		// 	where: { category_slug: category_slug as string },
+		// });
 
-		const products = await prisma.partsitems.findMany({
-			where: { category_slug: category_slug as string },
-			skip: (pageNumber - 1) * finalPageSize,
-			take: finalPageSize,
-		});
+		const totalCountResult = await prisma.$queryRaw<
+			{ count: bigint }[]
+		>`SELECT COUNT(*) as count FROM partsitems WHERE category_slug = ${category_slug}`;
+		const totalCount = Number(totalCountResult[0]?.count || 0);
+
+		// const products = await prisma.partsitems.findMany({
+		// 	where: { category_slug: category_slug as string },
+		// 	skip: (pageNumber - 1) * finalPageSize,
+		// 	take: finalPageSize,
+		// });
+
+		const products = await prisma.$queryRaw<any[]>`SELECT * 
+   FROM partsitems 
+   WHERE category_slug = ${category_slug} 
+   LIMIT ${pageSizeNumber} OFFSET ${(pageNumber - 1) * pageSizeNumber}`;
 
 		res.status(200).json({
 			products,
