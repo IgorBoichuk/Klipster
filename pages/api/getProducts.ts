@@ -27,11 +27,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
 	try {
 		const totalCount = await prisma.partsitems.count({
-			where: { category_slug: category_slug },
+			where: { category_slug: category_slug as string },
 		});
 
 		const products = await prisma.partsitems.findMany({
-			where: { category_slug: category_slug },
+			where: { category_slug: category_slug as string },
 			skip: (pageNumber - 1) * finalPageSize,
 			take: finalPageSize,
 		});
