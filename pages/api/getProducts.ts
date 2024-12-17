@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import prisma from '../../prisma/lib/prisma';
+import { partsitems } from '@prisma/client';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
 	const { category_slug, page = 1, pageSize = 60 } = req.query;
@@ -41,7 +42,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 		// 	take: finalPageSize,
 		// });
 
-		const products = await prisma.$queryRaw<any[]>`SELECT * 
+		const products = await prisma.$queryRaw<partsitems[]>`SELECT *
    FROM partsitems 
    WHERE category_slug = ${category_slug} 
    LIMIT ${pageSizeNumber} OFFSET ${(pageNumber - 1) * pageSizeNumber}`;
