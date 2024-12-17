@@ -26,8 +26,8 @@ export const Articles: React.FC<ArticlesProps> = ({ catData }) => {
 	const currentname = catData[0].category_ua;
 
 	useEffect(() => {
-		categoryName || setCategoryName(currentname);
-	}, []);
+		!categoryName && setCategoryName(currentname);
+	}, [categoryName, currentname, setCategoryName]);
 
 	const ClickOnProdukt = (id: number, name: string): void => {
 		openProduct();
