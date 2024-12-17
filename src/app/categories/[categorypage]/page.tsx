@@ -11,7 +11,7 @@ import { ErrorPage } from '@/shared/ErrorPage';
 
 const Categorypage = () => {
 	const { filteredProducts, totalCount, page, pageSize, onPageChange } = useProducts();
-	const { categorySlug, categoryName } = useCategory();
+	const { categoryName } = useCategory();
 
 	// Обробка зміни сторінки
 	const handlePageChange = (newPage: number) => {

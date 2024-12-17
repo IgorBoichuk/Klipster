@@ -23,13 +23,10 @@ export const Articles: React.FC<ArticlesProps> = ({ catData }) => {
 	const currentPath = usePathname();
 	const [currentPathLink, setCurrentPathLink] = useState(currentPath);
 
-	const CerrentCategoryName = () => {
-		const currentname = catData[0].category_ua;
-		setCategoryName(currentname);
-	};
+	const currentname = catData[0].category_ua;
 
 	useEffect(() => {
-		categoryName || CerrentCategoryName();
+		categoryName || setCategoryName(currentname);
 	});
 
 	const ClickOnProdukt = (id: number, name: string): void => {

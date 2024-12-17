@@ -40,7 +40,7 @@ const useProducts = (initialPage = 1, pageSize = 20) => {
 			}
 		};
 		loadProducts();
-	}, [categorySlug, page, pageSize]);
+	}, [categorySlug, page, pageSize, currentPath, searchParams]);
 
 	useEffect(() => {
 		if (categorySlug) {
