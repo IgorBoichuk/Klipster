@@ -31,7 +31,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 		});
 
 		const products = await prisma.partsitems.findMany({
-			where: { category_slug },
+			where: { category_slug: category_slug },
 			skip: (pageNumber - 1) * finalPageSize,
 			take: finalPageSize,
 		});
