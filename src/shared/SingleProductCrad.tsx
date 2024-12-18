@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import Image from 'next/image';
 import { Product } from '@/types'; // Важливо, щоб шлях до `Product` був коректним
 import Cross from '../../public/svg/close.svg';
@@ -12,7 +12,19 @@ interface SingleProductCradProps {
 
 export const SingleProductCrad: React.FC<SingleProductCradProps> = ({ selectedProduct, img, onClose }) => {
 	const popupRef = useRef(null);
+	const [quantity, setQuantity] = useState(1);
 
+	const onQuantityChange = (event: 'increment' | 'decrement') => {
+		if (event === 'increment') {
+			setQuantity(prev => prev + 1);
+		} else if (event === 'decrement') {
+			setQuantity(prev => (prev <= 1 ? 1 : prev - 1));
+		}
+	};
+
+	const onInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+		setQuantity(Number(event.target.value));
+	};
 	// const localStore = localStorage.getItem('cart');
 	// const cart = localStore ? JSON.parse(localStore) : [];
 
@@ -47,14 +59,22 @@ export const SingleProductCrad: React.FC<SingleProductCradProps> = ({ selectedPr
 						<p className='text-base xl:text-2xl text-slate-400 font-normal'>Артикул: {selectedProduct.item_number}</p>
 					</div>
 					<div className='grid grid-cols-2 items-center py-4'>
-						<p className='text-xl font-normal'>{selectedProduct.price} грн.</p>
+						<p className='text-xl font-normal'>
+							{quantity ? quantity * selectedProduct.price : selectedProduct.price} грн.
+						</p>
 						<div className='relative grid grid-cols-3 text-center bg-slate-200 rounded-xl items-center'>
-							<button className='relative py-2 px-2 vertical-after'>-</button>
+							<button className='relative py-2 px-2 vertical-after' onClick={() => onQuantityChange('decrement')}>
+								-
+							</button>
 							<input
-								type='number'
 								className='bg-slate-200 text-center appearance-none [&::-webkit-inner-spin-button]:hidden [&::-webkit-outer-spin-button]:hidden'
+								type='number'
+								value={quantity}
+								onChange={onInputChange}
 							/>
-							<button className='relative py-2 px-2 vertical-before'>+</button>
+							<button className='relative py-2 px-2 vertical-before' onClick={() => onQuantityChange('increment')}>
+								+
+							</button>
 						</div>
 					</div>
 					<button className='add-to-cart cursor-pointer rounded-xl bg-amber-300 h-9 w-4/5 m-auto'>В корзину</button>

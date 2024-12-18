@@ -10,6 +10,7 @@ import { Container } from '@/shared/Container';
 import { Suspense } from 'react';
 import { Loader } from '@/shared/Loader';
 import { CategoryProvider } from './providers/CategoryContext';
+import { CartProvider } from './providers/CartContext';
 
 const lora = Lora({
 	subsets: ['latin'],
@@ -33,16 +34,18 @@ export default async function RootLayout({
 			</head>
 			<body className='font-sans'>
 				<Suspense fallback={<Loader />}>
-					<CategoryProvider>
-						<PopupProvider>
-							<Header />
-							<Container>
-								{children}
-								<ReviewedGoods image={Bolt} title={'Ви переглядали'} />
-							</Container>
-							<Footer />
-						</PopupProvider>
-					</CategoryProvider>
+					<CartProvider>
+						<CategoryProvider>
+							<PopupProvider>
+								<Header />
+								<Container>
+									{children}
+									<ReviewedGoods image={Bolt} title={'Ви переглядали'} />
+								</Container>
+								<Footer />
+							</PopupProvider>
+						</CategoryProvider>
+					</CartProvider>
 				</Suspense>
 			</body>
 		</html>

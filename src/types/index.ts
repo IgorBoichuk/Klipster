@@ -30,7 +30,7 @@ export interface Product {
 	description_ru: string;
 	description_ua: string;
 	availability: string;
-	price: string;
+	price: number;
 	photo: string;
 	car_brand: string;
 	car_model: string;

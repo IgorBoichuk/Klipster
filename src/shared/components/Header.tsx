@@ -13,6 +13,7 @@ import Cart from '../../../public/svg/cartt.svg';
 import { Burger } from '../Burger';
 import { NavMenu } from '../NavMenu';
 import { Logo } from '../Logo';
+import { ShoppingCart } from '../ShoppingCart';
 
 export const Header = () => {
 	// const pathname = usePathname().split('/')[1]
@@ -52,9 +53,10 @@ export const Header = () => {
 						<button className='w-6 h-6 lg:w-8 lg:h-8'>
 							<Image src={User} width={40} alt='Login link'></Image>
 						</button>
-						<Link href={'/cart'} className='w-6 h-6 lg:w-8 lg:h-8'>
+						{/* <button type='button' className='w-6 h-6 lg:w-8 lg:h-8'>
 							<Image src={Cart} width={40} alt='Login link'></Image>
-						</Link>
+						</button> */}
+						<ShoppingCart />
 						<Burger />
 					</div>
 				</div>

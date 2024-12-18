@@ -56,6 +56,7 @@ export const Articles: React.FC<ArticlesProps> = ({ catData }) => {
 				{catData.map(product => (
 					<li key={product.id} onClick={() => ClickOnProdukt(product.id, product.name_ua)} className=''>
 						<ProductCard
+							id={product.id}
 							title={product.name_ua}
 							price={product.price}
 							article={product.item_number}
