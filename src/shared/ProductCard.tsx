@@ -9,6 +9,7 @@ interface ProductCardProps {
 	image: StaticImageData | string;
 	price: number; // додали price
 	article: string; // додали article
+	quantity?: number;
 }
 
 export const ProductCard = ({ id, image, title, price, article }: ProductCardProps) => {
@@ -39,7 +40,15 @@ export const ProductCard = ({ id, image, title, price, article }: ProductCardPro
 		}
 	};
 
-	const onAddToCart = (event, id, title, image, price, article, quantity) => {
+	const onAddToCart = (
+		event: React.MouseEvent<HTMLButtonElement>,
+		id: number,
+		title: string,
+		image: StaticImageData | string,
+		price: number,
+		article: string,
+		quantity: number
+	) => {
 		event.stopPropagation();
 		addToCart({ id, title, image, price, article, quantity }); // Додаємо товар до кошика
 	};
@@ -71,7 +80,7 @@ export const ProductCard = ({ id, image, title, price, article }: ProductCardPro
 				</div>
 				<button
 					className='add-to-cart rounded-xl bg-amber-300 h-9 w-28 m-auto'
-					onClick={event => onAddToCart(event, id, title, image, price, article)}
+					onClick={event => onAddToCart(event, id, title, image, price, article, quantity)}
 				>
 					В корзину
 				</button>

@@ -1,5 +1,6 @@
 'use client';
 import React, { createContext, useContext, useState, ReactNode, useEffect } from 'react';
+import { StaticImageData } from 'next/image';
 
 interface CartItem {
 	id: number; // Унікальний ідентифікатор товару
@@ -14,7 +15,8 @@ interface CartContextType {
 	partsInCart: CartItem[];
 	setPartsInCart: React.Dispatch<React.SetStateAction<CartItem[]>>;
 	addToCart: (item: CartItem) => void;
-	removeFromCart: (id: string) => void;
+	removeFromCart: (id: number) => void;
+	updateQuantity: (id: number, quantity: number) => void;
 	clearCart: () => void;
 }
 
@@ -22,7 +24,6 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
 	const [partsInCart, setPartsInCart] = useState<CartItem[]>([]);
-	console.log(partsInCart);
 
 	// Ініціалізація корзини з localStorage
 	useEffect(() => {
@@ -52,7 +53,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 	};
 
 	// Видалення товару з корзини
-	const removeFromCart = (id: string) => {
+	const removeFromCart = (id: number) => {
 		setPartsInCart(prev => prev.filter(item => item.id !== id));
 	};
 
@@ -61,8 +62,16 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 		setPartsInCart([]);
 	};
 
+	const updateQuantity = (id: number, quantity: number) => {
+		setPartsInCart(prev =>
+			prev.map(
+				item => (item.id === id ? { ...item, quantity: Math.max(1, quantity) } : item) // Мінімум 1
+			)
+		);
+	};
+
 	return (
-		<CartContext.Provider value={{ partsInCart, setPartsInCart, addToCart, removeFromCart, clearCart }}>
+		<CartContext.Provider value={{ partsInCart, setPartsInCart, addToCart, removeFromCart, clearCart, updateQuantity }}>
 			{children}
 		</CartContext.Provider>
 	);

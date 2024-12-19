@@ -14,17 +14,16 @@ interface PopupProps {
 
 export const Popup = ({ children, customOverlay, currentPathLink }: PopupProps) => {
 	const popupRef = useRef(null);
-	const { closePopup, closeProduct } = usePopup(); // Отримуємо функції з контексту
+	const { closePopup, closeProduct, closeCart } = usePopup(); // Отримуємо функції з контексту
 	const router = useRouter();
 
 	const handleClickOutside = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
 		if (e.target === popupRef.current) {
 			closePopup();
 			closeProduct();
+			closeCart();
 			if (currentPathLink) {
 				router.replace(currentPathLink);
-			} else {
-				router.replace('/');
 			}
 		}
 	};
