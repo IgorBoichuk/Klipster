@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Product } from '@/types';
 import fetchProducts from '@/helpers/fetchProducts';
 import { useCategory } from '../providers/CategoryContext';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import { useSearchParams } from 'next/navigation';
 const useProducts = (initialPage = 1, pageSize = 20) => {
 	const [products, setProducts] = useState<Product[]>([]);
@@ -16,7 +16,7 @@ const useProducts = (initialPage = 1, pageSize = 20) => {
 	const currentPath = pathFromUrl?.split('/')[2];
 	const searchParams = useSearchParams();
 
-	const router = useRouter();
+	// const router = useRouter();
 
 	useEffect(() => {
 		const currentPage = Number(searchParams?.get('page')) || page;
