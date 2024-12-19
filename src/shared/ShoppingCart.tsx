@@ -47,19 +47,20 @@ export const ShoppingCart = () => {
 				<Image src={Cart} width={40} alt='Cart icon'></Image>
 			</button>
 			{isOpenCart && (
-				<Popup custom='flex flex-col p-2 right-2 w-[70%] sm:w-1/2 md:w-[50%] lg:w-[40%] py-[15px] lg:hidden bg-cyellow'>
-					<div className='absolute top-0 right-0 w-[30%] grid gap-6 h-full p-6 bg-cwhite '>
+				// <Popup custom='flex flex-col p-2 right-2 w-[70%] sm:w-1/2 md:w-[50%] lg:w-[40%] py-[15px] lg:hidden bg-cyellow'>
+				<Popup custom='flex flex-col lg:hidden bg-cyellow'>
+					<div className='absolute top-0 right-0 w-[40%] grid h-full pl-6 pr-2 pb-2 bg-cwhite '>
 						<SectionTitle title='Ваш кошик' />
 						{partsInCart.length === 0 && <SectionTitle title='В кошику поки що пусто' />}
-						<div className='overflow-y-auto grid gap-6'>
+						<div className='overflow-y-auto grid gap-2 '>
 							{partsInCart.map(part => (
-								<div key={part.id} className='grid grid-cols-2'>
+								<div key={part.id} className='grid grid-cols-2 pb-2 border-b border-b-cdarkgray items-center'>
 									<Image
 										src={part.image}
 										alt='Category'
 										width={500}
 										height={500}
-										className='rounded-lg drop-shadow-md flex items-center justify-center'
+										className='rounded-lg drop-shadow-md flex items-center justify-center w-32'
 									/>
 
 									<div className='flex flex-col flex-grow pl-2'>
@@ -82,7 +83,7 @@ export const ShoppingCart = () => {
 										<button
 											type='button'
 											onClick={event => onRemove(event, part.id)}
-											className='bg-cyellow text-cwhite w-max px-1'
+											className='bg-cyellow text-cwhite w-max px-2 rounded-lg'
 										>
 											Remove
 										</button>
@@ -96,9 +97,7 @@ export const ShoppingCart = () => {
 							<p>Сума Вашого замовлення {totalPrice} грн</p>
 						)}
 
-						<button
-							className={`inactive bg-cyellow text-cwhite w-full h-max py-2 rounded-lg text-lg font-medium cursor-pointer`}
-						>
+						<button className={`inactive bg-cyellow text-cwhite w-full h-max py-2 rounded-lg text-lg font-medium`}>
 							Оформити замовлення
 						</button>
 					</div>

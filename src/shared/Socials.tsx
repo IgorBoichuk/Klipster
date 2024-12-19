@@ -13,7 +13,7 @@ interface SocialsProps {
 export const Socials = ({ custom }: SocialsProps) => {
 	return (
 		<div className={` ${custom ? custom : ''}`}>
-			<Link href={'tel:${+380930392656}'} className='flex gap-2'>
+			<Link href={'tel:${+380930392656}'} className='flex gap-2 '>
 				<Image src={Phone} width={40} alt='phone link' className='block w-5 h-5 lg:w-6 lg:h-6' />
 				<p className='hidden lg:block text-cwhite'>+380930392656</p>
 			</Link>
