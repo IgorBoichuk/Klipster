@@ -9,7 +9,6 @@ import Phone from '../../../public/svg/phone.svg';
 import Find from '../../../public/svg/find.svg';
 // import Login from '../../../public/svg/login.svg';
 import User from '../../../public/svg/user.svg';
-import Cart from '../../../public/svg/cartt.svg';
 import { Burger } from '../Burger';
 import { NavMenu } from '../NavMenu';
 import { Logo } from '../Logo';

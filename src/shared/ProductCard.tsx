@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Image, { StaticImageData } from 'next/image';
 import TempImage from '../../public/images/avatar/avatar2.png';
 import { useCart } from '@/app/providers/CartContext';
