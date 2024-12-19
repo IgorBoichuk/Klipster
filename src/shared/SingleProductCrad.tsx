@@ -25,13 +25,6 @@ export const SingleProductCrad: React.FC<SingleProductCradProps> = ({ selectedPr
 	const onInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		setQuantity(Number(event.target.value));
 	};
-	// const localStore = localStorage.getItem('cart');
-	// const cart = localStore ? JSON.parse(localStore) : [];
-
-	// const handleAddToCart = () => {
-	// 	const newCart = [...cart, selectedProduct];
-	// 	localStorage.setItem('cart', JSON.stringify(newCart));
-	// };
 
 	return (
 		<div

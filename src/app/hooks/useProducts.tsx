@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Product } from '@/types';
 import fetchProducts from '@/helpers/fetchProducts';
 import { useCategory } from '../providers/CategoryContext';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { useSearchParams } from 'next/navigation';
 const useProducts = (initialPage = 1, pageSize = 20) => {
 	const [products, setProducts] = useState<Product[]>([]);
@@ -14,12 +14,19 @@ const useProducts = (initialPage = 1, pageSize = 20) => {
 
 	const pathFromUrl = usePathname();
 	const currentPath = pathFromUrl?.split('/')[2];
-
 	const searchParams = useSearchParams();
 
+	const router = useRouter();
+
 	useEffect(() => {
-		const currentPage = Number(searchParams?.get('page')) || 1;
-		const currentPageSize = Number(searchParams?.get('pageSize')) || 20;
+		const currentPage = Number(searchParams?.get('page')) || page;
+		const currentPageSize = Number(searchParams?.get('pageSize')) || pageSize;
+		// router.push(`/categories/${categorySlug}&page=${currentPage}&pageSize=${pageSize}`);
+
+		// const expectedUrl = `/categories/${categorySlug}&page=${page}&pageSize=${currentPageSize}`;
+		// if (router.asPath === expectedUrl) {
+		// 	router.push(expectedUrl);
+		// }
 
 		const loadProducts = async () => {
 			try {
