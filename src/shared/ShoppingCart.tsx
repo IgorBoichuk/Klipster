@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Cart from '../../public/svg/cartt.svg';
+import EmptyCart from '../../public/images/cartpicture.png';
 import { Popup } from './Popup';
 import { usePopup } from '@/app/hooks/usePopup';
 import { SectionTitle } from './SectionTitle';
@@ -51,7 +52,14 @@ export const ShoppingCart = () => {
 				<Popup custom='flex flex-col lg:hidden bg-cyellow'>
 					<div className='absolute top-0 right-0 w-[40%] grid h-full pl-6 pr-2 pb-2 bg-cwhite '>
 						<SectionTitle title='Ваш кошик' />
-						{partsInCart.length === 0 && <SectionTitle title='В кошику поки що пусто' />}
+
+						{partsInCart.length === 0 && (
+							<div className='overflow-y-auto'>
+								<Image src={EmptyCart} width={500} alt='Empty cart' className='m-auto w-1/2' />
+								<SectionTitle title='В кошику поки що пусто' />
+								<span>Але це не пізно виправити :)</span>
+							</div>
+						)}
 						<div className='overflow-y-auto grid gap-2 '>
 							{partsInCart.map(part => (
 								<div key={part.id} className='grid grid-cols-2 pb-2 border-b border-b-cdarkgray items-center'>
@@ -92,12 +100,20 @@ export const ShoppingCart = () => {
 							))}
 						</div>
 						{totalPrice < 200 ? (
-							<p className='text-red-600'>Мінімальна сума до замовлення 200 грн</p>
+							<div>
+								<p className='text-red-600'>Мінімальна сума до замовлення 200 грн</p>
+								<p>Сума Вашого замовлення {totalPrice} грн</p>
+							</div>
 						) : (
 							<p>Сума Вашого замовлення {totalPrice} грн</p>
 						)}
 
-						<button className={`inactive bg-cyellow text-cwhite w-full h-max py-2 rounded-lg text-lg font-medium`}>
+						<button
+							disabled={totalPrice < 200}
+							className={`text-cwhite w-full h-max py-2 rounded-lg text-lg font-medium 
+                ${totalPrice < 200 ? 'bg-cgray' : 'bg-cyellow'}
+							`}
+						>
 							Оформити замовлення
 						</button>
 					</div>
