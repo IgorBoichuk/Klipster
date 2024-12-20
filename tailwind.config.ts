@@ -33,6 +33,9 @@ const config: Config = {
 			xl: '1366px',
 			'2xl': '1920px',
 		},
+		animation: {
+			spin: 'spin 2s linear infinite', // Створює обертання
+		},
 	},
 	plugins: [],
 };

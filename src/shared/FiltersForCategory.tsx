@@ -2,7 +2,7 @@ import React from 'react';
 
 export const FiltersForCategory = () => {
 	return (
-		<div className='border'>
+		<div className='border pl-3 pr-2'>
 			<p className=''>Filter name:</p>
 			<ul className=''>
 				<li className='flex gap-4'>
