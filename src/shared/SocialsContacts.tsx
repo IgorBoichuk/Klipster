@@ -13,7 +13,7 @@ interface SocialsProps {
 
 export const SocialsContacts = ({ custom }: SocialsProps) => {
 	return (
-		<div className={` ${custom ? custom : ''} grid grid-cols-2 gap-4 py-12 px-24`}>
+		<div className={` ${custom ? custom : ''} grid grid-cols-2 gap-4 py-12 px-24 w-2/3 m-auto`}>
 			<Link href={'tel:${+380930392656}'} className=' flex gap-2 items-center'>
 				<div className='relative'>
 					<Image src={Circle} width={50} alt='phone link' className='block w-5 h-5 lg:w-12 lg:h-12 animate-spin' />
