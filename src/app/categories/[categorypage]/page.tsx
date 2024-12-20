@@ -8,6 +8,7 @@ import { SectionTitle } from '@/shared/SectionTitle';
 import Arrow from '../../../../public/svg/arrow.svg';
 import Image from 'next/image';
 import { ErrorPage } from '@/shared/ErrorPage';
+import { FiltersForCategory } from '@/shared/FiltersForCategory';
 
 const Categorypage = () => {
 	const { filteredProducts, totalCount, page, pageSize, onPageChange } = useProducts();
@@ -32,7 +33,24 @@ const Categorypage = () => {
 			) : (
 				<div>
 					<SectionTitle title={categoryName} />
-					<Articles catData={filteredProducts} />
+					<div className='grid grid-cols-1 lg:grid-cols-12 gap-4'>
+						<div className='col-span-2'>
+							<ul className='grid gap-4'>
+								<li>
+									<FiltersForCategory />
+								</li>
+								<li>
+									<FiltersForCategory />
+								</li>
+								<li>
+									<FiltersForCategory />
+								</li>
+							</ul>
+						</div>
+						<div className='col-span-10'>
+							<Articles catData={filteredProducts} />
+						</div>
+					</div>
 					{/* Пагінація */}
 
 					<div className='flex justify-end gap-4 py-10'>

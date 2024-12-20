@@ -11,7 +11,7 @@ interface ReviewedGoodsProps {
 
 export const ReviewedGoods = ({ image, title }: ReviewedGoodsProps) => {
 	return (
-		<div>
+		<div className='pb-10'>
 			<SectionTitle title={title} />
 			<ul className='grid grid-cols-3 md:grid-cols-5 lg:grid-cols-6 gap-4'>
 				<li className='rounded-xl shadow-md flex items-center justify-center h-full'>
