@@ -47,9 +47,9 @@ export const ShoppingCart = () => {
 			<button type='button' onClick={openCart} className='relative w-6 h-6 lg:w-8 lg:h-8'>
 				<Image src={Cart} width={40} alt='Cart icon'></Image>
 				{partsInCart.length > 0 ? (
-					<div className='absolute -top-2 -right-4 w-6 h-6 rounded-full bg-cyellow text-cwhite'>
+					<span className='absolute -top-2 -right-4 w-6 h-6 rounded-full bg-cyellow text-cblack'>
 						{partsInCart.length}
-					</div>
+					</span>
 				) : null}
 			</button>
 			{isOpenCart && (
