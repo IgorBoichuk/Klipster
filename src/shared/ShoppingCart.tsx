@@ -44,8 +44,13 @@ export const ShoppingCart = () => {
 
 	return (
 		<div>
-			<button type='button' onClick={openCart} className='w-6 h-6 lg:w-8 lg:h-8'>
+			<button type='button' onClick={openCart} className='relative w-6 h-6 lg:w-8 lg:h-8'>
 				<Image src={Cart} width={40} alt='Cart icon'></Image>
+				{partsInCart.length > 0 ? (
+					<div className='absolute -top-2 -right-4 w-6 h-6 rounded-full bg-cyellow text-cwhite'>
+						{partsInCart.length}
+					</div>
+				) : null}
 			</button>
 			{isOpenCart && (
 				// <Popup custom='flex flex-col p-2 right-2 w-[70%] sm:w-1/2 md:w-[50%] lg:w-[40%] py-[15px] lg:hidden bg-cyellow'>
