@@ -34,12 +34,6 @@ const Categorypage = () => {
 	const maxPages = Math.ceil(totalCount / currentPageSize);
 	const pagesArray = Array.from({ length: maxPages }, (_, index) => index + 1);
 
-	console.log(pageSize); //30
-	console.log(page);
-	console.log(totalCount); //305
-
-	console.log(pagesArray.length);
-
 	return (
 		<div>
 			<BreadCrumb />
