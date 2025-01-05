@@ -52,7 +52,6 @@ const Categorypage = () => {
 						</div>
 					</div>
 					{/* Пагінація */}
-
 					<div className='flex justify-end gap-4 py-10'>
 						<button
 							className=' bg-cblack w-6 h-6 flex justify-center items-center'

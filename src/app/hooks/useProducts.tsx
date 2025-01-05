@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Product } from '@/types';
 import fetchProducts from '@/helpers/fetchProducts';
 import { useCategory } from '../providers/CategoryContext';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { useSearchParams } from 'next/navigation';
 const useProducts = (initialPage = 1, pageSize = 20) => {
 	const [products, setProducts] = useState<Product[]>([]);
@@ -13,28 +13,27 @@ const useProducts = (initialPage = 1, pageSize = 20) => {
 	const { categorySlug } = useCategory();
 
 	const pathFromUrl = usePathname();
-	const currentPath = pathFromUrl?.split('/')[2];
 	const searchParams = useSearchParams();
+	const router = useRouter();
 
-	// const router = useRouter();
+	const pageFromPath = () => {
+		if (Number(searchParams?.get('page')) !== page && Number(searchParams?.get('page')) > 1) {
+			setPage(Number(searchParams?.get('page')));
+		}
+	};
 
 	useEffect(() => {
-		const currentPage = Number(searchParams?.get('page')) || page;
-		const currentPageSize = Number(searchParams?.get('pageSize')) || pageSize;
-		// router.push(`/categories/${categorySlug}&page=${currentPage}&pageSize=${pageSize}`);
+		pageFromPath();
+	}, []);
 
-		// const expectedUrl = `/categories/${categorySlug}&page=${page}&pageSize=${currentPageSize}`;
-		// if (router.asPath === expectedUrl) {
-		// 	router.push(expectedUrl);
-		// }
+	useEffect(() => {
+		const currentPath = pathFromUrl?.split('/')[2] || categorySlug;
+		const currentPageSize = Number(searchParams?.get('pageSize')) || pageSize;
+		router.push(`/categories/${currentPath}?page=${page}&pageSize=${currentPageSize}`);
 
 		const loadProducts = async () => {
 			try {
-				const data = await fetchProducts(
-					(categorySlug || currentPath) as string,
-					currentPage || page,
-					currentPageSize || pageSize
-				);
+				const data = await fetchProducts(currentPath as string, page, currentPageSize);
 
 				if (data?.products) {
 					setProducts(data.products);
@@ -47,7 +46,7 @@ const useProducts = (initialPage = 1, pageSize = 20) => {
 			}
 		};
 		loadProducts();
-	}, [categorySlug, page, pageSize, currentPath, searchParams]);
+	}, [page, searchParams]);
 
 	useEffect(() => {
 		if (categorySlug) {
