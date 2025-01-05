@@ -1,43 +1,45 @@
 'use client';
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
-import { Product } from '@/types'; // Важливо, щоб шлях до `Product` був коректним
-import Cross from '../../public/svg/close.svg';
+
 import { useCategory } from '@/app/providers/CategoryContext';
 
-// Типи для пропсів компонента
-interface SingleProductCradProps {
-	selectedProduct: Product; // Продукт, який буде відображатися
-	img: string; // Шлях до базового URL для зображень
-	onClose: () => void;
-}
+export const SingleProductCrad: React.FC = () => {
+	const { choosenProdukt, pathToPhoto } = useCategory();
+	const [quantity, setQuantity] = useState<number>(1);
 
-export const SingleProductCrad: React.FC<SingleProductCradProps> = ({ selectedProduct, img, onClose }) => {
-	const { setCategoryName, categoryName, choosenProdukt, setChoosenProdukt } = useCategory();
-
-	console.log('choosenProdukt', choosenProdukt);
-
-	const [quantity, setQuantity] = useState(1);
-
-	const onQuantityChange = (event: 'increment' | 'decrement') => {
-		if (event === 'increment') {
+	// Зміна кількості товару
+	const onQuantityChange = (action: 'increment' | 'decrement'): void => {
+		if (action === 'increment') {
 			setQuantity(prev => prev + 1);
-		} else if (event === 'decrement') {
+		} else if (action === 'decrement') {
 			setQuantity(prev => (prev <= 1 ? 1 : prev - 1));
 		}
 	};
 
-	const onInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-		setQuantity(Number(event.target.value));
+	// Обробник введення кількості
+	const onInputChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+		const value = Number(event.target.value);
+		if (!isNaN(value) && value > 0) {
+			setQuantity(value);
+		}
 	};
 
 	return (
-		<div className='relative z-50 left-1/2 -translate-x-1/2 mt-28 grid grid-cols-1 md:grid-cols-2 rounded-xl shadow-md h-max w-[90%] md:w-4/5 bg-cwhite p-6'>
-			<div className=' ml-auto mr-auto '>
-				<Image src={`${img}${choosenProdukt?.photo}`} alt='Product card' width={500} height={500} className=' ' />
+		<div className='grid grid-cols-1 md:grid-cols-2 rounded-xl shadow-md bg-cwhite p-6'>
+			{/* Зображення */}
+			<div className='ml-auto mr-auto'>
+				<Image
+					src={`${pathToPhoto}${choosenProdukt?.photo}`}
+					alt='Product card'
+					width={500}
+					height={500}
+					className=''
+				/>
 				<div className='w-full h-[2px] bg-slate-300'></div>
 			</div>
 
+			{/* Інформація про продукт */}
 			<div>
 				<div className='p-4 grid grid-cols-1 gap-2'>
 					<h1 className='text-2xl xl:text-[28px] font-medium'>{choosenProdukt?.name_ua}</h1>
@@ -46,9 +48,7 @@ export const SingleProductCrad: React.FC<SingleProductCradProps> = ({ selectedPr
 						<p className='text-base xl:text-2xl text-slate-400 font-normal'>Артикул: {choosenProdukt?.item_number}</p>
 					</div>
 					<div className='grid grid-cols-2 items-center py-4'>
-						<p className='text-xl font-normal'>
-							{quantity ? quantity * choosenProdukt?.price : choosenProdukt?.price} грн.
-						</p>
+						<p className='text-xl font-normal'>{quantity * (choosenProdukt?.price || 0)} грн.</p>
 						<div className='relative grid grid-cols-3 text-center bg-slate-200 rounded-xl items-center'>
 							<button className='relative py-2 px-2 vertical-after' onClick={() => onQuantityChange('decrement')}>
 								-
@@ -88,9 +88,11 @@ export const SingleProductCrad: React.FC<SingleProductCradProps> = ({ selectedPr
 					</div>
 				</div>
 			</div>
+
+			{/* Опис */}
 			<div>
 				<p className='text-base font-semibold'>Опис</p>
-				<ul className=''>
+				<ul>
 					<li>Код деталі в оригінальному каталозі:</li>
 					<li>Ford W705002S300</li>
 					<li>Ford 4067083</li>

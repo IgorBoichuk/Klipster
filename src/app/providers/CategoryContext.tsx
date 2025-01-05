@@ -1,4 +1,5 @@
 'use client';
+import { Product } from '@/types';
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 
 interface CategoryContextType {
@@ -8,8 +9,9 @@ interface CategoryContextType {
 	setCategoryName: (category: string | null) => void;
 	sectionName: string | null;
 	setSectionName: (section: string | null) => void;
-	choosenProdukt: [] | null;
-	setChoosenProdukt: (product: []) => void;
+	choosenProdukt: Product | null;
+	setChoosenProdukt: (product: Product | null) => void;
+	pathToPhoto: string;
 }
 
 const CategoryContext = createContext<CategoryContextType | undefined>(undefined);
@@ -18,7 +20,8 @@ export const CategoryProvider = ({ children }: { children: ReactNode }) => {
 	const [categorySlug, setCategorySlug] = useState<string | null>(null);
 	const [categoryName, setCategoryName] = useState<string | null>(null);
 	const [sectionName, setSectionName] = useState<string | null>(null);
-	const [choosenProdukt, setChoosenProdukt] = useState<[] | null>(null);
+	const [choosenProdukt, setChoosenProdukt] = useState<Product | null>(null);
+	const pathToPhoto = 'https://klipster.com.ua/';
 
 	return (
 		<CategoryContext.Provider
@@ -31,6 +34,7 @@ export const CategoryProvider = ({ children }: { children: ReactNode }) => {
 				setSectionName,
 				choosenProdukt,
 				setChoosenProdukt,
+				pathToPhoto,
 			}}
 		>
 			{children}

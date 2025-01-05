@@ -10,9 +10,9 @@ interface ArticlesProps {
 }
 
 export const Articles: React.FC<ArticlesProps> = ({ catData }) => {
-	const { setCategoryName, categoryName, choosenProdukt, setChoosenProdukt, categorySlug } = useCategory();
+	const { setCategoryName, categoryName, choosenProdukt, setChoosenProdukt, categorySlug, pathToPhoto } = useCategory();
 
-	const pathToPhoto = 'https://klipster.com.ua/';
+	// const pathToPhoto = 'https://klipster.com.ua/';
 	const router = useRouter();
 
 	const currentname = catData[0].category_ua;
@@ -25,18 +25,12 @@ export const Articles: React.FC<ArticlesProps> = ({ catData }) => {
 
 	const ClickOnProdukt = (id: number, name: string, article: string): void => {
 		const clicketProdukt = catData.find(item => item.id === id);
-		setChoosenProdukt(clicketProdukt);
-		const formattedName =
-			article +
-			name
-				.trim()
-				.toLowerCase()
-				.replace(/[^a-zа-я0-9\s]/gi, '')
-				.replace(/\s+/g, '-');
-		router.push(`/categories/${categorySlug}/${article}`);
-	};
+		if (clicketProdukt) {
+			setChoosenProdukt(clicketProdukt);
+		}
 
-	console.log('choosenProdukt', choosenProdukt);
+		router.push(`/categories/${categorySlug}/${article}-${id}`);
+	};
 
 	return (
 		<div>
@@ -45,7 +39,7 @@ export const Articles: React.FC<ArticlesProps> = ({ catData }) => {
 					<li
 						key={product.id}
 						onClick={() => ClickOnProdukt(product.id, product.name_ua, product.item_number)}
-						className=''
+						className='cursor-pointer'
 					>
 						<ProductCard
 							id={product.id}

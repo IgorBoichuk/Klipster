@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { useEffect } from 'react';
 import useProducts from '@/app/hooks/useProducts';
 import { useCategory } from '@/app/providers/CategoryContext';
 import { Articles } from '@/shared/Articles';
@@ -9,21 +9,36 @@ import Arrow from '../../../../public/svg/arrow.svg';
 import Image from 'next/image';
 import { ErrorPage } from '@/shared/ErrorPage';
 import { FiltersForCategory } from '@/shared/FiltersForCategory';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
 const Categorypage = () => {
-	const { filteredProducts, totalCount, page, pageSize, onPageChange } = useProducts();
+	const { filteredProducts, totalCount, pageSize, page, onPageChange } = useProducts();
 	const { categoryName } = useCategory();
+
+	const pathFromUrl = usePathname();
+	const searchParams = useSearchParams();
+	const router = useRouter();
+
+	const currentPath = pathFromUrl?.split('/')[2];
+	const currentPageSize = Number(searchParams?.get('pageSize')) || 40;
+	// const currentPage = Number(searchParams?.get('page')) || 1;
+
+	useEffect(() => {
+		router.push(`/categories/${currentPath}?page=${page}&pageSize=${currentPageSize}`);
+	}, [page]);
 
 	// Обробка зміни сторінки
 	const handlePageChange = (newPage: number) => {
 		onPageChange(newPage);
 	};
-	const maxPages = Math.ceil(totalCount / pageSize);
+	const maxPages = Math.ceil(totalCount / currentPageSize);
 	const pagesArray = Array.from({ length: maxPages }, (_, index) => index + 1);
 
-	// console.log(category);
-	// console.log(page);
-	// console.log(pageSize);
+	console.log(pageSize); //30
+	console.log(page);
+	console.log(totalCount); //305
+
+	console.log(pagesArray.length);
 
 	return (
 		<div>
@@ -58,23 +73,26 @@ const Categorypage = () => {
 							onClick={() => handlePageChange(page - 1)}
 							disabled={page === 1}
 						>
-							<Image src={Arrow} alt='down arrow' width={8} className='rotate-180 ' />
+							<Image src={Arrow} alt='left arrow' width={8} className='rotate-180 ' />
 						</button>
-						<span>{page}</span>
-
-						<div className='flex gap-1'>
-							{pagesArray.map(page => (
-								<button key={page} onClick={() => handlePageChange(page)} className=''>
-									{page}
+						<div className='flex gap-2'>
+							{pagesArray.map(ipage => (
+								<button
+									key={ipage}
+									onClick={() => handlePageChange(ipage)}
+									disabled={ipage === page}
+									className={`${ipage === page && 'font-bold text-xl bg-cyellow px-1 rounded-md'}`}
+								>
+									{ipage}
 								</button>
 							))}
 						</div>
 						<button
 							className=' bg-cblack w-6 h-6 flex justify-center items-center'
 							onClick={() => handlePageChange(page + 1)}
-							disabled={page * pageSize >= totalCount}
+							disabled={page >= pagesArray.length}
 						>
-							<Image src={Arrow} alt='down arrow' width={8} className=' ' />
+							<Image src={Arrow} alt='right arrow' width={8} className=' ' />
 						</button>
 					</div>
 				</div>
