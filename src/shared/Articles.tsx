@@ -10,9 +10,8 @@ interface ArticlesProps {
 }
 
 export const Articles: React.FC<ArticlesProps> = ({ catData }) => {
-	const { setCategoryName, categoryName, choosenProdukt, setChoosenProdukt, categorySlug, pathToPhoto } = useCategory();
+	const { setCategoryName, categoryName, setChoosenProdukt, categorySlug, pathToPhoto } = useCategory();
 
-	// const pathToPhoto = 'https://klipster.com.ua/';
 	const router = useRouter();
 
 	const currentname = catData[0].category_ua;

@@ -12,7 +12,7 @@ import { FiltersForCategory } from '@/shared/FiltersForCategory';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
 const Categorypage = () => {
-	const { filteredProducts, totalCount, pageSize, page, onPageChange } = useProducts();
+	const { filteredProducts, totalCount, page, onPageChange } = useProducts();
 	const { categoryName } = useCategory();
 
 	const pathFromUrl = usePathname();
