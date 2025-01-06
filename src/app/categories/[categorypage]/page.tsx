@@ -40,10 +40,11 @@ const Categorypage = () => {
 			{filteredProducts.length === 0 ? (
 				<ErrorPage />
 			) : (
-				<div>
+				<div className=''>
 					<SectionTitle title={categoryName} />
-					<div className='grid grid-cols-1 lg:grid-cols-12 gap-4'>
-						<div className='col-span-2'>
+
+					<div className='grid grid-cols-1 md:grid-cols-10 lg:grid-cols-12 gap-4'>
+						<div className='md:col-span-3 lg:col-span-2'>
 							<ul className='grid gap-4'>
 								<li>
 									<FiltersForCategory />
@@ -56,7 +57,7 @@ const Categorypage = () => {
 								</li>
 							</ul>
 						</div>
-						<div className='col-span-10'>
+						<div className='md:col-span-7 lg:col-span-10'>
 							<Articles catData={filteredProducts} />
 						</div>
 					</div>

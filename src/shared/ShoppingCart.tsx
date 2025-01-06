@@ -55,7 +55,7 @@ export const ShoppingCart = () => {
 			{isOpenCart && (
 				// <Popup custom='flex flex-col p-2 right-2 w-[70%] sm:w-1/2 md:w-[50%] lg:w-[40%] py-[15px] lg:hidden bg-cyellow'>
 				<Popup custom='flex flex-col lg:hidden bg-cyellow'>
-					<div className='absolute top-0 right-0 w-[40%] grid h-full pl-6 pr-2 pb-2 bg-cwhite '>
+					<div className='absolute top-0 right-0 w-[80%] md:w-[50%] lg:w-[40%] grid h-full pl-6 pr-2 pb-2 bg-cwhite '>
 						<SectionTitle title='Ваш кошик' />
 
 						{partsInCart.length === 0 && (
@@ -78,27 +78,32 @@ export const ShoppingCart = () => {
 
 									<div className='flex flex-col flex-grow pl-2'>
 										<h2 className='text-sm font-medium mb-4'>{part.title}</h2>
+
 										<div className='relative grid grid-cols-3 text-center bg-slate-200 rounded-xl items-center w-20'>
-											<button className='relative py-2 px-2' onClick={() => decreaseQuantity(part.id)}>
+											<button className='relative py-1 px-1 lg:py-2 lg:px-2' onClick={() => decreaseQuantity(part.id)}>
 												-
 											</button>
+
 											<input
 												className='bg-slate-200 text-center appearance-none [&::-webkit-inner-spin-button]:hidden [&::-webkit-outer-spin-button]:hidden'
 												type='number'
 												value={part.quantity}
 												onChange={e => handleInputChange(part.id, e.target.value)}
 											/>
-											<button className='relative py-2 px-2' onClick={() => increaseQuantity(part.id)}>
+
+											<button className='relative py-1 px-1 md:py-2 md:px-2' onClick={() => increaseQuantity(part.id)}>
 												+
 											</button>
 										</div>
-										<p className='text-xs'>{part.quantity * part.price} грн.</p>
+
+										<span className='text-xs'>Сума {part.quantity * part.price} грн.</span>
+
 										<button
 											type='button'
 											onClick={event => onRemove(event, part.id)}
-											className='bg-cyellow text-cwhite w-max px-2 rounded-lg'
+											className='bg-cyellow text-cwhite w-max px-2 rounded-lg text-sm md:text-base'
 										>
-											Remove
+											Видалити
 										</button>
 									</div>
 								</div>
