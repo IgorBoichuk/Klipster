@@ -8,7 +8,7 @@ import { SectionTitle } from '@/shared/SectionTitle';
 import Arrow from '../../../../public/svg/arrow.svg';
 import Image from 'next/image';
 import { ErrorPage } from '@/shared/ErrorPage';
-import { FiltersForCategory } from '@/shared/FiltersForCategory';
+// import { FiltersForCategory } from '@/shared/FiltersForCategory';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
 const Categorypage = () => {
