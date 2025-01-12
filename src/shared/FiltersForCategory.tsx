@@ -1,38 +1,27 @@
 import React from 'react';
 
-export const FiltersForCategory = () => {
+interface FiltersForCategoryProps {
+	param: string[]; // Масив значень для фільтра
+	name: string; // Назва фільтра
+}
+
+export const FiltersForCategory: React.FC<FiltersForCategoryProps> = ({ param = [], name }) => {
+	// Отримання унікальних значень
+	const uniqueValues = Array.from(new Set(param));
+	console.log(param);
+
 	return (
-		<div className='border pl-3 pr-2'>
-			<p className=''>Filter name:</p>
-			<ul className=''>
-				<li className='flex gap-4'>
-					<input type='checkbox' className='' />
-					<p className=''>Filter value</p>
-				</li>
-				<li className='flex gap-4'>
-					<input type='checkbox' className='' />
-					<p className=''>Filter value</p>
-				</li>
-				<li className='flex gap-4'>
-					<input type='checkbox' className='' />
-					<p className=''>Filter value</p>
-				</li>
-				<li className='flex gap-4'>
-					<input type='checkbox' className='' />
-					<p className=''>Filter value</p>
-				</li>
-				<li className='flex gap-4'>
-					<input type='checkbox' className='' />
-					<p className=''>Filter value</p>
-				</li>
-				<li className='flex gap-4'>
-					<input type='checkbox' className='' />
-					<p className=''>Filter value</p>
-				</li>
-				<li className='flex gap-4'>
-					<input type='checkbox' className='' />
-					<p className=''>Filter value</p>
-				</li>
+		<div className='border pl-3 pr-2 py-2'>
+			<p className='font-semibold mb-2'>{name}</p>
+			<ul className='space-y-2'>
+				{uniqueValues.map((value, index) => (
+					<li key={index} className='flex items-center gap-2'>
+						<input type='checkbox' id={`filter-${value}`} className='form-checkbox' />
+						<label htmlFor={`filter-${value}`} className='text-sm text-gray-700'>
+							{value}
+						</label>
+					</li>
+				))}
 			</ul>
 		</div>
 	);

@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import prisma from '../../prisma/lib/prisma';
 import { partsitems } from '@prisma/client';
+import { db } from '@vercel/postgres';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
 	const { category_slug, page = 1, pageSize = 60 } = req.query;

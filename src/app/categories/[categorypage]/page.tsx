@@ -34,6 +34,8 @@ const Categorypage = () => {
 	const maxPages = Math.ceil(totalCount / currentPageSize);
 	const pagesArray = Array.from({ length: maxPages }, (_, index) => index + 1);
 
+	// console.log(filteredProducts);
+
 	return (
 		<div>
 			<BreadCrumb />
@@ -46,15 +48,7 @@ const Categorypage = () => {
 					<div className='grid grid-cols-1 md:grid-cols-10 lg:grid-cols-12 gap-4'>
 						<div className='md:col-span-3 lg:col-span-2'>
 							<ul className='grid gap-4'>
-								<li>
-									<FiltersForCategory />
-								</li>
-								<li>
-									<FiltersForCategory />
-								</li>
-								<li>
-									<FiltersForCategory />
-								</li>
+								<li>{/* <FiltersForCategory param={filteredProducts.inst} name={'Місце встановлення'} /> */}</li>
 							</ul>
 						</div>
 						<div className='md:col-span-7 lg:col-span-10'>

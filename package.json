@@ -11,6 +11,7 @@
   "dependencies": {
     "@firebasegen/default-connector": "file:dataconnect-generated/js/default-connector",
     "@prisma/client": "^6.0.1",
+    "@vercel/postgres": "^0.10.0",
     "axios": "^1.7.8",
     "mysql2": "^3.11.4",
     "next": "15.0.0",
