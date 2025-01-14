@@ -49,7 +49,16 @@ const Categorypage = () => {
 						<div className='md:col-span-3 lg:col-span-2'>
 							<ul className='grid gap-4'>
 								<li>
+									<FiltersForCategory data={filteredProducts} param={'color'} name={'Марка автомобіля'} />
+								</li>
+								<li>
+									<FiltersForCategory data={filteredProducts} param={'color'} name={'Модель автомобіля'} />
+								</li>
+								<li>
 									<FiltersForCategory data={filteredProducts} param={'color'} name={'Місце встановлення'} />
+								</li>
+								<li>
+									<FiltersForCategory data={filteredProducts} param={'color'} name={'Колір'} />
 								</li>
 							</ul>
 						</div>
