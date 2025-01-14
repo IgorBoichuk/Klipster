@@ -30,6 +30,7 @@ export const Articles: React.FC<ArticlesProps> = ({ catData }) => {
 
 		router.push(`/categories/${categorySlug}/${article}-${id}`);
 	};
+	// console.log(catData);
 
 	return (
 		<div>

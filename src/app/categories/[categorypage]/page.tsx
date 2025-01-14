@@ -8,7 +8,7 @@ import { SectionTitle } from '@/shared/SectionTitle';
 import Arrow from '../../../../public/svg/arrow.svg';
 import Image from 'next/image';
 import { ErrorPage } from '@/shared/ErrorPage';
-// import { FiltersForCategory } from '@/shared/FiltersForCategory';
+import { FiltersForCategory } from '@/shared/FiltersForCategory';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
 const Categorypage = () => {
@@ -48,7 +48,9 @@ const Categorypage = () => {
 					<div className='grid grid-cols-1 md:grid-cols-10 lg:grid-cols-12 gap-4'>
 						<div className='md:col-span-3 lg:col-span-2'>
 							<ul className='grid gap-4'>
-								<li>{/* <FiltersForCategory param={filteredProducts.inst} name={'Місце встановлення'} /> */}</li>
+								<li>
+									<FiltersForCategory data={filteredProducts} param={'color'} name={'Місце встановлення'} />
+								</li>
 							</ul>
 						</div>
 						<div className='md:col-span-7 lg:col-span-10'>

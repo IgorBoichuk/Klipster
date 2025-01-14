@@ -1,14 +1,16 @@
 import React from 'react';
 
 interface FiltersForCategoryProps {
-	param: string[]; // Масив значень для фільтра
+	param: string; // Масив значень для фільтра
 	name: string; // Назва фільтра
+	data: any[];
 }
 
-export const FiltersForCategory: React.FC<FiltersForCategoryProps> = ({ param = [], name }) => {
-	// Отримання унікальних значень
-	const uniqueValues = Array.from(new Set(param));
-	console.log(param);
+export const FiltersForCategory: React.FC<FiltersForCategoryProps> = ({ data = [], name, param }) => {
+	const uniqueValues = Array.from(new Set(data.map(item => item[param]).filter(value => value))).sort();
+
+	console.log(uniqueValues);
+	console.log(data);
 
 	return (
 		<div className='border pl-3 pr-2 py-2'>
